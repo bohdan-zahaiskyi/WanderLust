@@ -1,0 +1,14 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Diploma api",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Bohdan Zahaiskyi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
