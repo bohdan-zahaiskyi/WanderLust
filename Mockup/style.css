@@ -40,3 +40,33 @@ body, html {
         background-attachment: scroll;
     }
 }
+.joinwander_block, 
+.joinwander_block_add{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    margin-bottom: 10px;
+}
+.joinwander_block input,
+.joinwander_block select{
+    width: 80%;
+    height: 33px;
+}
+.joinwander_advanced{
+    cursor: pointer;
+}
+.arrow{
+    transform: rotate(90deg);
+}
+.joinwander_btns{
+    display: flex;
+    justify-content: flex-end;
+}
+.joinwander_btns input{
+    margin-left: 20px;
+    width: 45%;
+    max-width: 150px;
+}
+.quick_wanders select{
+    width: 100%;
+}

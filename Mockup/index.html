@@ -44,7 +44,56 @@
 <!-- Container (About Section) -->
 <div class="w3-content w3-container w3-padding-64" id="about">
   <h3 class="w3-center">JOIN A WANDER</h3>
-  
+
+    <!--=================== Wander search section ======================-->
+    <div class="joinwander"> 
+        <div class="joinwander_block">
+            <label>From:</label> 
+            <input type="text"/>
+        </div>
+        <div class="joinwander_block">
+        <label>Where:</label> 
+        <input type="text"/>
+        </div>
+        <div class="w3-center joinwander_advanced">
+            Advanced filters <span class="arrow">&#10095</span>
+        </div>
+        <div class="advanced_filters">
+            <div class="joinwander_block">
+                <label>Picking up</label> 
+                <select>
+                    <option>Hitch hiking</option>
+                    <option>Plane</option>
+                    <option>Bus/Train/Car</option>
+                </select>
+            </div>
+            <div class="joinwander_block">
+                <label>Main wander Aim</label> 
+                <select>
+                    <option>Nature landscapes</option>
+                    <option>Cities</option>
+                    <option>Culture</option>
+                </select>
+            </div>
+            <div class="joinwander_block">
+                <label>Approximate Budget</label> 
+                <input type="range" min="100" max="2000" value="500">
+            </div>   
+        </div> 
+        <div class="joinwander_btns">
+            <input type="submit" value="Search"/>
+            <input type="button" value="Reset"/>  
+        </div> 
+    </div>
+    <!--==================== Wander search section =====================-->
+    <div class="quick_wanders">
+        <div class="wanders_select">
+            <div class="single_wander">
+                <div class="single_wander_info"></div>
+                <div class="single_wander_desc"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="w3-row w3-center w3-dark-grey w3-padding-16">
