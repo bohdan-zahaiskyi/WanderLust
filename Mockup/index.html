@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Wanderlust</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="style.css">
@@ -35,31 +35,30 @@
 </div>
 
 <!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+<div class="bgimg-1 w3-display-container paralax" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
     <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">NEVER STOP EXPLORING</span>
   </div>
 </div>
 
 <!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
+<div class="w3-content w3-container join_form" id="about">
   <h3 class="w3-center">JOIN A WANDER</h3>
 
     <!--=================== Wander search section ======================-->
     <div class="joinwander"> 
         <div class="joinwander_block">
-            <label>From:</label> 
-            <input type="text"/>
+            <div class="search_creteria">
+                <label>From:</label> 
+                <input type="text"/>
+            </div>
+            <div class="search_creteria">
+                <label>Where:</label> 
+                <input type="text"/>
+            </div>
         </div>
         <div class="joinwander_block">
-        <label>Where:</label> 
-        <input type="text"/>
-        </div>
-        <div class="w3-center joinwander_advanced">
-            Advanced filters <span class="arrow">&#10095</span>
-        </div>
-        <div class="advanced_filters">
-            <div class="joinwander_block">
+            <div class="search_creteria">
                 <label>Picking up</label> 
                 <select>
                     <option>Hitch hiking</option>
@@ -67,7 +66,7 @@
                     <option>Bus/Train/Car</option>
                 </select>
             </div>
-            <div class="joinwander_block">
+            <div class="search_creteria">
                 <label>Main wander Aim</label> 
                 <select>
                     <option>Nature landscapes</option>
@@ -75,21 +74,38 @@
                     <option>Culture</option>
                 </select>
             </div>
-            <div class="joinwander_block">
+        </div>
+        <div class="joinwander_block">  
+            <div class="search_creteria">
                 <label>Approximate Budget</label> 
-                <input type="range" min="100" max="2000" value="500">
-            </div>   
-        </div> 
+                <input type="range" class="slider slider_height" min="100" max="2000" value="500">
+            </div>
+            <div class="budget_range">
+                <div class="search_creteria">
+                    <label>From</label>
+                    <input type="number">
+                </div>
+                <div class="search_creteria">
+                    <label>To</label>
+                    <input type="number">
+                </div>
+            </div>    
+        </div>
+
         <div class="joinwander_btns">
             <input type="submit" value="Search"/>
-            <input type="button" value="Reset"/>  
+            <input type="button" id="reset" value="Reset"/>  
         </div> 
     </div>
     <!--==================== Wander search section =====================-->
     <div class="quick_wanders">
         <div class="wanders_select">
             <div class="single_wander">
-                <div class="single_wander_info"></div>
+                <div class="single_wander_info">
+                    <div class="single_wander_avatar">
+                        
+                    </div>
+                </div>  
                 <div class="single_wander_desc"></div>
             </div>
         </div>
@@ -116,7 +132,7 @@
 </div>
 
 <!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
+<div class="bgimg-2 w3-display-container paralax">
   <div class="w3-display-middle">
     <span class="w3-xxlarge w3-text-white w3-wide">LATEST TRIPS</span>
   </div>
@@ -129,7 +145,7 @@
 </div>
 
 <!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
+<div class="bgimg-3 w3-display-container paralax">
   <div class="w3-display-middle">
      <span class="w3-xxlarge w3-text-white w3-wide">TOP DESTINATIONS</span>
   </div>
