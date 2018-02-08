@@ -1,0 +1,52 @@
+            <!--==================== Wander search section =====================-->
+    <div class="quick_wanders join_form">
+        <h3 class="w3-center">WANDER SEARCH RESULTS</h3>
+        <!--Wander 1-->
+        <div class="single_wander" *ngFor="let wander of wanders">
+            <div class="single_wander_avatar">
+                <img src="../../assets/paris.jpeg"/>
+            </div>
+            <div class="single_wander_info">
+                <div class="wl_block_row single_wander_title">
+                    <h4 *ngFor="let dest of wander.destinations">
+                      <span> {{dest}} - </span> 
+                    </h4>
+                    <label>{{wander.startDate}} - {{wander.endDate}}</label>
+                </div>
+                <div class="wl_block_row single_wander_initiator">
+                    <label>@bzahay</label>
+                    <div class="initiator_rate">* * * * *</div>
+                </div>
+                <div class="wl_block_row">
+                    <div class="prop prop1">
+                        <div class="wl_block_row">
+                            <img src="../../assets/Hitchhike.png">
+                            <label> {{wander.pickUp}}</label>
+                        </div>
+                        <div class="wl_block_row">
+                            <img src="../assets/aim.png">
+                            <label> {{wander.aim}}</label>
+                        </div>
+                    </div>
+                    <div class="prop prop2">
+                        <div class="wl_block_row">
+                            <img src="../../assets/money.png">
+                            <label> {{wander.budget}}</label>
+                        </div>
+                        <div class="wl_block_row">
+                            <img src="../../assets/group.png">
+                            <label> 2-4</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single_wander_info">
+                <h4 class="w3-center">Description:</h4>
+                <div class="desc_container">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut iaculis orci quam, ut maximus libero imperdiet ultricies. Nulla fermentum sapien tortor, ut aliquam magna porttitor sit amet. Curabitur blandit tellus cursus ante fringilla mollis. Mauris cursus rhoncus tortor, non dapibus magna consequat in. Morbi eget ligula volutpat, feugiat lorem non, viverra dolor
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
