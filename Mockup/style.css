@@ -82,6 +82,9 @@ body, html {
     width: 22%;
     /*max-width: 150px;*/
 }
+.quick_wanders{
+    display: none;
+}
 .quick_wanders select{
     width: 100%;
 }
@@ -145,13 +148,52 @@ body, html {
     background-color: white;
     color: #4CAF50;
     border: 1px solid #4CAF50;
+    font-weight: 600;
 }
 
 .single_wander_avatar img{
     max-width: 120px;
 }
+
 .single_wander{
     margin: 10px;
     border: 1px solid gray;
     padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.single_wander_info{
+    width: 50%;
+    margin-left: 40px;   
+}
+.wl_block_row{
+    margin-bottom: 5px; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.single_wander_title h4{
+    font-weight: 600;
+}
+.single_wander_title label{
+    margin-left: 40px;
+}
+.initiator_rate{
+    margin-left: 20px;
+}
+.prop1{
+    width: 75%;
+}
+.prop2{
+    width: 25%;
+}
+.prop .wl_block_row label{
+    margin-left: 20px;
+}
+.wl_block_row img{
+    max-width: 24px;
+}
+.desc_container{
+    max-height: 120px;
+    overflow: hidden;
 }
