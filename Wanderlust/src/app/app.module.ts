@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
-import { AppComponent } from './app.component';
-import { WanderSearchComponent } from './wander-search/wander-search.component';
-import { WanderResultsComponent } from './wander-results/wander-results.component';
+import { AppComponent } from './main-page/app';
+import { WanderSearchComponent } from './main-page/wander-search/wander-search';
+import { WanderResultsComponent } from './main-page/wander-results/wander-results';
 
 
 @NgModule({

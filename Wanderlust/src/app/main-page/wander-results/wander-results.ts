@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Aim, PickUp, Wander} from '../wander'
+import {Aim, PickUp, Wander} from '../../wander'
 
 @Component({
   selector: 'app-wander-results',
-  templateUrl: './wander-results.component.html',
-  styleUrls: ['./wander-results.component.css']
+  templateUrl: './wander-results.html',
+  styleUrls: ['./wander-results.css']
 })
 export class WanderResultsComponent implements OnInit {
 
