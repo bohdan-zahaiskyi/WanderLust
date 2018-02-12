@@ -1,15 +1,21 @@
 // ./express-server/controllers/todo.server.controller.js
 import mongoose from 'mongoose';
 //import models
-import Wander from '../models/wander.server.model';
-export const getWanders = (req,res) => {
-  Wander.find().exec((err, wanders) => {
-    if(err){
-    return res.json({'success':false,'message':'Some Error'});
-    }
-return res.json({'success':true,'message':'Wanders fetched successfully',wanders});
-  });
+import Wanders from '../models/wander.server.model';
+export const getWanders = () => {
+  return new Promise((resolve, reject) => {
+    Wanders.find().then(wanders => {
+      resolve({'success':true,'message':'Wanders fetched successfully', wanders});
+    },
+    err=>{reject({'success':false,'message':'Some Error'})})
+  })
 }
+  /*Wanders.find().exec((err, wanders) => {
+  if(err){
+    return {'success':false,'message':'Some Error'};
+  }
+  return {'success':true,'message':'Wanders fetched successfully', wanders};
+  });*/
 
 export const addWander = (req,res) => {
   const newWander = new Wander(req.body);
@@ -21,7 +27,7 @@ export const addWander = (req,res) => {
   })
 }
 export const updateWander = (req,res) => {
-  Wander.findOneAndUpdate({ _id:req.body.id }, req.body, { new:true }, (err,wander) => {
+  Wanders.findOneAndUpdate({ _id:req.body.id }, req.body, { new:true }, (err,wander) => {
     if(err){
         return res.json({'success':false,'message':'Some Error','error':err});
     }
@@ -30,7 +36,7 @@ export const updateWander = (req,res) => {
   })
 }
 export const getWander = (req,res) => {
-  Wander.find({_id:req.params.id}).exec((err,wander) => {
+  Wanders.find({_id:req.params.id}).exec((err,wander) => {
     if(err){
         return res.json({'success':false,'message':'Some Error'});
     }
@@ -43,7 +49,7 @@ export const getWander = (req,res) => {
   })
 }
 export const deleteWander = (req,res) => {
-  Wander.findByIdAndRemove(req.params.id, (err,wander) => {
+  Wanders.findByIdAndRemove(req.params.id, (err,wander) => {
     if(err){
         return res.json({'success':false,'message':'Some Error'});
     }

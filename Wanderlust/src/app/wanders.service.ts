@@ -36,7 +36,8 @@ export class WandersService {
   };
   getWanders(): Promise<any> {
     return this.http.get(this.apiUrl).toPromise()
-      .then(this.handleData)
+      .then(data => 
+        {return this.handleData(data)})
       .catch(this.handleError);
   }
   private handleData (res: any){

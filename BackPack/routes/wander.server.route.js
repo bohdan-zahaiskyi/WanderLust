@@ -4,10 +4,17 @@ import express from 'express';
 import * as wandersController from '../controllers/wanders.server.controller';
 // get an instance of express router
 const router = express.Router();
-router.route('/')
-     .get(wandersController.getWanders)
-     .post(wandersController.addWander)
-     .put(wandersController.updateWander);
+router.get('/',(req,res)=>{
+      wandersController.getWanders().then(wanders=>{
+            res.send(wanders);
+      },
+      err=>{reject(err)})
+      //res.send(wandersController.getWanders)
+})
+/*router.post('/')
+     .post(wandersController.
+)
+     .put(wandersController.updateWander);*/
 router.route('/:id')
       .get(wandersController.getWander)
       .delete(wandersController.deleteWander);

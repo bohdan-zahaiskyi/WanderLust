@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-var Schema = mongoose.Schema({
+var Schema = mongoose.Schema;
+var WanderSchema = new Schema({
   destinations: Array,
   startDate: String,
   endDate: String,
@@ -9,4 +10,4 @@ var Schema = mongoose.Schema({
   people: Number,
   description: String
 });
-export default mongoose.model('Wander', Schema);
+export default mongoose.model('Wanders', WanderSchema);

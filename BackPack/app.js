@@ -27,9 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const port = process.env.PORT || 3000;
 // connect to database
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Wanderlust', {
-  useMongoClient: true,
-});
+mongoose.connect('mongodb://localhost/Wanderlust');
 
 // add Source Map Support
 SourceMapSupport.install();
