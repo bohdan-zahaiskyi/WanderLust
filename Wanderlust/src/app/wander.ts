@@ -1,11 +1,14 @@
 export enum PickUp{
+    Any = "Any",
     Hitchhike = "Hitchhike",
     Plane = "Plane",
-    TrainBus = "Train/Bus",
-    MyOwnCar = "My car"
+    Train = "Train",
+    Bus = "Bus",
+    MyCar = "My car"
 }
 
 export enum Aim{
+    Any = "Any",
     Cities = "Cities",
     NatureLandscapes = "Nature Landscapes",
     Culture = "Culture"

@@ -1,6 +1,9 @@
 .single_wander_avatar img{
     max-width: 120px;
 }
+h4{
+    font-weight: 600;
+}
 .single_wander{
     margin: 10px;
     border: 1px solid gray;
@@ -9,8 +12,13 @@
     flex-direction: row;
 }
 .single_wander_info{
-    width: 50%;
     margin-left: 40px;   
+}
+.info-1{
+    width: 70%;
+}
+.info-2{
+    width: 30%;
 }
 .wl_block_row{
     margin-bottom: 5px; 
@@ -18,8 +26,8 @@
     flex-direction: row;
     align-items: center;
 }
-.single_wander_title h4{
-    font-weight: 600;
+.single_wander_title{
+    justify-content: space-between;
 }
 .single_wander_title label{
     margin-left: 40px;

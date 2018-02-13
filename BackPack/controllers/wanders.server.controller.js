@@ -2,6 +2,7 @@
 import mongoose from 'mongoose';
 //import models
 import Wanders from '../models/wander.server.model';
+
 export const getWanders = () => {
   return new Promise((resolve, reject) => {
     Wanders.find().then(wanders => {
