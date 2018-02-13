@@ -1,0 +1,31 @@
+.left-bar,
+.right-bar{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+.left-bar{
+    float: left;
+}
+.right-bar{
+    float: right;
+}
+.bar-item{
+    padding: 0px 20px;
+    height: 86px;
+    display: flex;
+    align-items: center; 
+}
+.bar-item:hover{
+    background-color: #ffc467;
+}
+.bar-item a{
+    text-decoration: none;
+    color: black;
+}
+#logo{
+    padding-top: 8px;
+}
+#logo img{
+    max-width: 70px;
+}
