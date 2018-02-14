@@ -1,0 +1,9 @@
+.bgimg-1{
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('../../assets/parallax/main.jpg');
+  min-height: 100%;
+  opacity: 0.9;
+}

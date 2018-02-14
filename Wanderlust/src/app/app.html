@@ -5,16 +5,18 @@
         <img src="../assets/WNES.png">
       </a>
       <div class="bar-item"><a href="#home">HOME</a></div>
-      <div class="bar-item"><a href="#about" ><i class="fa fa-user"></i> ABOUT</a></div>
+      <div class="bar-item"><a href="#about" ><i class="fa fa-th"></i> ABOUT</a></div>
       <div class="bar-item"><a href="#portfolio"><i class="fa fa-th"></i> PORTFOLIO</a></div>
       <div class="bar-item"><a href="#contact"><i class="fa fa-envelope"></i> CONTACT</a></div>
     </div>
 
     <div class="right-bar">
-      <div class="bar-item"><a href="#portfolio"><i class="fa fa-th"></i> LOGIN/SINGIN</a></div>
-      <div class="bar-item"><a href="#contact"><i class="fa fa-envelope"></i> FEEDBACK</a></div>
+      <div class="bar-item"><div (click)="showLogin()"><i class="fa fa-user"></i> LOGIN/SIGIN</div></div>
+      <div class="bar-item"><a><i class="fa fa-envelope"></i> FEEDBACK</a></div>
     </div>
-  </div>  
+  </div>
 </div>
-
-<main-page></main-page>
+<div *ngIf="loginPressed" class="login_cont">
+  <app-login></app-login>
+</div>
+<router-outlet></router-outlet>

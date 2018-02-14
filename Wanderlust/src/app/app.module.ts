@@ -7,6 +7,10 @@ import { AppComponent } from './app';
 import { WanderSearchComponent } from './main-page/wander-search/wander-search';
 import { WanderResultsComponent } from './main-page/wander-results/wander-results';
 import { MainPageComponent } from './main-page/main-page';
+import { LoginComponent } from './login/login.component';
+
+import { AppRoutingModule }     from './app-routing.module';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -14,11 +18,14 @@ import { MainPageComponent } from './main-page/main-page';
     AppComponent,
     MainPageComponent,
     WanderSearchComponent,
-    WanderResultsComponent
+    WanderResultsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [
     WandersService

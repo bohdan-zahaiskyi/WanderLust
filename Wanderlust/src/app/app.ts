@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.css']
 })
 export class AppComponent {
+  loginPressed: boolean = false;
+  showLogin(): void {
+      this.loginPressed = !this.loginPressed;
+  }
 }
