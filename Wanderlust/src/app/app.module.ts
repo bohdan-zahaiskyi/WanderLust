@@ -9,8 +9,11 @@ import { WanderResultsComponent } from './main-page/wander-results/wander-result
 import { MainPageComponent } from './main-page/main-page';
 import { LoginComponent } from './login/login.component';
 
-import { AppRoutingModule }     from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './register/register.component';
+import { RegisterSystemComponent } from './register/register-system/register-system';
+import { RegisterPersonalComponent } from './register/register-personal/register-personal';
+import { RegisterLocationComponent } from './register/register-location/register-location';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { RegisterComponent } from './register/register.component';
     WanderSearchComponent,
     WanderResultsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterSystemComponent,
+    RegisterPersonalComponent,
+    RegisterLocationComponent
   ],
   imports: [
     BrowserModule,
