@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Aim, PickUp, Wander} from '../../wander'
 import {WandersService} from '../../wanders.service';
 
 @Component({

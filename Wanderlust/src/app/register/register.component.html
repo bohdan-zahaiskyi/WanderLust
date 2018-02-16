@@ -1,10 +1,29 @@
 <div class="bgimg-1 w3-display-container paralax">
   <div class="reg_form">
-    <div class="reg_header">
+    <div class="reg_header w3-center">
+      <div class="liner"></div>
       <ul>
-        <li><a [routerLink]="['system']">System</a></li>
-        <li><a [routerLink]="['personal']">Personal</a></li>
-        <li><a [routerLink]="['location']">Location</a></li>
+        <li class="nav-tab">
+          <a [routerLink]="['system']" title="system">
+            <span class="round-tabs one">
+              <i class="fa fa-lock"></i>
+            </span>
+          </a>
+        </li>
+        <li class="nav-tab">
+          <a [routerLink]="['personal']" title="personal">
+            <span class="round-tabs two">
+              <i class="fa fa-user"></i>
+            </span>
+          </a>
+        </li>
+        <li class="nav-tab">
+          <a [routerLink]="['location']" title="location">
+            <span class="round-tabs three">
+              <i class="fa fa-home"></i>
+            </span>
+          </a>
+        </li>
       </ul>
     </div>
     <router-outlet></router-outlet>
