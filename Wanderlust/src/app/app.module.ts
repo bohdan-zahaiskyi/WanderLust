@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule} from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+/*===================== SERVICES =====================*/
 import { WandersService } from './wanders.service';
+import { RegisterService} from './register.service';
+
 import { AppComponent } from './app';
 import { WanderSearchComponent } from './main-page/wander-search/wander-search';
 import { WanderResultsComponent } from './main-page/wander-results/wander-results';
@@ -15,6 +19,7 @@ import { RegisterSystemComponent } from './register/register-system/register-sys
 import { RegisterPersonalComponent } from './register/register-personal/register-personal';
 import { RegisterLocationComponent } from './register/register-location/register-location';
 
+import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 
 @NgModule({
   declarations: [
@@ -30,11 +35,15 @@ import { RegisterLocationComponent } from './register/register-location/register
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PasswordStrengthBarModule
   ],
   providers: [
-    WandersService
+    WandersService,
+    RegisterService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,22 +1,33 @@
 <h4 class="w3-center">System authentication</h4>
 <div>
-  <form>
-    <div class="form-group">
-      <label for="name">Email</label>
-      <input type="email" class="form-control" id="name" required>
+  <form [formGroup]="form">
+    <div id="email"  class="form-gr">
+      <label for="email">Email</label>
+      <input name="email" type="email" class="form-control" [(ngModel)]='user.email' [formGroup]="form" formControlName="email">
+      <div class="alert alert-danger" *ngIf="form.controls.email.errors?.Invalid">Invalid e-mail</div>
     </div>
+    <div class="form-block">
+      <div class="form-gr">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" id="password" formControlName="password" [formGroup]="form" [(ngModel)]="user.password">
+        <div class="alert alert-danger" *ngIf="form.controls.password.errors?.Length">Length should be at least 7 characters</div>
+        <div class="alert alert-danger" *ngIf="form.controls.password.errors?.Symbols">Password is too weak. Try to use numbers or special symbols</div>
+      </div>
 
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" id="pass">
+      <div class="form-gr">
+        <label>Confirm Password</label>
+        <input name="conf_pass" type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" [formGroup]="form" [(ngModel)]="confpass">
+        <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.MatchPassword">Password doesn't match</div>
+      </div>
     </div>
+    <ng2-password-strength-bar
+      [passwordToCheck]="user.password"
+      [barLabel]="barLabel"
+      [barColors]="myColors">
+    </ng2-password-strength-bar>
 
-    <div class="form-group">
-      <label>Confirm Password</label>
-      <input type="password" class="form-control" id="conf_pass">
+    <div class="facebookLogin">
+      <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
     </div>
-
-    <button type="submit" class="btn btn-success">Next</button>
-
   </form>
 </div>

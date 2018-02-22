@@ -1,0 +1,40 @@
+.form-block{
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0  ;
+}
+.form-gr{
+  display: flex;
+  flex-direction: column;
+}
+.form-gr label {
+  font-size: 14px;
+}
+input{
+  border-radius: 3px;
+  border: 1px solid #aaa;
+}
+.form-gr input[type="text"]{
+  margin-right: 25px;
+}
+.btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.btns button{
+  width: 25%;
+  height: 33px;
+  margin: 20px 5px 0;
+  border-radius: 25px;
+  border: 2px solid lightgrey;
+}
+.code{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.code select{
+  width: 45%;
+  margin-right: 5px;
+}

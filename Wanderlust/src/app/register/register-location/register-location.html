@@ -1,3 +1,21 @@
-<p>
-  register-location works!
-</p>
+<h4 class="w3-center">Your loacation data</h4>
+<form>
+  <div class="form-group">
+    <label>Country</label>
+    <select class="form-control" name="country" [(ngModel)]="user.country">
+      <option value="Ukraine">Ukraine</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>State</label>
+    <select class="form-control" name="state" [(ngModel)]="user.state">
+      <option value="Lviv">Lviv</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>City/Town</label>
+    <select class="form-control" name="city" [(ngModel)]="user.city">
+      <option value="Lviv">Lviv</option>
+    </select>
+  </div>
+</form>

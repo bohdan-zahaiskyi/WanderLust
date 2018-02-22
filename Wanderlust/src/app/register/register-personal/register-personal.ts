@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import {User} from "../../user";
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register-personal',
@@ -7,12 +8,20 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./register-personal.css']
 })
 export class RegisterPersonalComponent implements OnInit {
-  currentvalue;
-  constructor(private route: ActivatedRoute) { }
+  @Input() user: User;
+  form: FormGroup;
+
+  constructor(formBuilder: FormBuilder) {
+    this.form = formBuilder.group(
+      {
+        personCompany: [''],
+        firstName: [''],
+        lastName: [''],
+        phoneCode: [''],
+        phoneNum: ['']
+      });
+  }
 
   ngOnInit() {
-    this.route.params.subscribe((values: {id: number}) => {
-      this.currentvalue = values.id;
-    })
   }
 }

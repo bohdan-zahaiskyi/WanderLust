@@ -4,21 +4,21 @@
       <div class="liner"></div>
       <ul>
         <li class="nav-tab">
-          <a [routerLink]="['system']" title="system">
+          <a (click)="setStep(0)" title="system">
             <span class="round-tabs one">
               <i class="fa fa-lock"></i>
             </span>
           </a>
         </li>
         <li class="nav-tab">
-          <a [routerLink]="['personal']" title="personal">
+          <a (click)="setStep(1)" title="personal">
             <span class="round-tabs two">
               <i class="fa fa-user"></i>
             </span>
           </a>
         </li>
         <li class="nav-tab">
-          <a [routerLink]="['location']" title="location">
+          <a (click)="setStep(2)" title="location">
             <span class="round-tabs three">
               <i class="fa fa-home"></i>
             </span>
@@ -26,6 +26,14 @@
         </li>
       </ul>
     </div>
-    <router-outlet></router-outlet>
+
+    <app-register-system *ngIf="currentRoute == 0" [user]="user" [confpass]="conf_pass"></app-register-system>
+    <app-register-personal *ngIf="currentRoute == 1" [user]="user"></app-register-personal>
+    <app-register-location *ngIf="currentRoute == 2" [user]="user"></app-register-location>
+    <div class="btns">
+      <button *ngIf="currentRoute != 0" (click)="prevStep()">Previous</button>
+      <button *ngIf="currentRoute != 2" (click)="nextStep()">Next &#8674;</button>
+      <button *ngIf="currentRoute == 2" id="confim_btn" (click)="confirmRegistration()">Confirm</button>
+    </div>
   </div>
 </div>

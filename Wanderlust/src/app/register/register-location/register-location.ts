@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {User} from "../../user";
 
 @Component({
   selector: 'app-register-location',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-location.css']
 })
 export class RegisterLocationComponent implements OnInit {
-
-  constructor() { }
+  @Input() user: User;
+  constructor() {}
 
   ngOnInit() {
   }

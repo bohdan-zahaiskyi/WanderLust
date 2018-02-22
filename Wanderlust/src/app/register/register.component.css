@@ -13,9 +13,10 @@
 }
 .reg_form{
   background-color: white;
-  padding: 20px;
-  width: 45%;
-  max-width: 640px;
+  padding: 30px;
+  width: 30%;
+  max-width: 480px;
+  border-radius: 15px;
 }
 .reg_header{
   position: relative;
@@ -97,3 +98,20 @@ li.active span.round-tabs.one{
 li:focus{
   background-color: black;
 }
+.btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.btns button{
+  width: 25%;
+  height: 33px;
+  border-radius: 25px;
+  border: 2px solid lightgrey;
+}
+#confim_btn{
+  background-color: #4CAF50;
+  border: 2px solid #3e8241;
+  color: white;
+}
+
