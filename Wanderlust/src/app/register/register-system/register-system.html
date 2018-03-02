@@ -10,8 +10,8 @@
       <div class="form-gr">
         <label>Password</label>
         <input type="password" class="form-control" name="password" id="password" formControlName="password" [formGroup]="form" [(ngModel)]="user.password">
-        <div class="alert alert-danger" *ngIf="form.controls.password.errors?.Length">Length should be at least 7 characters</div>
-        <div class="alert alert-danger" *ngIf="form.controls.password.errors?.Symbols">Password is too weak. Try to use numbers or special symbols</div>
+        <!--div class="alert alert-danger" *ngIf="form.controls.password.errors?.Length">Length should be at least 7 characters</div-->
+        <div class="alert alert-danger" *ngIf="form.controls.password.errors?.Invalid">{{form.controls.password.errors?.Message}}</div>
       </div>
 
       <div class="form-gr">

@@ -1,7 +1,7 @@
-import {Component, OnInit, Input, OnDestroy} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User} from '../../user';
-import { PasswordValidation} from "./PasswordValidation";
+import { User } from '../../registration';
+import { SystemValidation } from '../RegistrationValidation';
 
 declare var window: any;
 declare var FB: any;
@@ -14,8 +14,9 @@ declare var FB: any;
 })
 export class RegisterSystemComponent implements OnInit, OnDestroy {
   @Input() user: User;
-  @Input() confpass: string;
+  @Output() onVoted = new EventEmitter<any>();
   facebookUser: any;
+  confpass: string;
   public barLabel = 'Password strength:';
   public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
   form: FormGroup;
@@ -28,10 +29,8 @@ export class RegisterSystemComponent implements OnInit, OnDestroy {
         email: ['', Validators.required]
       },
       {
-        validator: [PasswordValidation.MatchPassword, PasswordValidation.CheckPassword, PasswordValidation.checkEmail] // your validation method
+        validator: [SystemValidation.MatchPassword, SystemValidation.CheckPassword, SystemValidation.checkEmail]
       });
-
-    console.log(this.form);
 
     (function(d, s, id) {
       let js;
@@ -69,9 +68,14 @@ export class RegisterSystemComponent implements OnInit, OnDestroy {
     }
   }
   ngOnDestroy() {
-    if (this.confpass !== this.user.password) {
+    const errorReport = {
+      email: this.form.controls.email.errors,
+      password: this.form.controls.password.errors
+    };
+    this.onVoted.emit(errorReport);
+/*    if (this.user.confpass !== this.user.password) {
       alert("Password doesn't match!");
       return;
-    }
+    }*/
   }
 }

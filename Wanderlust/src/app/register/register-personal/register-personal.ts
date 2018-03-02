@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {User} from "../../user";
-import { FormGroup, FormBuilder } from '@angular/forms';
+import {User} from '../../registration';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register-personal',
@@ -14,14 +14,14 @@ export class RegisterPersonalComponent implements OnInit {
   constructor(formBuilder: FormBuilder) {
     this.form = formBuilder.group(
       {
-        personCompany: [''],
-        firstName: [''],
-        lastName: [''],
-        phoneCode: [''],
-        phoneNum: ['']
+        personCompany: ['', Validators.required],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        phoneCode: ['', Validators.required],
+        phoneNum: ['', Validators.required]
       });
+    console.log(this.form.controls.firstName.errors);
   }
-
   ngOnInit() {
   }
 }

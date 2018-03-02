@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../user';
+import {Registration} from '../registration';
 import {RegisterService} from '../register.service';
 import { Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
@@ -12,19 +12,20 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
   currentRoute = 0;
   dataSubscription: Subscription;
-  user = new User();
-  conf_pass = '';
+  registration = new Registration();
   service: RegisterService;
   router: Router;
+  errorReport = {};
 
   confirmRegistration(): void {
-    this.service.addUser(this.user).then(response => {
+    console.log(this.errorReport);
+    /*this.service.addUser(this.user).then(response => {
       if (response && response.success) {
         this.router.navigateByUrl('/home');
       }
     }).catch(error => {
       console.log(error);
-    });
+    });*/
   }
 
   nextStep(): void {
@@ -36,12 +37,14 @@ export class RegisterComponent implements OnInit {
   prevStep(): void {
     this.currentRoute--;
   }
-
+  onVoted(report: any) {
+    Object.assign(this.errorReport, report);
+  }
   constructor(registerService: RegisterService, _router: Router) {
     this.router = _router;
     this.service = registerService;
     this.dataSubscription = registerService.getData().subscribe(data => {
-      Object.assign(this.user, data);
+      Object.assign(this.registration.user, data);
     });
   }
   ngOnInit() {

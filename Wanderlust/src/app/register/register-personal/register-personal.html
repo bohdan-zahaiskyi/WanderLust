@@ -14,11 +14,13 @@
     <div class="form-block">
       <div class="form-gr">
         <label for="First">First name</label>
-        <input name="firstName" class="form-control" type="text" id="First" [(ngModel)]="user.firstName" [formGroup]="form" formControlName="firstName">
+        <input name="firstName" class="form-control" type="text" id="First" [(ngModel)]="user.firstName" [formGroup]="form" formControlName="firstName" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'>
+        <div class="alert" *ngIf="form.controls.firstName.errors?.required">This field is required</div>
       </div>
       <div class="form-gr">
         <label for="Last">Last name</label>
-        <input name="lastName" class="form-control" type="text" id="Last" [(ngModel)]="user.lastName" [formGroup]="form" formControlName="lastName">
+        <input name="lastName" class="form-control" type="text" id="Last" [(ngModel)]="user.lastName" [formGroup]="form" formControlName="lastName" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'>
+        <div class="alert" *ngIf="form.controls.lastName.errors?.required">This field is required</div>
       </div>
     </div>
 
@@ -243,7 +245,7 @@
           <option data-countryCode="ZM" value="260">Zambia (+260)</option>
           <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
         </select>
-        <input class="form-control" name='phone' type="tel" [(ngModel)]="user.phone[1]" [formGroup]="form" formControlName="phoneNum">
+        <input class="form-control" name='phone' type="tel" [(ngModel)]="user.phone[1]" [formGroup]="form" formControlName="phoneNum" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
     </div>
   </form>

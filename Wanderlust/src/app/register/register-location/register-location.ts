@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {User} from "../../user";
+import {User} from "../../registration";
 
 @Component({
   selector: 'app-register-location',
