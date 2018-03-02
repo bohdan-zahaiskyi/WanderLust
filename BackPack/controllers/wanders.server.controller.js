@@ -8,9 +8,9 @@ export const getWanders = () => {
     Wanders.find().then(wanders => {
       resolve({'success':true,'message':'Wanders fetched successfully', wanders});
     },
-    err=>{reject({'success':false,'message':'Some Error'})})
+    err => {reject({'success':false,'message':'Some Error'})})
   })
-}
+};
   /*Wanders.find().exec((err, wanders) => {
   if(err){
     return {'success':false,'message':'Some Error'};
@@ -26,7 +26,7 @@ export const addWander = (req,res) => {
     }
     return res.json({'success':true,'message':'Wander added successfully', wander});
   })
-}
+};
 export const updateWander = (req,res) => {
   Wanders.findOneAndUpdate({ _id:req.body.id }, req.body, { new:true }, (err,wander) => {
     if(err){
@@ -35,7 +35,7 @@ export const updateWander = (req,res) => {
     console.log(wander);
     return res.json({'success':true,'message':'Updated successfully',wander});
   })
-}
+};
 export const getWander = (req,res) => {
   Wanders.find({_id:req.params.id}).exec((err,wander) => {
     if(err){
@@ -48,7 +48,7 @@ export const getWander = (req,res) => {
         return res.json({'success':false,'message':'Wander with the given id not found'});
     }
   })
-}
+};
 export const deleteWander = (req,res) => {
   Wanders.findByIdAndRemove(req.params.id, (err,wander) => {
     if(err){
@@ -56,4 +56,4 @@ export const deleteWander = (req,res) => {
     }
     return res.json({'success':true,'message':'Wander deleted successfully'});
   })
-}
+};

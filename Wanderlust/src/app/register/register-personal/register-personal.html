@@ -25,7 +25,7 @@
     <div class="form-gr">
       <label for="phone">Phone number</label>
       <div class="code">
-        <select class="w3-select" name="countryCode" id="phone" [(ngModel)]="user.phone.code" [formGroup]="form" formControlName="phoneCode">
+        <select class="w3-select" name="countryCode" id="phone" [(ngModel)]="user.phone[0]" [formGroup]="form" formControlName="phoneCode">
           <option data-countryCode="GB" value="44" Selected>UK (+44)</option>
           <option data-countryCode="US" value="1">USA (+1)</option>
           <option data-countryCode="DZ" value="213">Algeria (+213)</option>
@@ -243,7 +243,7 @@
           <option data-countryCode="ZM" value="260">Zambia (+260)</option>
           <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
         </select>
-        <input class="form-control" name='phone' type="tel" [(ngModel)]="user.phone.number" [formGroup]="form" formControlName="phoneNum">
+        <input class="form-control" name='phone' type="tel" [(ngModel)]="user.phone[1]" [formGroup]="form" formControlName="phoneNum">
       </div>
     </div>
   </form>

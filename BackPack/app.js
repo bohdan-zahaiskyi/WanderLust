@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 import SourceMapSupport from 'source-map-support';
 // import routes
 import wandersRoutes from './routes/wander.server.route';
+import usersRoutes from './routes/user.route';
 // define our app using express
 const app = express();
 // express-busboy to parse multipart/form-data
@@ -17,7 +18,7 @@ app.use(function(req,res,next){
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
-})
+});
 // configure app
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -32,10 +33,12 @@ mongoose.connect('mongodb://localhost/Wanderlust');
 // add Source Map Support
 SourceMapSupport.install();
 
-app.use('/api', wandersRoutes);
+app.use('/wanders', wandersRoutes);
+app.use('/users', usersRoutes);
+
 app.get('/', (req,res) => {
   return res.end('Api working');
-})
+});
 // catch 404
 app.use((req, res, next) => {
   res.status(404).send('<h2 align=center>Page Not Found!</h2>');

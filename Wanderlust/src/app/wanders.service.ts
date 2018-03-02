@@ -7,20 +7,20 @@ import 'rxjs/add/operator/toPromise';
 export class WandersService {
   wanders: Wander[];
 
-  private apiUrl= "http://localhost:3000/api";
+  private apiUrl = 'http://localhost:3000/wanders';
   constructor(private http: Http) { }
   getWanders(): Promise<any> {
     return this.http.get(this.apiUrl).toPromise()
-      .then(data => 
-        {return this.handleData(data)})
+      .then(data => {
+        return this.handleData(data); })
       .catch(this.handleError);
   }
-  private handleData (res: any){
-    let body = res.json();
+  private handleData (res: any) {
+    const body = res.json();
     console.log(body);
     return body || {};
-  };
-  private handleError (error: any){
+  }
+  private handleError (error: any) {
     return Promise.reject(error.message || error);
   }
 }

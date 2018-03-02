@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../user';
 import {RegisterService} from '../register.service';
-import { Subscription} from "rxjs/Subscription";
+import { Subscription} from 'rxjs/Subscription';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,9 +14,17 @@ export class RegisterComponent implements OnInit {
   dataSubscription: Subscription;
   user = new User();
   conf_pass = '';
+  service: RegisterService;
+  router: Router;
 
   confirmRegistration(): void {
-    console.log(this.user);
+    this.service.addUser(this.user).then(response => {
+      if (response && response.success) {
+        this.router.navigateByUrl('/home');
+      }
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
   nextStep(): void {
@@ -28,8 +37,9 @@ export class RegisterComponent implements OnInit {
     this.currentRoute--;
   }
 
-  constructor(registerService: RegisterService) {
-
+  constructor(registerService: RegisterService, _router: Router) {
+    this.router = _router;
+    this.service = registerService;
     this.dataSubscription = registerService.getData().subscribe(data => {
       Object.assign(this.user, data);
     });

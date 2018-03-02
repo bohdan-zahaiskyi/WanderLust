@@ -10,7 +10,7 @@ router.get('/',(req,res)=>{
       },
       err=>{reject(err)})
       //res.send(wandersController.getWanders)
-})
+});
 /*router.post('/')
      .post(wandersController.
 )

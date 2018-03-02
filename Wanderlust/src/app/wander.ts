@@ -14,7 +14,7 @@ export enum Aim{
     Culture = "Culture"
 }
 
-export class Wander{
+export class Wander {
     id: number;
     destinations: string[];
     startDate: string;
