@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Registration} from '../registration';
+import {User} from '../user';
 import {RegisterService} from '../register.service';
 import { Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
@@ -12,20 +12,46 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
   currentRoute = 0;
   dataSubscription: Subscription;
-  registration = new Registration();
+  user = new User();
   service: RegisterService;
   router: Router;
-  errorReport = {};
+  errorReport = {
+    city: {required: true},
+    country: {required: true},
+    email: {required: true},
+    firstName: {required: true},
+    lastName: {required: true},
+    password: {required: true},
+    personCompany: {required: true},
+    phoneCode: {required: true},
+    phoneNum: {required: true},
+    state: {required: true}
+  };
+
+  checkFields() {
+    const keys = Object.keys(this.errorReport);
+    console.log(this.errorReport);
+    for (let i = 0; i < keys.length; i++) {
+      if (this.errorReport[keys[i]] != null) {
+        console.log('false');
+        break;
+        // return false;
+      }
+    }
+    return true;
+  }
 
   confirmRegistration(): void {
-    console.log(this.errorReport);
-    /*this.service.addUser(this.user).then(response => {
+    if (this.checkFields()) {
+      this.service.addUser(this.user).then(response => {
       if (response && response.success) {
         this.router.navigateByUrl('/home');
+        console.log('success');
       }
-    }).catch(error => {
-      console.log(error);
-    });*/
+      }).catch(error => {
+        console.log(error);
+      });
+    }
   }
 
   nextStep(): void {
@@ -37,14 +63,14 @@ export class RegisterComponent implements OnInit {
   prevStep(): void {
     this.currentRoute--;
   }
-  onVoted(report: any) {
+  errorReporter(report: any) {
     Object.assign(this.errorReport, report);
   }
   constructor(registerService: RegisterService, _router: Router) {
     this.router = _router;
     this.service = registerService;
     this.dataSubscription = registerService.getData().subscribe(data => {
-      Object.assign(this.registration.user, data);
+      Object.assign(this.user, data);
     });
   }
   ngOnInit() {

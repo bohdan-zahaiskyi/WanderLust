@@ -1,5 +1,6 @@
 // ./BackPack/routes/todo.server.route.js
 import express from 'express';
+
 //import controller file
 import * as userController from '../controllers/user.controller';
 // get an instance of express router
@@ -13,8 +14,12 @@ router.get('/',(req,res)=>{
     //res.send(wandersController.getWanders)
 });
 
-router.post('/insert', (req, res) => {
-    userController.addUser(req, res);
+router.put('/confirm', (req, res) => {
+    userController.confirmUser(req, res);
+});
+
+router.post('/verifyEmail', (req, res) =>{
+    userController.verifyEmail(req, res);
 });
 
 export default router;

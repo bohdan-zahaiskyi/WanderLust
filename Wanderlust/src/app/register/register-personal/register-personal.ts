@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {User} from '../../registration';
+import {Component, OnInit, Input, Output, OnDestroy, EventEmitter} from '@angular/core';
+import {User} from '../../user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,8 +7,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './register-personal.html',
   styleUrls: ['./register-personal.css']
 })
-export class RegisterPersonalComponent implements OnInit {
+export class RegisterPersonalComponent implements OnInit, OnDestroy {
   @Input() user: User;
+  @Output() errorReporter = new EventEmitter<any>();
   form: FormGroup;
 
   constructor(formBuilder: FormBuilder) {
@@ -20,8 +21,18 @@ export class RegisterPersonalComponent implements OnInit {
         phoneCode: ['', Validators.required],
         phoneNum: ['', Validators.required]
       });
-    console.log(this.form.controls.firstName.errors);
   }
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    const errorReport = {
+      personCompany: this.form.controls.personCompany.errors,
+      firstName: this.form.controls.firstName.errors,
+      lastName: this.form.controls.lastName.errors,
+      phoneCode: this.form.controls.phoneCode.errors,
+      phoneNum: this.form.controls.phoneNum.errors
+    };
+    this.errorReporter.emit(errorReport);
   }
 }

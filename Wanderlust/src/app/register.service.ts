@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './registration';
+import { User } from './user';
 import {Subject } from 'rxjs/Subject';
 import { Observable} from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -15,15 +15,17 @@ const httpOptions = {
 @Injectable()
 export class RegisterService {
   private apiUrl = 'http://localhost:3000/users';
-
+  private subject = new Subject<any>();
 
   addUser (user: User) {
-    return this.httpClient.post<any>(this.apiUrl + '/insert', user, httpOptions).toPromise();
+    return this.httpClient.post<any>(this.apiUrl + '/verifyEmail', user, httpOptions).toPromise();
+  }
+
+  confirmUser(id) {
+    return this.httpClient.put<any>(this.apiUrl + '/confirm', id, httpOptions).toPromise();
   }
 
   constructor(private httpClient: HttpClient) {}
-
-  private subject = new Subject<any>();
 
   getData(): Observable<any> {
     return this.subject.asObservable();

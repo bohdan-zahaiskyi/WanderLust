@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../../registration';
+import { User } from '../../user';
 import { SystemValidation } from '../RegistrationValidation';
 
 declare var window: any;
@@ -14,7 +14,7 @@ declare var FB: any;
 })
 export class RegisterSystemComponent implements OnInit, OnDestroy {
   @Input() user: User;
-  @Output() onVoted = new EventEmitter<any>();
+  @Output() errorReporter = new EventEmitter<any>();
   facebookUser: any;
   confpass: string;
   public barLabel = 'Password strength:';
@@ -72,7 +72,7 @@ export class RegisterSystemComponent implements OnInit, OnDestroy {
       email: this.form.controls.email.errors,
       password: this.form.controls.password.errors
     };
-    this.onVoted.emit(errorReport);
+    this.errorReporter.emit(errorReport);
 /*    if (this.user.confpass !== this.user.password) {
       alert("Password doesn't match!");
       return;

@@ -21,6 +21,7 @@ import { RegisterPersonalComponent } from './register/register-personal/register
 import { RegisterLocationComponent } from './register/register-location/register-location';
 
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
+import { VerificationComponent } from './register/verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
     RegisterComponent,
     RegisterSystemComponent,
     RegisterPersonalComponent,
-    RegisterLocationComponent
+    RegisterLocationComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

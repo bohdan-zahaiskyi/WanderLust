@@ -10,6 +10,7 @@ let UserSchema = new Schema({
     phone: Array,
     country: String,
     state: String,
-    city: String
+    city: String,
+    confirmed: Boolean
 });
 export default mongoose.model('Users', UserSchema);

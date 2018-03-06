@@ -27,9 +27,9 @@
       </ul>
     </div>
 
-    <app-register-system *ngIf="currentRoute == 0" [user]="registration.user" (onVoted)="onVoted($event)"></app-register-system>
-    <app-register-personal *ngIf="currentRoute == 1" [user]="registration.user"></app-register-personal>
-    <app-register-location *ngIf="currentRoute == 2" [user]="registration.user"></app-register-location>
+    <app-register-system *ngIf="currentRoute == 0" [user]="user" (errorReporter)="errorReporter($event)"></app-register-system>
+    <app-register-personal *ngIf="currentRoute == 1" [user]="user" (errorReporter)="errorReporter($event)"></app-register-personal>
+    <app-register-location *ngIf="currentRoute == 2" [user]="user" (errorReporter)="errorReporter($event)"></app-register-location>
     <div class="btns">
       <button *ngIf="currentRoute != 0" (click)="prevStep()">Previous</button>
       <button *ngIf="currentRoute != 2" (click)="nextStep()">Next &#8674;</button>
