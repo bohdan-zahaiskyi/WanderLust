@@ -21,5 +21,8 @@ router.put('/confirm', (req, res) => {
 router.post('/verifyEmail', (req, res) =>{
     userController.verifyEmail(req, res);
 });
+router.get('/emailExist/:email', (req, res) => {
+    userController.emailExist(req, res);
+});
 
 export default router;

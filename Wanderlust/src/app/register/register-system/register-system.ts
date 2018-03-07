@@ -2,6 +2,7 @@ import {Component, OnInit, Input, OnDestroy, Output, EventEmitter} from '@angula
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../user';
 import { SystemValidation } from '../RegistrationValidation';
+import {RegisterService} from '../../register.service';
 
 declare var window: any;
 declare var FB: any;
@@ -17,11 +18,27 @@ export class RegisterSystemComponent implements OnInit, OnDestroy {
   @Output() errorReporter = new EventEmitter<any>();
   facebookUser: any;
   confpass: string;
+  service: RegisterService;
   public barLabel = 'Password strength:';
   public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
   form: FormGroup;
 
-  constructor(formBuilder: FormBuilder) {
+  checkEmail() {
+    if (this.form.controls.email.errors == null) {
+      this.service.emailExist(this.user.email).then(exist => {
+        if (exist) {
+          this.form.controls.email.setErrors({
+            Invalid: true,
+            Message: 'This e-mail already registered'
+          });
+        }
+      }).catch(err => {
+        console.log('error: ', err);
+      });
+    }
+  }
+  constructor(formBuilder: FormBuilder, _service: RegisterService) {
+    this.service = _service;
     this.form = formBuilder.group(
       {
         password: ['', Validators.required],
@@ -70,7 +87,8 @@ export class RegisterSystemComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     const errorReport = {
       email: this.form.controls.email.errors,
-      password: this.form.controls.password.errors
+      password: this.form.controls.password.errors,
+      confpass: this.form.controls.confirmPassword.errors
     };
     this.errorReporter.emit(errorReport);
 /*    if (this.user.confpass !== this.user.password) {

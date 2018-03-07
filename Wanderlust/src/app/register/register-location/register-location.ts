@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   templateUrl: './register-location.html',
   styleUrls: ['./register-location.css']
 })
-export class RegisterLocationComponent implements OnInit, OnDestroy {
+export class RegisterLocationComponent implements OnInit {
   @Input() user: User;
   @Output() errorReporter = new EventEmitter<any>();
   form: FormGroup;
@@ -20,15 +20,14 @@ export class RegisterLocationComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
+  sendReport() {
     const errorReport = {
       country: this.form.controls.country.errors,
       state: this.form.controls.state.errors,
       city: this.form.controls.city.errors
     };
     this.errorReporter.emit(errorReport);
+  }
+  ngOnInit() {
   }
 }

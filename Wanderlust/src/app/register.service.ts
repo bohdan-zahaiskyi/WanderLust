@@ -3,8 +3,7 @@ import { User } from './user';
 import {Subject } from 'rxjs/Subject';
 import { Observable} from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
+import { Md5 } from 'ts-md5';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,6 +17,7 @@ export class RegisterService {
   private subject = new Subject<any>();
 
   addUser (user: User) {
+    user.password = Md5.hashStr(user.password) as string;
     return this.httpClient.post<any>(this.apiUrl + '/verifyEmail', user, httpOptions).toPromise();
   }
 
@@ -25,18 +25,12 @@ export class RegisterService {
     return this.httpClient.put<any>(this.apiUrl + '/confirm', id, httpOptions).toPromise();
   }
 
+  emailExist(email) {
+    return this.httpClient.get<any>(this.apiUrl + '/emailExist/' + email, httpOptions).toPromise();
+  }
   constructor(private httpClient: HttpClient) {}
 
   getData(): Observable<any> {
     return this.subject.asObservable();
-  }
-  private handleError(error: any) {
-    if (error.error instanceof ErrorEvent) {
-      console.error('');
-    } else {
-      console.error('');
-    }
-
-    return new ErrorObservable('');
   }
 }

@@ -2,19 +2,19 @@
 <form [formGroup]="form">
   <div class="form-group">
     <label>Country</label>
-    <select class="form-control" name="country" [(ngModel)]="user.country" [formGroup]="form" formControlName="country">
+    <select class="form-control" name="country" [(ngModel)]="user.country" [formGroup]="form" formControlName="country" (blur)="sendReport()">
       <option value="Ukraine">Ukraine</option>
     </select>
   </div>
   <div class="form-group">
     <label>State</label>
-    <select class="form-control" name="state" [(ngModel)]="user.state" [formGroup]="form" formControlName="state">
+    <select class="form-control" name="state" [(ngModel)]="user.state" [formGroup]="form" formControlName="state" (blur)="sendReport()">
       <option value="Lviv">Lviv</option>
     </select>
   </div>
   <div class="form-group">
     <label>City/Town</label>
-    <select class="form-control" name="city" [(ngModel)]="user.city" [formGroup]="form" formControlName="city">
+    <select class="form-control" name="city" [(ngModel)]="user.city" [formGroup]="form" formControlName="city" (blur)="sendReport()">
       <option value="Lviv">Lviv</option>
     </select>
   </div>

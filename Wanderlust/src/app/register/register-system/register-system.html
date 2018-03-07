@@ -3,8 +3,8 @@
   <form [formGroup]="form">
     <div id="email"  class="form-gr">
       <label for="email">Email</label>
-      <input name="email" type="email" class="form-control" [(ngModel)]='user.email' [formGroup]="form" formControlName="email">
-      <div class="alert alert-danger" *ngIf="form.controls.email.errors?.Invalid">Invalid e-mail</div>
+      <input name="email" type="email" class="form-control" [(ngModel)]='user.email' [formGroup]="form" formControlName="email" (blur)="checkEmail()">
+      <div class="alert alert-danger" *ngIf="form.controls.email.errors?.Invalid">{{form.controls.email.errors.Message}}</div>
     </div>
     <div class="form-block">
       <div class="form-gr">

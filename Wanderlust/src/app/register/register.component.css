@@ -114,4 +114,7 @@ li:focus{
   border: 2px solid #3e8241;
   color: white;
 }
-
+.confirm{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
