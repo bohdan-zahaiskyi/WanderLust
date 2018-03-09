@@ -11,12 +11,12 @@
     </div>
 
     <div class="right-bar">
-      <div class="bar-item"><div (click)="showLogin()"><i class="fa fa-user"></i> LOGIN/SIGIN</div></div>
+      <div class="bar-item"><div (click)="showLogin()"><i class="fa fa-user"></i> {{logged?'LOG OUT':'LOGIN/SIGN IN'}}</div></div>
       <div class="bar-item"><a><i class="fa fa-envelope"></i> FEEDBACK</a></div>
     </div>
   </div>
 </div>
 <div *ngIf="loginPressed" class="login_cont">
-  <app-login></app-login>
+  <app-login (loggedAction)="loginAction($event)"></app-login>
 </div>
 <router-outlet></router-outlet>

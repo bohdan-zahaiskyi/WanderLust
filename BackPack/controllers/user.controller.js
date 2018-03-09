@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import nodemailer from 'nodemailer'
 import Users from '../models/user.model';
+import jwt from 'jsonwebtoken';
 
 const smtpTransport = nodemailer.createTransport({
     service: "Gmail",
@@ -42,10 +43,15 @@ export const verifyEmail = (req, res) =>{
 };
 
 export const confirmUser = (req, res) => {
-    return Users.updateOne({_id: mongoose.Types.ObjectId(req.body.id)}, {confirmed: true}).then(user =>{
-        res.json({user: user, message: "confirmed successfully"});
+    return Users.updateOne({_id: mongoose.Types.ObjectId(req.body.id)}, {confirmed: true}).then(DBresponse =>{
+        if(DBresponse.n > 0){
+            res.json({success:true, message: "confirmed successfully"});
+        }else {
+            res.json({success:false, message: "error in confirmation"});
+        }
+
     }).catch(err => {
-        res.json({success:false, message: err});
+        res.json({success:false, message: "error in confirmation"});
     })
 };
 
@@ -63,6 +69,19 @@ export const emailExist = (req, res) => {
             }
         }
     });
+};
+
+export const authenticate = (req, res) => {
+    let params = req.body;
+    Users.findOne({email: params.email}).then(user =>{
+        console.log(params.email);
+        if(user && params.password === user.password){
+            let token = jwt.sign({email: user.email, id: user._id}, 'supersecret', {expiresIn: 43200});
+            res.json({success: true, message: 'logged in successfully', token: token, id: user._id});
+        }else {
+            res.json({success: false, message: 'email or password is incorrect'});
+        }
+    })
 };
 
 export const addUser = (req,res) => {

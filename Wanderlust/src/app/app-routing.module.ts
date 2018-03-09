@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page';
 import { RegisterComponent} from './register/register.component';
 import { VerificationComponent} from './register/verification/verification.component';
+import { UserPageComponent} from './user-page/user-page.component';
+import { AuthGuard} from './login/auth_guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: MainPageComponent },
   { path: 'register', component: RegisterComponent},
-  { path: 'verify/:id', component: VerificationComponent}
+  { path: 'verify/:id', component: VerificationComponent},
+  { path: 'user/:id', component: UserPageComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

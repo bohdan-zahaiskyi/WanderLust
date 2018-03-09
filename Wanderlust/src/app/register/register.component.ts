@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../user';
-import {RegisterService} from '../register.service';
+import {User} from '../_models/user';
+import {RegisterService} from '../_services/register.service';
 import { Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 

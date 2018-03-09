@@ -1,8 +1,8 @@
 import {Component, OnInit, Input, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../../user';
+import { User } from '../../_models/user';
 import { SystemValidation } from '../RegistrationValidation';
-import {RegisterService} from '../../register.service';
+import {RegisterService} from '../../_services/register.service';
 
 declare var window: any;
 declare var FB: any;

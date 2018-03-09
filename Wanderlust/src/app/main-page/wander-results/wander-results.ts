@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {WandersService} from '../../wanders.service';
+import {WandersService} from '../../_services/wanders.service';
 
 @Component({
   selector: 'app-wander-results',

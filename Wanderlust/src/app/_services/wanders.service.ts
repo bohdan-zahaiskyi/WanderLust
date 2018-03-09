@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Wander, PickUp, Aim} from './wander';
+import {Wander } from '../_models/wander';
 import {Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
