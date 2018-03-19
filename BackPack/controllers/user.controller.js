@@ -76,49 +76,16 @@ export const authenticate = (req, res) => {
     Users.findOne({email: params.email}).then(user =>{
         console.log(params.email);
         if(user && params.password === user.password){
-            let token = jwt.sign({email: user.email, id: user._id}, 'supersecret', {expiresIn: 43200});
-            res.json({success: true, message: 'logged in successfully', token: token, id: user._id});
+            let token = jwt.sign({id: user._id}, 'supersecret', {expiresIn: 43200});
+            console.log("before update: ", token);
+            Users.findOneAndUpdate( {email: params.email}, { token: token}, {new: true}).then(usr =>{
+                res.json({success: true, message: 'logged in successfully', token: usr.token, id: usr._id});
+            }).catch(error => {
+                console.log("error occured: ", error);
+                res.json({success: false, message: 'Server error'});
+            });
         }else {
             res.json({success: false, message: 'email or password is incorrect'});
         }
-    })
-};
-
-export const addUser = (req,res) => {
-    const newUser = new Users(req.body);
-    newUser.save((err, user) => {
-        if(err){
-            return res.json({'success':false,'message':'Some Error'});
-        }
-        return res.json({'success':true,'message':'User added successfully', user});
-    })
-};
-export const updateUser = (req,res) => {
-    Users.findOneAndUpdate({ _id:req.body.id }, req.body, { new:true }, (err,user) => {
-        if(err){
-            return res.json({'success':false,'message':'Some Error','error':err});
-        }
-        return res.json({'success':true,'message':'Updated successfully',user});
-    })
-};
-export const getUser = (req,res) => {
-    Users.find({_id:req.params.id}).exec((err,user) => {
-        if(err){
-            return res.json({'success':false,'message':'Some Error'});
-        }
-        if(user.length){
-            return res.json({'success':true,'message':'Wander fetched by id successfully',user});
-        }
-        else{
-            return res.json({'success':false,'message':'Wander with the given id not found'});
-        }
-    })
-};
-export const deleteUser = (req,res) => {
-    Users.findByIdAndRemove(req.params.id, (err,user) => {
-        if(err){
-            return res.json({'success':false,'message':'Some Error'});
-        }
-        return res.json({'success':true,'message':'Wander deleted successfully'});
     })
 };

@@ -11,6 +11,7 @@ let UserSchema = new Schema({
     country: String,
     state: String,
     city: String,
-    confirmed: Boolean
+    confirmed: Boolean,
+    token: String
 });
 export default mongoose.model('Users', UserSchema);

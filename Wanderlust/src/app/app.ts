@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from './_services/authentication.service';
 import {Router} from '@angular/router';
 
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
           // login successful
           this.loginPressed = false;
           this.logged = true;
-          this.router.navigate(['/user/' + result.id]);
+          this.router.navigate(['myprofile']);
         } else {
           // login failed
           alert('Username or password is incorrect');

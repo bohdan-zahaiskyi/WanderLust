@@ -24,7 +24,7 @@ import { RegisterSystemComponent } from './register/register-system/register-sys
 import { RegisterPersonalComponent } from './register/register-personal/register-personal';
 import { RegisterLocationComponent } from './register/register-location/register-location';
 import { VerificationComponent } from './register/verification/verification.component';
-import { UserPageComponent } from './user-page/user-page.component';
+import { UserPageComponent } from './user-page/user-page';
 
 // ================== OTHER CLASSES ===================
 import {AuthGuard} from './login/auth_guard';

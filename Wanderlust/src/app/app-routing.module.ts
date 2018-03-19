@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page';
 import { RegisterComponent} from './register/register.component';
 import { VerificationComponent} from './register/verification/verification.component';
-import { UserPageComponent} from './user-page/user-page.component';
+import { UserPageComponent} from './user-page/user-page';
 import { AuthGuard} from './login/auth_guard';
 
 const routes: Routes = [
@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'home', component: MainPageComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'verify/:id', component: VerificationComponent},
-  { path: 'user/:id', component: UserPageComponent, canActivate: [AuthGuard]}
+  { path: 'myprofile', component: UserPageComponent, canActivate: [AuthGuard]},
+  { path: 'user/:id', component: UserPageComponent}
 ];
 
 @NgModule({
