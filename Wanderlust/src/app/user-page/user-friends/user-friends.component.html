@@ -1,0 +1,20 @@
+<div class="header">
+</div>
+<div class="friends-container">
+
+  <div class="friend" *ngFor="let friend of friends">
+    <div class="friend-header">
+      <div class="avatar">
+        <img src="../../../assets/images/users/bzahay.png">
+      </div>
+      <h4 class="name">{{friend.firstName}} {{friend.lastName}}</h4>
+      <div class="actions">
+        <i class="fa fa-envelope"></i>
+        <i class="fa fa-share"></i>
+        <i class="delete">X</i>
+      </div>
+    </div>
+
+  </div>
+
+</div>

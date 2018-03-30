@@ -25,6 +25,12 @@ import { RegisterPersonalComponent } from './register/register-personal/register
 import { RegisterLocationComponent } from './register/register-location/register-location';
 import { VerificationComponent } from './register/verification/verification.component';
 import { UserPageComponent } from './user-page/user-page';
+import { UserProfileComponent } from './user-page/user-profile/user-profile.component';
+import { UserMessagesComponent } from './user-page/user-messages/user-messages.component';
+import { UserFriendsComponent } from './user-page/user-friends/user-friends.component';
+import { UserWandersComponent } from './user-page/user-wanders/user-wanders.component';
+import { UserPlacesComponent } from './user-page/user-places/user-places.component';
+import { UserSettingsComponent } from './user-page/user-settings/user-settings.component';
 
 // ================== OTHER CLASSES ===================
 import {AuthGuard} from './login/auth_guard';
@@ -41,7 +47,13 @@ import {AuthGuard} from './login/auth_guard';
     RegisterPersonalComponent,
     RegisterLocationComponent,
     VerificationComponent,
-    UserPageComponent
+    UserPageComponent,
+    UserProfileComponent,
+    UserMessagesComponent,
+    UserFriendsComponent,
+    UserWandersComponent,
+    UserPlacesComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,

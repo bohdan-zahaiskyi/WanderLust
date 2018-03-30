@@ -1,0 +1,37 @@
+.friend{
+  margin: 15px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 15px;
+  display: flex;
+}
+.friend-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+.avatar img{
+  max-height: 50px;
+  border-radius: 25px;
+}
+.name{
+  margin-left: 20px;
+}
+i{
+  margin-left: 20px;
+  font-size: 30px;
+}
+.actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  margin-right: 20px;
+}
+.delete{
+  font-style: normal;
+  font-weight: bold;
+  font-family: "Comic Sans MS";
+}

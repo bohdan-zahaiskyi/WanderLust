@@ -6,12 +6,26 @@
   max-width: 1200px;
 }
 .right-nav{
-  width: 25%;
+  width: 20%;
   max-width: 350px;
   color: white;
   background-color: rgb(34, 98, 100);
-  padding: 20px;
   border-radius: 5px;
+}
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 20px 0;
+}
+li{
+  padding: 10px 40px 10px;
+  cursor: pointer;
+}
+li:hover{
+  background-color: rgb(40, 122, 124);
+}
+i{
+  margin-right: 10px;
 }
 .main{
   margin-left: 10px;
@@ -19,90 +33,13 @@
   flex-direction: column;
   background-color: #e3e3e3;
   border-radius: 5px;
+  width: 60%;
 }
-.main-block{
-  margin: 15px;
+.reklamochka{
+  margin-left: 10px;
   border-radius: 5px;
-  background-color: white;
-  padding: 15px;
-}
-.main-header{
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-}
-.img-holder img{
-  max-height: 200px;
-  -webkit-border-radius: 200px;
-  -moz-border-radius: 200px;
-  border-radius: 200px;
-}
+  background-color: rgb(40, 122, 124);
+  width: 20%;
+  height: 300px;
 
-.galary{
-  margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-}
-.w3-button{
-  background-color: #f8a356;
-  color: white;
-}
-.galary-imgholder img{
-  margin: 10px;
-  max-height: 120px;
-}
-
-.statistic{
-  margin-top:10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.statistic-block{
-  width: 130px;
-  height: 130px;
-  margin: 5px;
-  text-align: center;
-  color: white;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.completed{
-  background-color: #2c5ca9;
-}
-.suggested{
-  background-color: #00b5c2;
-}
-.visited{
-  background-color: #00c292;
-}
-.mates{
-  background-color: #f8a356;
-}
-.num{
-  font-weight: 400;
-  font-size: 50px;
-  line-height: 1.2;
-}
-.desc{
-  font-size: 18px;
-  line-height: 1.5;
-}
-.news-block{
-  height: 75px;
-}
-.about{
-  position: relative;
-  background-color: #ffffcc;
-  height: 45px;
-  width: 80%;
-}
-.about div{
-  position: absolute;
-  transform: rotate(45deg) skew(20deg, 20deg);
-  background-color: black;
-  height: 15px;
-  width: 15px;
-  left: 10px;
-  top: 0px;
 }

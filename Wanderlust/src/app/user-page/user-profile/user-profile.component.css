@@ -1,0 +1,100 @@
+
+.main-block{
+  margin: 15px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 15px;
+}
+.main-header{
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+.img-holder img{
+  max-height: 200px;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+}
+
+.galary{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.w3-button{
+  background-color: #f8a356;
+  color: white;
+}
+.galary-imgholder img{
+  margin: 10px;
+  max-height: 120px;
+}
+.galary-add{
+  margin: 10px;
+  background-color: #e3e3e3;
+  max-height: 120px;
+  font-size: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.statistic{
+  margin-top:10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.statistic-block{
+  width: 130px;
+  height: 130px;
+  margin: 5px;
+  text-align: center;
+  color: white;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.completed{
+  background-color: #2c5ca9;
+}
+.suggested{
+  background-color: #00b5c2;
+}
+.visited{
+  background-color: #00c292;
+}
+.mates{
+  background-color: #f8a356;
+}
+.num{
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.2;
+}
+.desc{
+  font-size: 18px;
+  line-height: 1.5;
+}
+.news-block{
+  height: 75px;
+}
+.about{
+  position: relative;
+  background-color: #e3e3e3;
+  padding: 8px;
+  border-radius: 5px;
+}
+.about div{
+  position: absolute;
+  transform: rotate(45deg) skew(20deg, 20deg);
+  background-color: #e3e3e3;
+  height: 15px;
+  width: 15px;
+  left: 10px;
+  top: -7px;
+}
+i{
+  margin-left: 10px;
+}

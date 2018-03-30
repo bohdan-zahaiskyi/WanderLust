@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
           // login successful
           this.loginPressed = false;
           this.logged = true;
-          this.router.navigate(['myprofile']);
+          this.router.navigate(['user/' + result.id + '/profile']);
         } else {
           // login failed
           alert('Username or password is incorrect');

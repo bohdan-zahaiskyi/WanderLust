@@ -4,6 +4,7 @@ export class User {
     this.phone.push('');
     this.phone.push('');
     this.confirmed = false;
+    this.email = '';
   }
 
   email: string;
@@ -16,4 +17,5 @@ export class User {
   state: string;
   city: string;
   confirmed: boolean;
+  friends: any[];
 }

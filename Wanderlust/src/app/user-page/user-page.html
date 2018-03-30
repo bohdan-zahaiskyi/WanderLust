@@ -1,61 +1,36 @@
 <div class="container">
   <div class="right-nav">
     <ul>
-      <li>My Profile</li>
-      <li>My Friends</li>
-      <li>Messages</li>
-      <li>My wanders</li>
-      <li>My Places</li>
+      <li routerLink="profile">
+        <i class="fa fa-user"></i>
+        <span>My Profile</span>
+      </li>
+      <li routerLink="friends">
+        <i class="fa fa-address-book"></i>
+        <span>My Friends</span>
+      </li>
+      <li routerLink="messages">
+        <i class="fa fa-envelope"></i>
+        <span>Messages</span>
+      </li>
+      <li routerLink="wanders">
+        <i class="fa fa-plane"></i>
+        <span>My wanders</span>
+      </li>
+      <li routerLink="places">
+        <i class="fa fa-map-marker"></i>
+        <span>My Places</span>
+      </li>
+      <li routerLink="settings">
+        <i class="fa fa-cog"></i>
+        <span>Settings</span>
+      </li>
     </ul>
   </div>
   <div class="main">
-    <div class="main-header main-block">
-      <div class="img-holder">
-        <img src="../../assets/images/users/bzahay.png">
-      </div>
-      <div class="user-names">
-        <h3>Bohdan Zahaiskyi</h3>
-        <p>@bzahay</p>
-        <div class="about">
-          <div></div>
-          <span>Some text about me</span>
-        </div>
-      </div>
-    </div>
-    <div class="galary main-block">
-      <div class="galary-imgholder">
-        <img src="../../assets/images/users/galary/DSC_0582.JPG">
-      </div>
-      <div class="galary-imgholder">
-        <img src="../../assets/images/users/galary/DSC_0621.JPG">
-      </div>
-      <div class="galary-imgholder">
-        <img src="../../assets/images/users/galary/DSC_0808.JPG">
-      </div>
-    </div>
-    <div class="statistic">
-      <div class="completed statistic-block">
-        <div class="num">12</div>
-        <div class="desc">Completed wanders</div>
-      </div>
-      <div class="suggested statistic-block">
-        <div class="num">5</div>
-        <div class="desc">Suggested wanders</div>
-      </div>
-      <div class="visited statistic-block">
-        <div class="num">20</div>
-        <div class="desc">Visited places</div>
-      </div>
-      <div class="mates statistic-block">
-        <div class="num">11</div>
-        <div class="desc">Wander mates</div>
-      </div>
-    </div>
-    <div class="news">
-      <div class="news-block main-block">
-
-      </div>
-      <div class="news-block main-block"></div>
-    </div>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="reklamochka">
+    <a>ksdhlkjhajlkhgfjgajhlgjh</a>
   </div>
 </div>
