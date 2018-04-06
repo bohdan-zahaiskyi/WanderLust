@@ -1,20 +1,27 @@
-<div class="header">
-</div>
 <div class="friends-container">
+  <div class="header">
+    <div class="box">
+      <div class="container-1">
+        <span class="icon"><i class="fa fa-search"></i></span>
+        <input type="search" id="search" placeholder="Search..." />
+      </div>
+    </div>
+  </div>
+  <div class="friends-container">
+    <div class="friend" *ngFor="let friend of friends">
+      <div class="friend-header">
+        <div class="avatar">
+          <img src="../../../assets/images/users/bzahay.png">
+        </div>
+        <h4 class="name">{{friend.firstName}} {{friend.lastName}}</h4>
+        <div class="actions">
+          <i class="fa fa-envelope"></i>
+          <i class="fa fa-share"></i>
+          <i class="delete">X</i>
+        </div>
+      </div>
 
-  <div class="friend" *ngFor="let friend of friends">
-    <div class="friend-header">
-      <div class="avatar">
-        <img src="../../../assets/images/users/bzahay.png">
-      </div>
-      <h4 class="name">{{friend.firstName}} {{friend.lastName}}</h4>
-      <div class="actions">
-        <i class="fa fa-envelope"></i>
-        <i class="fa fa-share"></i>
-        <i class="delete">X</i>
-      </div>
     </div>
 
   </div>
-
 </div>
