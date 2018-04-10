@@ -21,6 +21,7 @@
 .actions i{
   margin-left: 20px;
   font-size: 30px;
+  cursor: pointer;
 }
 .actions{
   display: flex;
@@ -70,4 +71,27 @@
   background: #FFBC73;
   color: #fff;
 }
-
+.popup{
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: fixed;
+  top:30%;
+  left: 40%;
+  height: 200px;
+  width: 400px;
+  z-index: 242;
+  background-color: white;
+  border: 1px solid #777;
+  border-radius: 5px;
+}
+.popup-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.popup-buttons input{
+  margin-left: 20px;
+  width: 80px;
+}

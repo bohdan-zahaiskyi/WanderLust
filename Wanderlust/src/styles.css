@@ -256,3 +256,24 @@ body{
 .form-control{
   width: auto;
 }
+.wl-btn{
+  background-color: #ed9100; /* Green */
+  border: none;
+  color: white;
+  padding: 4px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.wl-reset{
+  background-color: white;
+  color: #ed9100;
+  border: 1px solid #ed9100;
+}
+.wl-btn:hover{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}

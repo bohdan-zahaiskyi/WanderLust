@@ -15,13 +15,22 @@
         </div>
         <h4 class="name">{{friend.firstName}} {{friend.lastName}}</h4>
         <div class="actions">
-          <i class="fa fa-envelope"></i>
-          <i class="fa fa-share"></i>
-          <i class="delete">X</i>
+          <i class="fa fa-envelope"(click)="messageFriend()"></i>
+          <i class="fa fa-share" (click)="inviteFriend()"></i>
+          <i class="delete" (click)="deleteFriend()">X</i>
         </div>
       </div>
-
     </div>
-
   </div>
 </div>
+<div class="popup" *ngIf="ngPopup">
+  <div class="popup-text">
+    <span>Are your sure you want to delete Roman Vaylkovych from friends?</span>
+  </div>
+  <div class="popup-buttons">
+    <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
+    <input type="submit" value="Yes" class="wl-btn" (click)="btnCancel()">
+  </div>
+</div>
+
+
