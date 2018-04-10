@@ -8,20 +8,20 @@ import { UserService} from '../../_services/user.service';
 })
 export class UserFriendsComponent implements OnInit {
   friends: any[];
-  ngPopup = false;
+  ngPopup = '';
   constructor(private userService: UserService) { }
 
   deleteFriend(): void {
-    this.ngPopup = true;
+    this.ngPopup = 'delete';
   }
   inviteFriend(): void {
-    this.ngPopup = true;
+    this.ngPopup = 'invite';
   }
   messageFriend(): void {
-    this.ngPopup = true;
+    this.ngPopup = 'message';
   }
   btnCancel(): void {
-    this.ngPopup = false;
+    this.ngPopup = '';
   }
 
   ngOnInit() {

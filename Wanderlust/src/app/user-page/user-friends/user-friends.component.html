@@ -15,21 +15,45 @@
         </div>
         <h4 class="name">{{friend.firstName}} {{friend.lastName}}</h4>
         <div class="actions">
-          <i class="fa fa-envelope"(click)="messageFriend()"></i>
-          <i class="fa fa-share" (click)="inviteFriend()"></i>
-          <i class="delete" (click)="deleteFriend()">X</i>
+          <i class="fa fa-envelope"(click)="messageFriend(friend.email, friend.firstName, friend.lastName)"></i>
+          <i class="fa fa-share" (click)="inviteFriend(friend.email)"></i>
+          <i class="delete" (click)="deleteFriend(friend.email)">X</i>
         </div>
       </div>
     </div>
   </div>
 </div>
 <div class="popup" *ngIf="ngPopup">
-  <div class="popup-text">
-    <span>Are your sure you want to delete Roman Vaylkovych from friends?</span>
+  <div *ngIf="ngPopup == 'delete'">
+    <div class="popup-text">
+      <span>Are your sure you want to delete Roman Vaylkovych from friends?</span>
+    </div>
+    <div class="popup-buttons">
+      <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
+      <input type="submit" value="Yes" class="wl-btn" (click)="btnCancel()">
+    </div>
   </div>
-  <div class="popup-buttons">
-    <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
-    <input type="submit" value="Yes" class="wl-btn" (click)="btnCancel()">
+  <div *ngIf="ngPopup == 'message'">
+    <div class="popup-text">
+      <textarea></textarea>
+    </div>
+    <div class="popup-buttons">
+      <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
+      <input type="submit" value="Send" class="wl-btn" (click)="btnCancel()">
+    </div>
+  </div>
+  <div *ngIf="ngPopup == 'invite'">
+    <div class="popup-text">
+      <select>
+        <option>Trip 1</option>
+        <option>Trip 2</option>
+        <option>Trip 3</option>
+      </select>
+    </div>
+    <div class="popup-buttons">
+      <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
+      <input type="submit" value="Invite" class="wl-btn" (click)="btnCancel()">
+    </div>
   </div>
 </div>
 

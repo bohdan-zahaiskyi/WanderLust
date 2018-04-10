@@ -79,7 +79,7 @@
   position: fixed;
   top:30%;
   left: 40%;
-  height: 200px;
+  height: fit-content;
   width: 400px;
   z-index: 242;
   background-color: white;
@@ -94,4 +94,13 @@
 .popup-buttons input{
   margin-left: 20px;
   width: 80px;
+}
+.popup-text textarea{
+  line-height: 1.5;
+  resize: none;
+  width: 100%;
+}
+.popup-text select{
+  width: 100%;
+  margin-bottom: 20px;
 }
