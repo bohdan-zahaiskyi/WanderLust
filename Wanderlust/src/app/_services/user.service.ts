@@ -24,4 +24,12 @@ export class UserService {
   getCurrentUserFriends() {
     return this.http.get<any>(this.apiUrl + '/' + this.email + '/friends', httpOptions).toPromise();
   }
+  deleteFriend(friendEmail: string) {
+    const body = {
+      myEmail: this.email,
+      friendEmail: friendEmail
+    };
+    // return this.http.put<any>(this.apiUrl + '/' + this.email + '/deleteFriend', friendEmail, httpOptions).toPromise();
+    return this.http.put<any>(this.apiUrl + '/deleteFriend', body, httpOptions).toPromise();
+  }
 }

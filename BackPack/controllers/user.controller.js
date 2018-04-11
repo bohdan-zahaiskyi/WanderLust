@@ -148,3 +148,22 @@ export const authenticate = (req, res) => {
         }
     })
 };
+export const deleteFriend = (req, res) => {
+    console.log("I am here");
+    let params = req.body;
+    let newFriends = [];
+        Users.findOne({email: params.myEmail}).then(user =>{
+        newFriends = user.friends;
+        let index = newFriends.indexOf(params.friendEmail);
+        if(index > -1){
+            newFriends.splice(index, 1);
+        }
+        else {
+            res.json("WTF???");
+        }
+    }).then( () =>{
+        Users.findOneAndUpdate({email: params.myEmail}, { friends: newFriends}, {new: true}).then(user=>{
+            res.json(user.friends);
+        });
+    });
+};

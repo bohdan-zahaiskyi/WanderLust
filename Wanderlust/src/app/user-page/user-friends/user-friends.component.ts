@@ -8,19 +8,36 @@ import { UserService} from '../../_services/user.service';
 })
 export class UserFriendsComponent implements OnInit {
   friends: any[];
+  friendAction: any;
   ngPopup = '';
   constructor(private userService: UserService) { }
 
-  deleteFriend(): void {
+  deleteFriend(friend: any): void {
     this.ngPopup = 'delete';
+    this.friendAction = friend;
   }
-  inviteFriend(): void {
+  inviteFriend(friend: any): void {
     this.ngPopup = 'invite';
+    this.friendAction = friend;
   }
-  messageFriend(): void {
+  messageFriend(friend: any): void {
     this.ngPopup = 'message';
+    this.friendAction = friend;
   }
   btnCancel(): void {
+    this.ngPopup = '';
+    this.friendAction = null;
+  }
+  btnSend(): void {
+    this.ngPopup = '';
+  }
+  btnInvite(): void {
+    this.ngPopup = '';
+  }
+  btnDelete(): void {
+    this.userService.deleteFriend(this.friendAction.email).then(res=>{
+      console.log(res);
+    });
     this.ngPopup = '';
   }
 

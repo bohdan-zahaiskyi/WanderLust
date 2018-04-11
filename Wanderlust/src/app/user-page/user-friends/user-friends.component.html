@@ -15,9 +15,9 @@
         </div>
         <h4 class="name">{{friend.firstName}} {{friend.lastName}}</h4>
         <div class="actions">
-          <i class="fa fa-envelope"(click)="messageFriend(friend.email, friend.firstName, friend.lastName)"></i>
-          <i class="fa fa-share" (click)="inviteFriend(friend.email)"></i>
-          <i class="delete" (click)="deleteFriend(friend.email)">X</i>
+          <i class="fa fa-envelope"(click)="messageFriend(friend)"></i>
+          <i class="fa fa-share" (click)="inviteFriend(friend)"></i>
+          <i class="delete" (click)="deleteFriend(friend)">X</i>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
     </div>
     <div class="popup-buttons">
       <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
-      <input type="submit" value="Yes" class="wl-btn" (click)="btnCancel()">
+      <input type="submit" value="Yes" class="wl-btn" (click)="btnDelete()">
     </div>
   </div>
   <div *ngIf="ngPopup == 'message'">
@@ -39,7 +39,7 @@
     </div>
     <div class="popup-buttons">
       <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
-      <input type="submit" value="Send" class="wl-btn" (click)="btnCancel()">
+      <input type="submit" value="Send" class="wl-btn" (click)="btnSend()">
     </div>
   </div>
   <div *ngIf="ngPopup == 'invite'">
@@ -52,7 +52,7 @@
     </div>
     <div class="popup-buttons">
       <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
-      <input type="submit" value="Invite" class="wl-btn" (click)="btnCancel()">
+      <input type="submit" value="Invite" class="wl-btn" (click)="btnInvite()">
     </div>
   </div>
 </div>

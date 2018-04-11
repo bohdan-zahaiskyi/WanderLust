@@ -18,6 +18,11 @@ router.put('/confirm', (req, res) => {
     userController.confirmUser(req, res);
 });
 
+router.put('/deleteFriend', (req, res) => {
+    console.log("suka");
+    userController.deleteFriend(req, res);
+});
+
 router.post('/verifyEmail', (req, res) =>{
     userController.verifyEmail(req, res);
 });
