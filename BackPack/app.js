@@ -9,9 +9,10 @@ import SourceMapSupport from 'source-map-support';
 // import routes
 import wandersRoutes from './routes/wander.server.route';
 import usersRoutes from './routes/user.route';
+import chatsRoutes from './routes/chat.route';
 // define our app using express
 const app = express();
-// express-busboy to parse multipart/form-data
+// express-busboy to parse multipart/form-dat
 //bb.extend(app);
 // allow-cors
 app.use(function(req,res,next){
@@ -29,13 +30,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 const port = process.env.PORT || 3000;
 // connect to database
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Wanderlust');
+mongoose.connect('mongodb://localhost/wanderlust');
 
 // add Source Map Support
 SourceMapSupport.install();
 
 app.use('/wanders', wandersRoutes);
 app.use('/users', usersRoutes);
+app.use('/chats', chatsRoutes);
 
 app.get('/', (req,res) => {
   return res.end('Api working');

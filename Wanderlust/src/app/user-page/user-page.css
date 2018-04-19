@@ -21,8 +21,9 @@ li{
   padding: 10px 40px 10px;
   cursor: pointer;
 }
-li:hover{
+li:hover, li:active{
   background-color: rgb(40, 122, 124);
+  border: none;
 }
 i{
   margin-right: 10px;
