@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WandersService} from '../_services/wanders.service';
 
 @Component({
   selector: 'app-add-edit-wander',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEditWanderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _wanderService: WandersService) { }
+  wander: any;
 
-  ngOnInit() {
+  addDestination() {
+    this.wander.destinations.push('');
   }
-
+  removeDestination(destination) {
+    const index = this.wander.destinations.indexOf(destination);
+    this.wander.destinations.splice(index, 1);
+  }
+  saveWander() {
+    console.log(this.wander);
+    this._wanderService.saveWander(this.wander).then(response => {
+      console.log(response);
+    });
+  }
+  ngOnInit() {
+    this.wander = {
+      destinations: ['Vasa', ''],
+      startDate: '',
+      endDate: '',
+      budget: 0,
+      people: 0
+    };
+  }
 }

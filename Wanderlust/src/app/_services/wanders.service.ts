@@ -15,6 +15,14 @@ export class WandersService {
         return this.handleData(data); })
       .catch(this.handleError);
   }
+
+  saveWander(wander) {
+    return this.http.post(this.apiUrl + '/create', wander).toPromise()
+      .then(data => {
+        return data;
+      })
+      .catch(this.handleError);
+  }
   private handleData (res: any) {
     const body = res.json();
     console.log(body);

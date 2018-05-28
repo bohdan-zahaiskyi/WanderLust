@@ -1,18 +1,21 @@
-
 .search_creteria{
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   margin: 10px;
 }
 .joinwander_block{
   display: flex;
   flex-direction: row;
+  background-color: white;
+  margin: 0 10px;
+  border-radius: 5px;
+  padding: 10px;
 }
 .search_creteria input[type="text"],
 .search_creteria select{
   height: 33px;
+  width: 100%;
 }
 .joinwander_advanced{
   cursor: pointer;
@@ -31,13 +34,18 @@
 .quick_wanders select{
   width: 100%;
 }
+.dollar{
+  width: 50%;
+  justify-content: center;
+}
 .budget_range{
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: row;
-  margin: 10px;
-  margin-right: 0px;
-  margin-left: 0px;
+  margin: 10px 0;
+}
+.budget_range div{
+  width: 42%;
 }
 .slider.slider_height {
   -webkit-appearance: none;
@@ -94,4 +102,48 @@
   background-color: white;
   color: #ed9100;
   border: 1px solid #ed9100;
+}
+
+.images_container{
+  display: flex;
+  flex-direction: row;
+  background-color: #e3e3e3;
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px
+}
+.wander_image{
+  max-height: 180px;
+  margin: 0 5px;
+}
+.upload_btn{
+  width: 20%;
+  background-color: white;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+.radio_group{
+  display: flex;
+  flex-direction: row;
+}
+.radio_group div{
+  margin-right: 20px;
+}
+.destination{
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.discard{
+  background-color: #ff6468;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+.search_creteria span {
+  cursor: pointer;
 }

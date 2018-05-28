@@ -11,10 +11,11 @@ router.get('/',(req,res)=>{
       err=>{reject(err)})
       //res.send(wandersController.getWanders)
 });
-/*router.post('/')
-     .post(wandersController.
-)
-     .put(wandersController.updateWander);*/
+router.post('/create', (req, res) => {
+      wandersController.createWander(req, res)
+});
+
+/*.put(wandersController.updateWander);*/
 router.route('/:id')
       .get(wandersController.getWander)
       .delete(wandersController.deleteWander);

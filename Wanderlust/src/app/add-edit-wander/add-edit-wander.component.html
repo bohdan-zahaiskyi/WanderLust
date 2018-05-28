@@ -1,14 +1,37 @@
- <h3 class="w3-center">Create Wander</h3>
+<div>
+  <h3 class="w3-center">Create Wander</h3>
   <div class="joinwander_block">
     <div class="search_creteria">
       <label>From:</label>
-      <input type="text"/>
+      <input type="text" [(ngModel)]="wander.destinations[0]"/>
     </div>
     <div class="search_creteria">
       <label>Where:</label>
-      <input type="text"/>
+      <div class="destination" *ngFor="let destination of wander.destinations.slice(1, wander.destinations.length); let i = index">
+        <input [(ngModel)]="wander.destinations[i+1]" type="text"/>
+        <div
+          *ngIf="wander.destinations.length > 2"
+          class="discard"
+          (click)="removeDestination(destination)"
+        >
+          <i class="fa fa-minus"></i>
+        </div>
+      </div>
+      <span (click)="addDestination()"> + Add destination</span>
     </div>
   </div>
+
+  <div class="joinwander_block">
+    <div class="search_creteria">
+      <label>Start:</label>
+      <input [(ngModel)]="wander.startDate" type="date"/>
+    </div>
+    <div class="search_creteria">
+      <label>End:</label>
+      <input [(ngModel)]="wander.endDate" type="date"/>
+    </div>
+  </div>
+
   <div class="joinwander_block">
     <div class="search_creteria">
       <label>Picking up</label>
@@ -28,9 +51,9 @@
     </div>
   </div>
   <div class="joinwander_block">
-    <div class="search_creteria">
+    <div class="search_creteria dollar">
       <label>Approximate Budget</label>
-      <input type="range" class="slider slider_height" min="100" max="2000" value="500">
+      <input type="range" class="slider slider_height" min="100" max="2000" value="500" [(ngModel)]="wander.budget">
     </div>
     <div class="budget_range">
       <div class="search_creteria">
@@ -44,7 +67,38 @@
     </div>
   </div>
 
-  <div class="joinwander_btns">
-    <input type="submit" value="Search"/>
-    <input type="button" id="reset" value="Reset"/>
+  <div class="joinwander_block">
+    <div class="search_creteria">
+      <label>Wander fellow limit</label>
+      <input [(ngModel)]="wander.people" type="number">
+    </div>
+    <div class="search_creteria">
+      <label>This wander is:</label>
+      <div class="radio_group">
+        <div><input name="publicPrivate" type="radio" value="Public" checked="true"> Public</div>
+        <div><input name="publicPrivate" type="radio" value="Private"> Private</div>
+      </div>
+    </div>
   </div>
+
+  <div class="joinwander_block">
+    <div class="search_creteria">
+      <label>Description</label>
+      <textarea [(ngModel)]="wander.description" ></textarea>
+    </div>
+  </div>
+
+  <div class="joinwander_block">
+    <div class="search_creteria">
+      <label>Upload image</label>
+      <div class="images_container">
+        <img class="wander_image" src="../../assets/images/wanders/paris.jpeg">
+        <div class="upload_btn">+</div>
+      </div>
+    </div>
+  </div>
+  <div class="joinwander_btns">
+    <input (click)="saveWander()" type="submit" value="Save"/>
+    <input type="button" id="reset" value="Cancel"/>
+  </div>
+</div>

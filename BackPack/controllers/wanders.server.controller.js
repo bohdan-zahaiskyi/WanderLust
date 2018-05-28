@@ -18,8 +18,8 @@ export const getWanders = () => {
   return {'success':true,'message':'Wanders fetched successfully', wanders};
   });*/
 
-export const addWander = (req,res) => {
-  const newWander = new Wander(req.body);
+export const createWander = (req,res) => {
+  const newWander = new Wanders(req.body);
   newWander.save((err,wander) => {
     if(err){
         return res.json({'success':false,'message':'Some Error'});
