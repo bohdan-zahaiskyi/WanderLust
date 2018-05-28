@@ -66,11 +66,6 @@
   z-index: 1;
   color: #777;
 }
-.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
-  outline:none;
-  background: #FFBC73;
-  color: #fff;
-}
 .popup{
   padding: 15px;
   display: flex;

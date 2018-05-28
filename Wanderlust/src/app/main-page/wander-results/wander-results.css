@@ -6,13 +6,14 @@ h4{
 }
 .single_wander{
     margin: 10px;
-    border: 1px solid gray;
+    background-color: white;
     padding: 10px;
     display: flex;
     flex-direction: row;
+    border-radius: 5px;
 }
 .single_wander_info{
-    margin-left: 40px;   
+    margin-left: 40px;
 }
 .info-1{
     width: 70%;
@@ -21,7 +22,7 @@ h4{
     width: 30%;
 }
 .wl_block_row{
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;

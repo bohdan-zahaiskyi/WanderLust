@@ -14,5 +14,4 @@ export class WanderResultsComponent implements OnInit {
   ngOnInit() {
     this.wanderService.getWanders().then(data => this.wanders = data.wanders);
   }
-
 }

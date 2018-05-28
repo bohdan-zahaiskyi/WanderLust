@@ -1,3 +1,15 @@
-<p>
-  user-wanders works!
-</p>
+<h3 class="w3-center">My wanders</h3>
+<div class="wander_header">
+  <div class="header_btns" *ngIf="!createWanderPage">
+    <button class="btn btn-3 btn-3b icon-star-2"
+            (click)="createWander()">
+      <span>+</span> Create a wander</button>
+    <div class="container-1">
+      <span class="icon"><i class="fa fa-search"></i></span>
+      <input type="search" id="search" placeholder="Search..." />
+    </div>
+  </div>
+  <app-add-edit-wander *ngIf="createWanderPage"></app-add-edit-wander>
+</div>
+<app-wander-results></app-wander-results>
+

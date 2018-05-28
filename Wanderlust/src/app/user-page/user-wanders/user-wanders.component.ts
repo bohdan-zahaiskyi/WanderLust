@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-wanders',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserWandersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
+  createWander() {
+    this._router.navigateByUrl('user/:id/create-wander');
+  }
   ngOnInit() {
   }
 

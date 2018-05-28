@@ -11,6 +11,7 @@ import { UserFriendsComponent } from './user-page/user-friends/user-friends.comp
 import { UserWandersComponent } from './user-page/user-wanders/user-wanders.component';
 import { UserPlacesComponent } from './user-page/user-places/user-places.component';
 import { UserSettingsComponent } from './user-page/user-settings/user-settings.component';
+import {AddEditWanderComponent} from './add-edit-wander/add-edit-wander.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
       { path: 'friends', component: UserFriendsComponent},
       { path: 'wanders', component: UserWandersComponent},
       { path: 'places', component: UserPlacesComponent},
-      { path: 'settings', component: UserSettingsComponent}
+      { path: 'settings', component: UserSettingsComponent},
+      { path: 'create-wander', component: AddEditWanderComponent}
     ]}
 ];
 
