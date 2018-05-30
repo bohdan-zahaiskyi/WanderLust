@@ -19,7 +19,6 @@ router.put('/confirm', (req, res) => {
 });
 
 router.put('/deleteFriend', (req, res) => {
-    console.log("suka");
     userController.deleteFriend(req, res);
 });
 

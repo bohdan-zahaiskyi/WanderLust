@@ -9,6 +9,19 @@ export class WandersService {
 
   private apiUrl = 'http://localhost:3000/wanders';
   constructor(private http: Http) { }
+
+  _sanitizeDestination(wander) {
+    const sanitizedDestinations = [];
+    wander.destinations.forEach(d => sanitizedDestinations.push(d.dest));
+    return {...wander, destinations: sanitizedDestinations};
+  }
+
+  getWanderById(id) {
+    return this.http.get(this.apiUrl + '/' + id).toPromise()
+      .then(this.handleData)
+      .catch(this.handleError);
+  }
+
   getWanders(): Promise<any> {
     return this.http.get(this.apiUrl).toPromise()
       .then(data => {
@@ -16,8 +29,22 @@ export class WandersService {
       .catch(this.handleError);
   }
 
-  saveWander(wander) {
-    return this.http.post(this.apiUrl + '/create', wander).toPromise()
+  getMyWanders(email) {
+    return this.http.post(this.apiUrl + '/my', {email}).toPromise()
+      .then(data => this.handleData(data))
+      .catch(error => this.handleError(error));
+  }
+
+  searchWanders(params): Promise<any> {
+    return this.http.post(this.apiUrl + '/search', params).toPromise()
+      .then(data => this.handleData(data))
+      .catch(error => this.handleError(error));
+  }
+
+  saveWander(wanderObj) {
+    const wander = this._sanitizeDestination(wanderObj);
+    return this.http.post(this.apiUrl + '/create', wander)
+      .toPromise()
       .then(data => {
         return data;
       })

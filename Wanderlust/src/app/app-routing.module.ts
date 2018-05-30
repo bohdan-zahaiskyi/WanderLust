@@ -12,6 +12,7 @@ import { UserWandersComponent } from './user-page/user-wanders/user-wanders.comp
 import { UserPlacesComponent } from './user-page/user-places/user-places.component';
 import { UserSettingsComponent } from './user-page/user-settings/user-settings.component';
 import {AddEditWanderComponent} from './add-edit-wander/add-edit-wander.component';
+import {WanderPageComponent} from './wander-page/wander-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: 'wanders', component: UserWandersComponent},
       { path: 'places', component: UserPlacesComponent},
       { path: 'settings', component: UserSettingsComponent},
-      { path: 'create-wander', component: AddEditWanderComponent}
+      { path: 'createWander', component: AddEditWanderComponent},
+      { path: 'wander/:id', component: WanderPageComponent}
     ]}
 ];
 

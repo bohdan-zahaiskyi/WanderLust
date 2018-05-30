@@ -15,8 +15,16 @@ router.post('/create', (req, res) => {
       wandersController.createWander(req, res)
 });
 
+router.post('/search', (req, res) => {
+    wandersController.searchWanders(req, res)
+});
+
+router.post('/my', (req, res) => {
+    wandersController.myWanders(req, res)
+});
+
 /*.put(wandersController.updateWander);*/
-router.route('/:id')
-      .get(wandersController.getWander)
-      .delete(wandersController.deleteWander);
+router.get('/:id', (req, res) =>{
+    wandersController.getWander(req,res)
+});
 export default router;

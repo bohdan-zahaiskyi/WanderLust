@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {WandersService} from '../../_services/wanders.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-wander-results',
@@ -8,10 +9,18 @@ import {WandersService} from '../../_services/wanders.service';
 })
 export class WanderResultsComponent implements OnInit {
 
-  constructor(private wanderService: WandersService) { }
-  wanders: any[];
+  constructor(private _router: Router, private wanderService: WandersService) { }
+  @Input() result: any;
 
+  navigateToWander(id) {
+    let thisRoute = this._router.url;
+    const n = thisRoute.lastIndexOf('/');
+    thisRoute = thisRoute.substring(0, n !== -1 ? n : thisRoute.length);
+    this._router.navigateByUrl(thisRoute + '/wander/' + id);
+  }
   ngOnInit() {
-    this.wanderService.getWanders().then(data => this.wanders = data.wanders);
+    this.result = {
+      searchResult: {}
+    };
   }
 }

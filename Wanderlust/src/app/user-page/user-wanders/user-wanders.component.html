@@ -9,7 +9,6 @@
       <input type="search" id="search" placeholder="Search..." />
     </div>
   </div>
-  <app-add-edit-wander *ngIf="createWanderPage"></app-add-edit-wander>
 </div>
-<app-wander-results></app-wander-results>
+<app-wander-results [result]="myWanders"></app-wander-results>
 

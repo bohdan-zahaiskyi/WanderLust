@@ -1,19 +1,19 @@
 <!--==================== Wander search section =====================-->
     <div class="quick_wanders">
         <!--Wander 1-->
-        <div class="single_wander" *ngFor="let wander of wanders">
+        <div class="single_wander" *ngFor="let searchResult of result.searchResults">
             <div class="single_wander_avatar">
-                <img [src]="'../../../assets/' + wander.imgPath"/>
+                <img [src]="searchResult.wander.imgURL"/>
             </div>
             <div class="single_wander_info info-1" >
                 <div class="wl_block_row single_wander_title">
-                    <h4>
-                        <span *ngFor="let dest of wander.destinations; let i = index">
+                    <h4 (click)="navigateToWander(searchResult.wander._id)">
+                        <span *ngFor="let dest of searchResult.wander.destinations; let i = index">
                             <span>{{dest}}</span>
-                            <span *ngIf="i!= wander.destinations.length-1">&nbsp;-&nbsp;</span>
+                            <span *ngIf="i!= searchResult.wander.destinations.length-1">&nbsp;-&nbsp;</span>
                       </span>
                     </h4>
-                    <label>{{wander.startDate}} - {{wander.endDate}}</label>
+                    <label>{{searchResult.wander.startDate}} - {{searchResult.wander.endDate}}</label>
                 </div>
                 <div class="wl_block_row single_wander_initiator">
                     <label>@bzahay</label>
@@ -22,22 +22,22 @@
                 <div class="wl_block_row">
                     <div class="prop prop1">
                         <div class="wl_block_row">
-                            <img [src]="'../../../assets/' + wander.pickUp + '.png'">
-                            <label> {{wander.pickUp}}</label>
+                            <img [src]="'../../../assets/' + searchResult.wander.pickUp + '.png'">
+                            <label> {{searchResult.wander.pickUp}}</label>
                         </div>
                         <div class="wl_block_row">
                             <img src="../../../assets/aim.png">
-                            <label> {{wander.aim}}</label>
+                            <label> {{searchResult.wander.aim}}</label>
                         </div>
                     </div>
                     <div class="prop prop2">
                         <div class="wl_block_row">
                             <img src="../../../assets/money.png">
-                            <label> {{wander.budget}}</label>
+                            <label> {{searchResult.wander.budget}}</label>
                         </div>
                         <div class="wl_block_row">
                             <img src="../../../assets/group.png">
-                            <label> {{wander.people}}</label>
+                            <label> {{searchResult.wander.people}}</label>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <h4>Description:</h4>
                 <div class="desc_container">
                     <span>
-                        {{wander.description}}
+                        {{searchResult.wander.description}}
                     </span>
                 </div>
             </div>

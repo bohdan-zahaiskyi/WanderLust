@@ -35,6 +35,7 @@ import { UserSettingsComponent } from './user-page/user-settings/user-settings.c
 // ================== OTHER CLASSES ===================
 import {AuthGuard} from './login/auth_guard';
 import { AddEditWanderComponent } from './add-edit-wander/add-edit-wander.component';
+import { WanderPageComponent } from './wander-page/wander-page.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AddEditWanderComponent } from './add-edit-wander/add-edit-wander.compon
     UserWandersComponent,
     UserPlacesComponent,
     UserSettingsComponent,
-    AddEditWanderComponent
+    AddEditWanderComponent,
+    WanderPageComponent
   ],
   imports: [
     BrowserModule,

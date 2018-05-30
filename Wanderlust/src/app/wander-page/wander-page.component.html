@@ -1,0 +1,45 @@
+<div class="all_container">
+  <h2 class="w3-center">
+    <span *ngFor="let dest of wander.destinations; let i = index">
+      <span>{{dest}}</span>
+      <span *ngIf="i!= wander.destinations.length-1">&nbsp;-&nbsp;</span>
+    </span>
+  </h2>
+  <div class="wander_body">
+    <div class="with_image">
+      <div class="image_holder">
+        <img src={{wander.imgURL}}>
+      </div>
+      <div class="rest_info">
+        <div class="single_data">
+          <label>Date:</label>
+          <p>{{wander.startDate}} - {{wander.endDate}}</p>
+        </div>
+        <div class="single_data">
+          <label>Initiator:</label>
+          <p>{{wander.initiator}}</p>
+        </div>
+        <div class="single_data">
+          <label>Participants:</label>
+          <p>{{wander.participants[0]}}</p>
+        </div>
+        <div class="single_data">
+          <label>Transport:</label>
+          <p>{{wander.pickUp}}</p>
+        </div>
+        <div class="single_data">
+          <label>Main wander aim:</label>
+          <p>{{wander.aim}}</p>
+        </div>
+        <div class="single_data">
+          <label>Budget:</label>
+          <p>{{wander.budget}}$</p>
+        </div>
+        <div class="single_data">
+          <label>Description:</label>
+          <p>{{wander.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

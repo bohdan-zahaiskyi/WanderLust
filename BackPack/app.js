@@ -23,8 +23,9 @@ app.use(function(req,res,next){
 });
 // configure app
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended:true }));
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+//app.use(bodyParser.urlencoded({ extended:true }));
 app.use(express.static(path.join(__dirname, 'public')));
 // set the port
 const port = process.env.PORT || 3000;

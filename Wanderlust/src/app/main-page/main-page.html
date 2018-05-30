@@ -8,13 +8,13 @@
 <!-- Container (About Section) -->
 <div class="w3-content w3-container" id="about">
     <!--=================== Wander search section ======================-->
-    <app-wander-search></app-wander-search>
+    <app-wander-search (searchReporter)="wanderSearchReporter($event)"></app-wander-search>
     <h3 class="w3-center">WANDER SEARCH RESULTS</h3>
-    <app-wander-results></app-wander-results>
+    <app-wander-results [result]="wanderSearchResults"></app-wander-results>
 </div>
 
 <div class="w3-row w3-center w3-dark-grey w3-padding-16">
-  <div class="w3-quarter w3-section">
+  <div class="w3-quarter w3-section" (click)="show()">
     <span class="w3-xlarge">14+</span><br>
     Wanderers online
   </div>

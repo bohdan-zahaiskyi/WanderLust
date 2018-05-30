@@ -1,0 +1,21 @@
+.with_image{
+  display: flex;
+  flex-direction: row;
+}
+.single_data{
+  display: flex;
+  flex-direction: row;
+}
+.all_container{
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+.rest_info{
+  margin-left: 20px;
+}
+h2{
+  padding-bottom: 5px;
+  border-bottom: 1px solid #3a3a3a;
+}

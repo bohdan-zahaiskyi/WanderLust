@@ -13,9 +13,16 @@
   padding: 10px;
 }
 .search_creteria input[type="text"],
+.search_creteria input[type="date"],
+.search_creteria input[type="number"],
 .search_creteria select{
   height: 33px;
   width: 100%;
+  padding-left: 10px;
+}
+
+.search_creteria textarea{
+  padding: 10px;
 }
 .joinwander_advanced{
   cursor: pointer;
@@ -35,17 +42,16 @@
   width: 100%;
 }
 .dollar{
-  width: 50%;
+  width: 75%;
   justify-content: center;
 }
 .budget_range{
-  width: 50%;
   display: flex;
   flex-direction: row;
   margin: 10px 0;
 }
 .budget_range div{
-  width: 42%;
+  width: 100%;
 }
 .slider.slider_height {
   -webkit-appearance: none;
@@ -107,6 +113,8 @@
 .images_container{
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background-color: #e3e3e3;
   width: 100%;
   border-radius: 5px;
@@ -134,7 +142,7 @@
   display: flex;
   flex-direction: row;
 }
-.discard{
+.discard_dest{
   background-color: #ff6468;
   width: 32px;
   display: flex;
@@ -146,4 +154,39 @@
 }
 .search_creteria span {
   cursor: pointer;
+}
+
+input[type="file"]{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.img_uploader label{
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
+  color: #ed9100;
+}
+figure {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ed9100;
+  display: block;
+  padding: 20px;
+  margin: 0 auto 10px;
+}
+svg{
+  width: 100%;
+  height: 100%;
+  fill: #f1e5e6;
 }

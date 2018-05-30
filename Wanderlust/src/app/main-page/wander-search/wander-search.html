@@ -1,52 +1,54 @@
-    <div class="joinwander join_form"> 
+    <div class="joinwander join_form">
         <h3 class="w3-center">JOIN A WANDER</h3>
         <div class="joinwander_block">
             <div class="search_creteria">
-                <label>From:</label> 
-                <input type="text"/>
+                <label>From:</label>
+                <input type="text" [(ngModel)]="criteria.destinations[0]"/>
             </div>
             <div class="search_creteria">
-                <label>Where:</label> 
-                <input type="text"/>
+                <label>Where:</label>
+                <input type="text" [(ngModel)]="criteria.destinations[1]"/>
             </div>
         </div>
         <div class="joinwander_block">
             <div class="search_creteria">
-                <label>Picking up</label> 
-                <select>
-                    <option>Hitch hiking</option>
-                    <option>Plane</option>
-                    <option>Bus/Train/Car</option>
+                <label>Picking up</label>
+                <select [(ngModel)]="criteria.pickUp">
+                  <option value="Hitchhike">Hitch hike</option>
+                  <option value="Plane">Plane</option>
+                  <option value="Bus">Bus</option>
+                  <option value="Train">Train</option>
+                  <option value="car">Car</option>
                 </select>
             </div>
             <div class="search_creteria">
-                <label>Main wander Aim</label> 
-                <select>
-                    <option>Nature landscapes</option>
-                    <option>Cities</option>
-                    <option>Culture</option>
+                <label>Main wander Aim</label>
+                <select [(ngModel)]="criteria.aim">
+                  <option value="Nature landscapes">Nature landscapes</option>
+                  <option value="Cities">Cities</option>
+                  <option value="Culture">Culture</option>
                 </select>
             </div>
         </div>
-        <div class="joinwander_block">  
+        <div class="joinwander_block">
             <div class="search_creteria">
-                <label>Approximate Budget</label> 
-                <input type="range" class="slider slider_height" min="100" max="2000" value="500">
+                <label>Approximate Budget</label>
+                <input type="range" class="slider slider_height" min="100" max="2000" value="500" [(ngModel)]="budget">
             </div>
             <div class="budget_range">
                 <div class="search_creteria">
                     <label>From</label>
-                    <input type="number">
+                    <input type="number" [(ngModel)]="criteria.budget[0]">
                 </div>
                 <div class="search_creteria">
                     <label>To</label>
-                    <input type="number">
+                    <input type="number" [(ngModel)]="criteria.budget[1]">
                 </div>
-            </div>    
+            </div>
         </div>
 
         <div class="joinwander_btns">
-            <input type="submit" value="Search"/>
-            <input type="button" id="reset" value="Reset"/>  
-        </div> 
+            <input type="submit" (click)="search()" value="Search"/>
+            <input type="button" (click)="reset()" id="reset" value="Reset"/>
+        </div>
     </div>
