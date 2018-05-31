@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {WandersService} from '../_services/wanders.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-wander',
@@ -8,7 +9,7 @@ import {WandersService} from '../_services/wanders.service';
 })
 export class AddEditWanderComponent implements OnInit {
 
-  constructor(private _wanderService: WandersService) { }
+  constructor(private _router: Router, private _wanderService: WandersService) { }
   wander: any;
   imgPath: any;
   imageLoaded: boolean;
@@ -20,10 +21,11 @@ export class AddEditWanderComponent implements OnInit {
     const index = this.wander.destinations.indexOf(destination);
     this.wander.destinations.splice(index, 1);
   }
-  uploadWanderImg() {
+  uploadWanderImg(event) {
     this.imageLoaded = true;
+    console.log(event);
     const preview = document.querySelector('.wander_image');
-    const file = document.querySelector('input[type=file]').files[0];
+    const file = event.target.files[0];
     const reader = new FileReader();
 
     reader.onloadend = function () {
@@ -41,9 +43,14 @@ export class AddEditWanderComponent implements OnInit {
     this.wander.imgURL = this.getImageURL(img);
     this._wanderService.saveWander(this.wander).then(response => {
       console.log(response);
+      this.cancelSave();
     });
   }
   cancelSave() {
+    let thisRoute = this._router.url;
+    const n = thisRoute.lastIndexOf('/');
+    thisRoute = thisRoute.substring(0, n !== -1 ? n : thisRoute.length);
+    this._router.navigateByUrl(thisRoute + '/wanders');
   }
 
   getImageURL(img) {

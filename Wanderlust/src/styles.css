@@ -257,7 +257,7 @@ body{
   width: auto;
 }
 .wl-btn{
-  background-color: #ed9100; /* Green */
+  background-color: #ed9100;
   border: none;
   color: white;
   padding: 4px 16px;
@@ -273,7 +273,16 @@ body{
   background-color: white;
   color: #ed9100;
   border: 1px solid #ed9100;
+  padding: 4px 16px;
 }
+
+.wl-delete{
+  background-color: #ff6468;
+  color: white;
+  border: 1px solid #ff6468;
+  padding: 4px 16px;
+}
+
 .wl-btn:hover{
   box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }

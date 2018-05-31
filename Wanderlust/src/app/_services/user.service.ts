@@ -13,9 +13,10 @@ export class UserService {
   private apiUrl = 'http://localhost:3000/users';
   private email = '';
   constructor(_authentification: AuthenticationService, private http: HttpClient) {
-    const user = localStorage.getItem('currentUser');
-    const parsed = user.split('"');
-    this.email = parsed[3];
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (user) {
+      this.email = user.email;
+    }
   }
 
   getCurrentUser() {

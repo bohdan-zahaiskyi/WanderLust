@@ -13,6 +13,9 @@ export class UserWandersComponent implements OnInit {
   myEmail: string;
   myWanders: any;
 
+  show(){
+    console.log(this.myWanders);
+  }
   createWander() {
     let thisRoute = this._router.url;
     const n = thisRoute.lastIndexOf('/');

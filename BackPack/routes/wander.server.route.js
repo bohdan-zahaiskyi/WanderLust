@@ -23,8 +23,24 @@ router.post('/my', (req, res) => {
     wandersController.myWanders(req, res)
 });
 
-/*.put(wandersController.updateWander);*/
+router.post('/comment', (req, res) => {
+    wandersController.commentWander(req, res)
+});
+
+router.get('/comments/:id', (req, res) => {
+    wandersController.getWanderComments(req, res)
+});
+
+router.delete('/:id', (req, res)=>{
+    wandersController.deleteWander(req, res)
+});
+
 router.get('/:id', (req, res) =>{
     wandersController.getWander(req,res)
 });
+
+router.put('/update', (req, res) =>{
+    wandersController.updateWander(req,res)
+});
+
 export default router;

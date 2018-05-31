@@ -11,7 +11,8 @@ export class MainPageComponent implements OnInit {
     wanderSearchResults: any = {};
 
     wanderSearchReporter(report: any) {
-      Object.assign(this.wanderSearchResults, report);
+      this.wanderSearchResults = report;
+      // Object.assign(this.wanderSearchResults, report);
     }
     show() {
       console.log(this.wanderSearchResults);

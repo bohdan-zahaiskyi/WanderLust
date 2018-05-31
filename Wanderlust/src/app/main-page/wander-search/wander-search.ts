@@ -18,7 +18,6 @@ export class WanderSearchComponent implements OnInit {
     keys.forEach(key => {
       params.push({key, value: this.criteria[key]});
     });
-    console.log(params);
     this._wanderService.searchWanders(params).then(data => {
       const searchResults = data.filteredWanders || null;
       this.searchReporter.emit({searchResults});

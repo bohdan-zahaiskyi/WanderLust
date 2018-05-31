@@ -2,6 +2,7 @@
 import mongoose from 'mongoose';
 //import models
 import Wanders from '../models/wander.server.model';
+import Wandercomments from '../models/comment.model';
 
 export const getWanders = () => {
     return new Promise((resolve, reject) => {
@@ -115,7 +116,7 @@ export const createWander = (req,res) => {
   })
 };
 export const updateWander = (req,res) => {
-  Wanders.findOneAndUpdate({ _id:req.body.id }, req.body, { new:true }, (err,wander) => {
+  Wanders.findOneAndUpdate({ _id:req.body._id }, req.body, { new:true }, (err,wander) => {
     if(err){
         return res.json({'success':false,'message':'Some Error','error':err});
     }
@@ -123,6 +124,34 @@ export const updateWander = (req,res) => {
     return res.json({'success':true,'message':'Updated successfully',wander});
   })
 };
+
+export const commentWander = (req, res) => {
+    const newComment = new Wandercomments(req.body);
+    newComment.save((err, comment) => {
+        if(err){
+            return res.json({'success':false,'message':'Some Error'});
+        }
+        comment.save(error => {
+            if(error) {
+                return res.json({'success':false,'message':error});
+            }
+            return res.json({'success':true,comment});
+        })
+    })
+};
+
+export const getWanderComments = (req, res) => {
+    console.log(req.params.id);
+    Wandercomments.find({wander: req.params.id})
+        .then(result => {
+            console.log(result);
+            res.json({success: true, comments: result});
+        })
+        .catch(error => {
+            res.json({success: false, message: error});
+        })
+};
+
 export const getWander = (req,res) => {
   Wanders.find({_id:req.params.id}).exec((err,wander) => {
     if(err){
