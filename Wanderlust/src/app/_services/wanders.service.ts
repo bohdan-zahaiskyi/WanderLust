@@ -22,6 +22,12 @@ export class WandersService {
       .catch(this.handleError);
   }
 
+  getInvited(email) {
+    return this.http.get(this.apiUrl + '/invited/' + email).toPromise()
+      .then(this.handleData)
+      .catch(this.handleError);
+  }
+
   getWanders(): Promise<any> {
     return this.http.get(this.apiUrl).toPromise()
       .then(data => {

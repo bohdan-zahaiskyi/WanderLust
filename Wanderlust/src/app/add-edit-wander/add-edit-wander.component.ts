@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WandersService} from '../_services/wanders.service';
 import {Router} from '@angular/router';
+import {LocalService} from '../_services/local.service';
 
 @Component({
   selector: 'app-add-edit-wander',
@@ -9,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class AddEditWanderComponent implements OnInit {
 
-  constructor(private _router: Router, private _wanderService: WandersService) { }
+  constructor(private _localService: LocalService, private _router: Router, private _wanderService: WandersService) { }
   wander: any;
   imgPath: any;
   imageLoaded: boolean;
@@ -29,13 +30,13 @@ export class AddEditWanderComponent implements OnInit {
     const reader = new FileReader();
 
     reader.onloadend = function () {
-      preview.src = reader.result;
+      preview.setAttribute('src', reader.result);
     };
 
     if (file) {
       reader.readAsDataURL(file); // reads the data as a URL
     } else {
-      preview.src = '';
+      preview.setAttribute('src', '');
     }
   }
   saveWander() {
@@ -47,10 +48,7 @@ export class AddEditWanderComponent implements OnInit {
     });
   }
   cancelSave() {
-    let thisRoute = this._router.url;
-    const n = thisRoute.lastIndexOf('/');
-    thisRoute = thisRoute.substring(0, n !== -1 ? n : thisRoute.length);
-    this._router.navigateByUrl(thisRoute + '/wanders');
+    this._router.navigateByUrl(this._localService.getCurrentRoute(this._router.url) + '/wanders');
   }
 
   getImageURL(img) {
@@ -68,7 +66,7 @@ export class AddEditWanderComponent implements OnInit {
   ngOnInit() {
     this.wander = {
       destinations: [{dest: 'Vasa'}, {dest: ''}],
-      initiator: JSON.parse(localStorage.getItem('currentUser')).email,
+      initiator: this._localService.getLocalUser().email,
       startDate: '',
       endDate: '',
       budget: 0,

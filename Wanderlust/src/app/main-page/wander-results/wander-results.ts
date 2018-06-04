@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {WandersService} from '../../_services/wanders.service';
 import {Router} from '@angular/router';
 import {UserService} from '../../_services/user.service';
+import {LocalService} from '../../_services/local.service';
 
 @Component({
   selector: 'app-wander-results',
@@ -10,14 +11,12 @@ import {UserService} from '../../_services/user.service';
 })
 export class WanderResultsComponent implements OnInit {
 
-  constructor(private _router: Router, private _userService: UserService) { }
+  constructor(private _localService: LocalService, private _router: Router, private _userService: UserService) { }
   @Input() result: any;
 
   navigateToWander(id) {
-    let thisRoute = this._router.url;
-    const n = thisRoute.lastIndexOf('/');
-    const endRoute =  thisRoute.substring(n + 1, thisRoute.length);
-    thisRoute = thisRoute.substring(0, n !== -1 ? n : thisRoute.length);
+    const thisRoute = this._localService.getCurrentRoute(this._router.url);
+    const endRoute =  this._localService.getRouteEnding(this._router.url);
     console.log(endRoute);
     if (endRoute === 'home') {
       this._userService.getCurrentUser().then(user => {

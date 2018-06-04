@@ -14,8 +14,20 @@ router.get('/',(req,res)=>{
     //res.send(wandersController.getWanders)
 });
 
+router.get('/:id', (req, res) => {
+    userController.getUserById(req,res);
+});
+
 router.put('/confirm', (req, res) => {
     userController.confirmUser(req, res);
+});
+
+router.get('/search/:keyword', (req,res) => {
+    userController.searchUser(req,res)
+});
+
+router.put('/update', (req, res) => {
+    userController.updateUser(req, res);
 });
 
 router.put('/deleteFriend', (req, res) => {
@@ -28,7 +40,7 @@ router.post('/verifyEmail', (req, res) =>{
 router.get('/emailExist/:email', (req, res) => {
     userController.emailExist(req, res);
 });
-router.get('/:email', (req, res) =>{
+    router.get('/email/:email', (req, res) =>{
     userController.getUser(req, res);
 });
 router.get('/:email/friends', (req, res) =>{

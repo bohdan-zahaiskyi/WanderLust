@@ -10,11 +10,34 @@
   flex-direction: row;
   background-color: white;
 }
+
+.user-names{
+  margin-left: 20px;
+  width: 100%;
+}
+
+.img-holder{
+  display: flex;
+  flex-direction: column;
+}
+
 .img-holder img{
   max-height: 200px;
   -webkit-border-radius: 200px;
   -moz-border-radius: 200px;
   border-radius: 200px;
+}
+
+.upload{
+  cursor: pointer;
+}
+
+.hz{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .galary{
@@ -97,4 +120,13 @@
 }
 i{
   margin-left: 10px;
+}
+button{
+  width: 140px;
+}
+.upload{
+  background-color: #e3e3e3;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
 }

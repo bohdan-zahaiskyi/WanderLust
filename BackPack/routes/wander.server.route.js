@@ -43,4 +43,8 @@ router.put('/update', (req, res) =>{
     wandersController.updateWander(req,res)
 });
 
+router.get('/invited/:email', (req, res) => {
+    wandersController.getInvited(req, res);
+});
+
 export default router;

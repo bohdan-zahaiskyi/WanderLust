@@ -3,17 +3,32 @@
     <div class="box">
       <div class="container-1">
         <span class="icon"><i class="fa fa-search"></i></span>
-        <input type="search" id="search" placeholder="Search..." />
+        <input type="search" id="search" [(ngModel)]="searchKeyword" (blur)="performSearch()" placeholder="Search..." />
+      </div>
+      <div class="search_res">
+        <div class="friend" *ngFor="let result of searchResult">
+          <div class="friend-header">
+            <div class="avatar">
+              <img src="../../../assets/images/users/bzahay.png">
+            </div>
+            <h4 (click)="goToProfile(result._id)" class="name">{{result.firstName}} {{result.lastName}}</h4>
+            <div class="actions">
+              <i *ngIf="user.friends.indexOf(result.email) === -1" class="fa fa-plus"(click)="addResult(result)"></i>
+              <i class="fa fa-share" (click)="inviteFriend(result)"></i>
+              <i class="delete" (click)="hideResult(result)">X</i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="friends-container">
+  <div class="friends-container" (click)="hideResults()">
     <div class="friend" *ngFor="let friend of friends">
       <div class="friend-header">
         <div class="avatar">
           <img src="../../../assets/images/users/bzahay.png">
         </div>
-        <h4 class="name">{{friend.firstName}} {{friend.lastName}}</h4>
+        <h4 (click)="goToProfile(friend._id)" class="name">{{friend.firstName}} {{friend.lastName}}</h4>
         <div class="actions">
           <i class="fa fa-envelope"(click)="messageFriend(friend)"></i>
           <i class="fa fa-share" (click)="inviteFriend(friend)"></i>
@@ -26,7 +41,7 @@
 <div class="popup" *ngIf="ngPopup">
   <div *ngIf="ngPopup == 'delete'">
     <div class="popup-text">
-      <span>Are your sure you want to delete Roman Vaylkovych from friends?</span>
+      <span>Are your sure you want to delete {{friendAction.firstName + ' ' + friendAction.lastName}} from friends?</span>
     </div>
     <div class="popup-buttons">
       <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
@@ -44,10 +59,13 @@
   </div>
   <div *ngIf="ngPopup == 'invite'">
     <div class="popup-text">
-      <select>
-        <option>Trip 1</option>
-        <option>Trip 2</option>
-        <option>Trip 3</option>
+      <select [(ngModel)]="wanderToInvite">
+        <option *ngFor="let wander of myWanders" value="{{wander.wander._id}}">
+          <span *ngFor="let dest of wander.wander.destinations; let i = index">
+            <span>{{dest}}</span>
+            <span *ngIf="i!= wander.wander.destinations.length-1">&nbsp;-&nbsp;</span>
+          </span>
+        </option>
       </select>
     </div>
     <div class="popup-buttons">

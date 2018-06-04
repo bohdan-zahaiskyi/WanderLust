@@ -13,6 +13,7 @@ let UserSchema = new Schema({
     city: String,
     confirmed: Boolean,
     token: String,
-    friends: Array
+    friends: Array,
+    description: String
 });
 export default mongoose.model('Users', UserSchema);

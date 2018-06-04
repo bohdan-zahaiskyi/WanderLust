@@ -9,9 +9,10 @@ import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 
 // ===================== SERVICES =====================
 import { WandersService } from './_services/wanders.service';
-import { RegisterService} from './_services/register.service';
+import { RegisterService } from './_services/register.service';
 import { AuthenticationService } from './_services/authentication.service';
-import { UserService} from './_services/user.service';
+import { UserService } from './_services/user.service';
+import { LocalService } from './_services/local.service';
 
 // ==================== COMPONENTS ====================
 import { AppComponent } from './app';
@@ -36,6 +37,8 @@ import { UserSettingsComponent } from './user-page/user-settings/user-settings.c
 import {AuthGuard} from './login/auth_guard';
 import { AddEditWanderComponent } from './add-edit-wander/add-edit-wander.component';
 import { WanderPageComponent } from './wander-page/wander-page.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import {ChatService} from './_services/chat.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,8 @@ import { WanderPageComponent } from './wander-page/wander-page.component';
     UserPlacesComponent,
     UserSettingsComponent,
     AddEditWanderComponent,
-    WanderPageComponent
+    WanderPageComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,9 @@ import { WanderPageComponent } from './wander-page/wander-page.component';
     RegisterService,
     AuthenticationService,
     UserService,
-    AuthGuard
+    ChatService,
+    AuthGuard,
+    LocalService
   ],
   bootstrap: [AppComponent]
 })

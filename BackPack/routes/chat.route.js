@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/',(req,res)=>{
     chatController.sth(req, res);
 });
-router.get('/latest', (req, res) => {
+router.get('/:email', (req, res) => {
     chatController.latestChats(req, res);
     });
 

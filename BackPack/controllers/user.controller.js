@@ -39,6 +39,40 @@ export const getUser = (req, res) => {
     });
 };
 
+export const getUserById = (req, res) => {
+    Users.findOne({_id: mongoose.Types.ObjectId(req.params.id)}, (err, user) => {
+        if(err){
+            res.error(err);
+        }
+        else{
+            if(user) {
+                res.json(user);
+            }
+            else {
+                res.json({
+                    success: false,
+                    message: "user not found"
+                });
+            }
+        }
+    });
+};
+
+export const searchUser = (req,res) => {
+    const keyword = req.params.keyword;
+    console.log(keyword);
+    const result = [];
+    Users.find().then(users => {
+        users.forEach(user => {
+            let userName = user.firstName.toLowerCase() + ' ' + user.lastName.toLowerCase();
+            if(userName.indexOf(keyword.toLowerCase()) > -1 || user.email.split('@')[0].indexOf(keyword.toLowerCase()) > -1) {
+                result.push(user);
+            }
+        });
+        res.json({success: true, result})
+    })
+};
+
 export const getUserFriends = (req, res) => {
     let friendsNames = [];
     let friendsArray = null;
@@ -148,6 +182,17 @@ export const authenticate = (req, res) => {
         }
     })
 };
+
+export const updateUser = (req, res) => {
+    Users.findOneAndUpdate({_id:req.body._id }, req.body, { new:true }).then(user => {
+        console.log(user.friends);
+        res.json({success: true, user});
+    })
+        .catch(error => {
+            res.json({success: false, message: error});
+        })
+};
+
 export const deleteFriend = (req, res) => {
     console.log("I am here");
     let params = req.body;

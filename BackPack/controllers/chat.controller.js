@@ -1,12 +1,21 @@
 import mongoose from 'mongoose';
-import {Chats, Chatcatalog, Messages} from '../models/chat.model';
+import {Chatcatalog, Messages} from '../models/chat.model';
 
 export const sth = (req, res) => {
-    console.log(Chatcatalog, Chats, Messages);
+    console.log(Chatcatalog, Messages);
 };
 
 export const latestChats = (req, res) => {
-    //get last 20 chats sorted by last message timestamp
+    const result = [];
+    Chatcatalog.find().then(chats => {
+        console.log(chats);
+        chats.forEach(chat => {
+            if(chat.comunicators.indexOf(req.params.email) > -1){
+                result.push(chat)
+            }
+        });
+        res.json(result);
+    })
 };
 
 export const writeMessage = (req, res) => {

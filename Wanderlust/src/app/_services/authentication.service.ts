@@ -3,15 +3,16 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import {HttpClient} from '@angular/common/http';
 import { Md5} from 'ts-md5';
+import {LocalService} from './local.service';
 
 @Injectable()
 export class AuthenticationService {
   public token: string;
   private apiUrl = 'http://localhost:3000/users';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private _localService: LocalService) {
     // set token if saved in local storage
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = this._localService.getLocalUser();
     this.token = currentUser && currentUser.token;
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WandersService} from '../_services/wanders.service';
 import { Router} from '@angular/router';
+import {LocalService} from '../_services/local.service';
 
 @Component({
   selector: 'app-wander-page',
@@ -8,7 +9,7 @@ import { Router} from '@angular/router';
   styleUrls: ['./wander-page.component.css']
 })
 export class WanderPageComponent implements OnInit {
-  constructor(private _router: Router, private _wanderService: WandersService) { }
+  constructor(private _localService: LocalService, private _router: Router, private _wanderService: WandersService) { }
   wander: any;
   comments: any;
   commentActive: boolean;
@@ -16,6 +17,7 @@ export class WanderPageComponent implements OnInit {
   myEmail: any;
   isMyWander: boolean;
   isParticipant: boolean;
+  isMyInvited: boolean;
 
   leaveComment() {
     this.commentActive = true;
@@ -32,8 +34,13 @@ export class WanderPageComponent implements OnInit {
 
   joinWander() {
     this.wander.participants.push(this.myEmail);
+    const invitedIndex = this.wander.invited.indexOf(this.myEmail);
+    if ( invitedIndex > -1) {
+      this.wander.invited.splice(invitedIndex, 1);
+    }
     this._wanderService.updateWander(this.wander).then(() => {
       this.isParticipant = true;
+      this.isMyInvited = false;
     });
   }
   leaveWander() {
@@ -47,14 +54,21 @@ export class WanderPageComponent implements OnInit {
   }
   deleteWander() {
     this._wanderService.deleteWander(this.wander._id).then(() => {
-      let thisRoute = this._router.url;
-      let n = thisRoute.lastIndexOf('/');
-      thisRoute = thisRoute.substring(0, n !== -1 ? n : thisRoute.length);
-      n = thisRoute.lastIndexOf('/');
-      thisRoute = thisRoute.substring(0, n !== -1 ? n : thisRoute.length);
+      let thisRoute = this._localService.getCurrentRoute(this._router.url);
+      thisRoute = this._localService.getCurrentRoute(thisRoute);
       this._router.navigateByUrl(thisRoute + '/wanders');
     });
 
+  }
+
+  deleteInviteWander() {
+    const myIndex = this.wander.invited.indexOf(this.myEmail);
+    if (myIndex >= 0) {
+      this.wander.invited.splice(myIndex, 1);
+      this._wanderService.updateWander(this.wander).then(() => {
+        this.isMyInvited = false;
+      });
+    }
   }
 
   ngOnInit() {
@@ -63,7 +77,7 @@ export class WanderPageComponent implements OnInit {
       destinations: ['', ''],
       participants: ['']
     };
-    this.myEmail = JSON.parse(localStorage.getItem('currentUser')).email;
+    this.myEmail = this._localService.getLocalUser().email;
     this.comments = [];
     const thisRoute = this._router.url;
     const n = thisRoute.lastIndexOf('/');
@@ -77,6 +91,7 @@ export class WanderPageComponent implements OnInit {
       this.wander = data.wander[0];
       this.isMyWander = this.wander.initiator === this.myEmail;
       this.isParticipant = this.wander.participants.indexOf(this.myEmail) >= 0;
+      this.isMyInvited = this.wander.invited.indexOf(this.myEmail) >= 0;
         this._wanderService.getWanderComments(this.wander._id).then(comments => {
         this.comments = comments.comments || [];
       });

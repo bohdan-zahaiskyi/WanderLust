@@ -13,6 +13,7 @@ import { UserPlacesComponent } from './user-page/user-places/user-places.compone
 import { UserSettingsComponent } from './user-page/user-settings/user-settings.component';
 import {AddEditWanderComponent} from './add-edit-wander/add-edit-wander.component';
 import {WanderPageComponent} from './wander-page/wander-page.component';
+import {MyProfileComponent} from './my-profile/my-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'verify/:id', component: VerificationComponent},
   { path: 'user/:id', component: UserPageComponent, canActivate: [AuthGuard], children: [
-      { path: 'profile', component: UserProfileComponent},
+      { path: 'profile/:id', component: UserProfileComponent},
+      { path: 'myProfile', component: MyProfileComponent},
       { path: 'messages', component: UserMessagesComponent},
       { path: 'friends', component: UserFriendsComponent},
       { path: 'wanders', component: UserWandersComponent},

@@ -1,3 +1,15 @@
-<p>
-  user-messages works!
-</p>
+<div class="friends-container" (click)="hideResults()">
+  <div class="friend" *ngFor="let chat of chats">
+    <div class="friend-header">
+      <div class="avatar">
+        <img src="../../../assets/images/users/bzahay.png">
+      </div>
+      <h4 class="name">@{{chat.comunicators[1].split('@')[0]}}</h4>
+      <div class="actions">
+        <i class="fa fa-envelope"(click)="messageFriend(friend)"></i>
+        <i class="fa fa-share" (click)="inviteFriend(friend)"></i>
+        <i class="delete" (click)="deleteFriend(friend)">X</i>
+      </div>
+    </div>
+  </div>
+</div>

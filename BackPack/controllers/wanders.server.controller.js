@@ -173,3 +173,17 @@ export const deleteWander = (req,res) => {
     return res.json({'success':true,'message':'Wander deleted successfully'});
   })
 };
+
+export const getInvited = (req, res) => {
+    const email = req.params.email;
+    console.log(email);
+    const result = [];
+    Wanders.find().then(wanders => {
+        wanders.forEach(wander => {
+            if (wander.invited.indexOf(email) > -1){
+                result.push(wander);
+            }
+        });
+       res.json(result);
+    })
+};

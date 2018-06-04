@@ -10,5 +10,8 @@
     </div>
   </div>
 </div>
+<h2 *ngIf="myInvited.length > 0" class="w3-center">You are invited for</h2>
+<app-wander-results [result]="myInvited"></app-wander-results>
+<h2 class="w3-center">Your wanders</h2>
 <app-wander-results [result]="myWanders"></app-wander-results>
 

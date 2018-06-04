@@ -44,6 +44,7 @@
           <button class="wl-reset" (click)="leaveComment()">Leave comment</button>
           <button class="wl-delete" *ngIf="isParticipant" (click)="leaveWander()">Leave wander</button>
           <button class="wl-delete" *ngIf="isMyWander" (click)="deleteWander()">Delete wander</button>
+          <button class="wl-delete" *ngIf="isMyInvited" (click)="deleteInviteWander()">Remove invite</button>
         </div>
       </div>
     </div>
