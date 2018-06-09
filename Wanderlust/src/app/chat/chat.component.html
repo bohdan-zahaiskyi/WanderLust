@@ -1,0 +1,26 @@
+<div class="chat_header">
+  <div class="img_holder">
+    <img src="../../assets/images/users/bzahay.png" class="user_img">
+  </div>
+  <h3>{{interlocutor.firstName}} {{interlocutor.lastName}}</h3>
+</div>
+<div class="chat_body">
+  <div class="single_message" *ngFor="let message of messages" [ngClass]="{'my_message': userEmail === message.sender}">
+    <div class="img_holder">
+      <img src="../../assets/images/users/bzahay.png" class="user_img">
+    </div>
+    <div class="message_text">
+      <div></div>
+      <span>{{message.text}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="actions">
+  <div class="img_holder">
+    <img src="../../assets/images/users/bzahay.png" class="user_img">
+  </div>
+  <textarea [(ngModel)]="messageToSend.text"></textarea>
+  <button class="wl-btn" (click)="sendMessage()">Send</button>
+</div>
+

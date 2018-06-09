@@ -31,7 +31,8 @@
   color: #fff;
 }
 
-button span{
+button span,
+button i{
   font-size: 20pt;
   padding: 0 10px 0 8px;
   border-right: 2px solid white;

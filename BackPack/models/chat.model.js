@@ -10,11 +10,11 @@ let ChatCatalogSchema = new Schema({
     comunicators: Array,
 });
 
-const Chatcatalog = mongoose.model('Chatcatalog', ChatCatalogSchema);
+const Chatcatalogs = mongoose.model('Chatcatalogs', ChatCatalogSchema);
 const Messages = mongoose.model('Messages', MessageSchema);
 
 export {
-    Chatcatalog,
+    Chatcatalogs,
     Messages
 }
 

@@ -13,4 +13,16 @@ router.get('/:email', (req, res) => {
     chatController.latestChats(req, res);
     });
 
+router.get('/messages/:chatId', (req, res) => {
+    chatController.getChatMessages(req, res);
+});
+
+router.get('/interlocutor/:chatId/:email', (req, res) => {
+    chatController.getChatInterlocutor(req, res);
+});
+
+router.post('/message/:chatId', (req,res) => {
+    chatController.writeMessage(req, res);
+});
+
 export default router;

@@ -1,13 +1,23 @@
-<div class="friends-container" (click)="hideResults()">
+<h3 class="w3-center" (click)="show()">My messages</h3>
+<div class="wander_header">
+  <div class="header_btns" *ngIf="!createWanderPage">
+    <button class="btn btn-3 btn-3b icon-star-2"
+            (click)="createWander()">
+      <i class="fa fa-edit "></i> Write a message</button>
+    <div class="container-1">
+      <span class="icon"><i class="fa fa-search"></i></span>
+      <input type="search" id="search" placeholder="Search..." />
+    </div>
+  </div>
+</div>
+<div class="friends-container">
   <div class="friend" *ngFor="let chat of chats">
     <div class="friend-header">
       <div class="avatar">
         <img src="../../../assets/images/users/bzahay.png">
       </div>
-      <h4 class="name">@{{chat.comunicators[1].split('@')[0]}}</h4>
+      <h4 class="name" (click)="navigateToChat(chat._id)">@{{chat.comunicators[1].split('@')[0]}}</h4>
       <div class="actions">
-        <i class="fa fa-envelope"(click)="messageFriend(friend)"></i>
-        <i class="fa fa-share" (click)="inviteFriend(friend)"></i>
         <i class="delete" (click)="deleteFriend(friend)">X</i>
       </div>
     </div>

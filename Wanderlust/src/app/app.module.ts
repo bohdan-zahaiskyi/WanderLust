@@ -39,6 +39,7 @@ import { AddEditWanderComponent } from './add-edit-wander/add-edit-wander.compon
 import { WanderPageComponent } from './wander-page/wander-page.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import {ChatService} from './_services/chat.service';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {ChatService} from './_services/chat.service';
     UserSettingsComponent,
     AddEditWanderComponent,
     WanderPageComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

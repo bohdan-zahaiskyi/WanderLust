@@ -14,6 +14,7 @@ import { UserSettingsComponent } from './user-page/user-settings/user-settings.c
 import {AddEditWanderComponent} from './add-edit-wander/add-edit-wander.component';
 import {WanderPageComponent} from './wander-page/wander-page.component';
 import {MyProfileComponent} from './my-profile/my-profile.component';
+import {ChatComponent} from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -29,7 +30,8 @@ const routes: Routes = [
       { path: 'places', component: UserPlacesComponent},
       { path: 'settings', component: UserSettingsComponent},
       { path: 'createWander', component: AddEditWanderComponent},
-      { path: 'wander/:id', component: WanderPageComponent}
+      { path: 'wander/:id', component: WanderPageComponent},
+      { path: 'chat/:id', component: ChatComponent}
     ]}
 ];
 

@@ -10,4 +10,15 @@ export class ChatService {
   getUserChats() {
     return this.http.get<any>(this.apiUrl + '/' + this._localService.getLocalUser().email).toPromise();
   }
+
+  getChatMessages(chatId) {
+    return this.http.get<any>(this.apiUrl + '/messages/' + chatId).toPromise();
+  }
+
+  getInterlocutor(chatId) {
+    return this.http.get<any>(this.apiUrl + '/interlocutor/' + chatId + '/' + this._localService.getLocalUser().email).toPromise();
+  }
+  sendMessage(chatId, message) {
+    return this.http.post<any>(this.apiUrl + '/message/' + chatId, message).toPromise();
+  }
 }
