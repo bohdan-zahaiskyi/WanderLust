@@ -50,7 +50,7 @@
   </div>
   <div *ngIf="ngPopup == 'message'">
     <div class="popup-text">
-      <textarea></textarea>
+      <textarea [(ngModel)]="messageText"></textarea>
     </div>
     <div class="popup-buttons">
       <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">

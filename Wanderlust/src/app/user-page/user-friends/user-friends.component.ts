@@ -3,6 +3,7 @@ import { UserService} from '../../_services/user.service';
 import {Router} from '@angular/router';
 import {LocalService} from '../../_services/local.service';
 import {WandersService} from '../../_services/wanders.service';
+import { ChatService } from '../../_services/chat.service';
 
 @Component({
   selector: 'app-user-friends',
@@ -18,7 +19,12 @@ export class UserFriendsComponent implements OnInit {
   searchResult: any;
   myWanders: any;
   wanderToInvite: any;
-  constructor(private _localService: LocalService, private _router: Router, private userService: UserService, private _wanderService: WandersService) { }
+  messageText: string;
+  constructor(private _localService: LocalService,
+              private _router: Router,
+              private _chatService: ChatService,
+              private userService: UserService,
+              private _wanderService: WandersService) { }
 
   deleteFriend(friend: any): void {
     this.ngPopup = 'delete';
@@ -46,6 +52,29 @@ export class UserFriendsComponent implements OnInit {
   }
   btnSend(): void {
     this.ngPopup = '';
+    this._chatService.getChatByEmail(this.friendAction.email).then(chat => {
+      if (chat && chat._id) {
+        const messageToSend = {
+          chatId: chat._id,
+          sender: this.user.email,
+          date: this._localService.dateToString(new Date()),
+          text: this.messageText
+        };
+        this._chatService.sendMessage(chat._id, messageToSend);
+      } else {
+        this._chatService.createChat(this.friendAction.email).then(createdChat => {
+          if (createdChat && createdChat._id) {
+            const messageToSend = {
+              chatId: createdChat._id,
+              sender: this.user.email,
+              date: this._localService.dateToString(new Date()),
+              text: this.messageText
+            };
+            this._chatService.sendMessage(createdChat._id, messageToSend);
+          }
+        });
+      }
+    });
   }
   btnInvite(): void {
     console.log(this.wanderToInvite);

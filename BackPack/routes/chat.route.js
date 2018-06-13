@@ -21,8 +21,16 @@ router.get('/interlocutor/:chatId/:email', (req, res) => {
     chatController.getChatInterlocutor(req, res);
 });
 
+router.get('/chatinterlocutor/:email/:me', (req, res) => {
+    chatController.getChatByEmail(req, res);
+});
+
 router.post('/message/:chatId', (req,res) => {
     chatController.writeMessage(req, res);
+});
+
+router.post('/create', (req, res) => {
+    chatController.createChat(req, res);
 });
 
 export default router;

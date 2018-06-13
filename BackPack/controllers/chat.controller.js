@@ -55,7 +55,22 @@ const createMessage = (chatId, senderId, text) => {
 
 };
 
-const createChat = () => {
+export const getChatByEmail = (req, res) => {
+    Chatcatalogs.find().then(chats => {
+        chats.forEach(chat => {
+            if(chat.comunicators.indexOf(req.params.me) > -1 && chat.comunicators.indexOf(req.params.email) > -1){
+                res.json(chat);
+            }
+        });
+        res.json({success: false});
+    })
+};
+
+export const createChat = (req, res) => {
+    const newChat = new Chatcatalogs({comunicators: req.body});
+    newChat.save().then(chat => {
+        res.json(chat);
+    })
 };
 
 const addChatToCatalog = () => {

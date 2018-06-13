@@ -15,7 +15,7 @@
         <div *ngIf="!isMe" class="otherUser_btns">
           <button (click)="addFriend()" *ngIf="!isFriend && !isMe" class="wl-btn">Add friend</button>
           <button *ngIf="isFriend" class="wl-reset">Delete friend</button>
-          <button class="wl-btn message">Send message</button>
+          <button class="wl-btn message" (click)="showMessage()">Send message</button>
         </div>
       </div>
     </div>
@@ -57,3 +57,14 @@
     <div class="news-block main-block"></div>
 </div>
 
+ <div class="popup" *ngIf="ngPopup">
+   <div>
+     <div class="popup-text">
+       <textarea [(ngModel)]="messageText"></textarea>
+     </div>
+     <div class="popup-buttons">
+       <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
+       <input type="submit" value="Send" class="wl-btn" (click)="sendMessage()">
+     </div>
+   </div>
+ </div>

@@ -21,4 +21,16 @@ export class ChatService {
   sendMessage(chatId, message) {
     return this.http.post<any>(this.apiUrl + '/message/' + chatId, message).toPromise();
   }
+
+  getChatByEmail(interlocutor) {
+    return this.http.get<any>(this.apiUrl + '/chatinterlocutor/' + interlocutor + '/' + this._localService.getLocalUser().email).toPromise();
+  }
+  createChat(interlocutor) {
+    const comunicators = [
+      this._localService.getLocalUser().email,
+      interlocutor
+    ];
+
+    return this.http.post<any>(this.apiUrl + '/create', comunicators).toPromise();
+  }
 }
