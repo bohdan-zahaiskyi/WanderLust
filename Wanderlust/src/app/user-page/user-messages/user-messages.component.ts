@@ -18,11 +18,23 @@ export class UserMessagesComponent implements OnInit {
     const thisRoute = this._localService.getCurrentRoute(this._router.url);
     this._router.navigateByUrl(thisRoute + '/chat/' + id);
   }
+  getChatInterlocutor(chat) {
+    const userEmail = this._localService.getLocalUser().email;
+    return chat.comunicators[0] === userEmail ? chat.comunicators[1] : chat.comunicators[0];
+  }
 
   ngOnInit() {
     this.chats = [];
     this._chatService.getUserChats().then(response => {
       this.chats = response;
+      const userEmail = this._localService.getLocalUser().email;
+      this.chats.forEach(chat => {
+        chat.userName = '';
+        const interlocutor = chat.comunicators[0] === userEmail ? chat.comunicators[1] : chat.comunicators[0];
+        this._userService.getUserByEmail(interlocutor).then(user => {
+          chat.userName = user.firstName + ' ' + user.lastName;
+        });
+      });
     });
   }
 }

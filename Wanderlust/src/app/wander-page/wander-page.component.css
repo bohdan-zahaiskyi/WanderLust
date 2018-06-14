@@ -19,6 +19,12 @@ h2{
   padding-bottom: 5px;
   border-bottom: 1px solid #3a3a3a;
 }
+
+h2 i{
+  margin-left: 20px;
+  cursor: pointer;
+}
+
 .btns{
 width: fit-content;
 }

@@ -4,6 +4,7 @@
       <span>{{dest}}</span>
       <span *ngIf="i!= wander.destinations.length-1">&nbsp;-&nbsp;</span>
     </span>
+    <i *ngIf="isMyWander" (click)="editWander()" class="fa fa-edit"></i>
   </h2>
   <div class="wander_body">
     <div class="with_image">

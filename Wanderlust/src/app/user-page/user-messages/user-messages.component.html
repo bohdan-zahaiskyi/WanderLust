@@ -16,7 +16,7 @@
       <div class="avatar">
         <img src="../../../assets/images/users/bzahay.png">
       </div>
-      <h4 class="name" (click)="navigateToChat(chat._id)">@{{chat.comunicators[1].split('@')[0]}}</h4>
+      <h4 class="name" (click)="navigateToChat(chat._id)">{{chat.userName}}</h4>
       <div class="actions">
         <i class="delete" (click)="deleteFriend(friend)">X</i>
       </div>

@@ -22,11 +22,11 @@ export class WanderResultsComponent implements OnInit {
       this._userService.getCurrentUser().then(user => {
         this._router.navigateByUrl(thisRoute + 'user/' + user._id + '/wander/' + id);
       });
-    }
-    else {
+    } else {
       this._router.navigateByUrl(thisRoute + '/wander/' + id);
     }
   }
+
   ngOnInit() {
     this.result = {
       searchResult: {}

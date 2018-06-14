@@ -26,13 +26,13 @@ export class UserProfileComponent implements OnInit {
   btnCancel() {
     this.ngPopup = false;
   }
-  sendMessage(){
+  sendMessage() {
     this.ngPopup = false;
     this._chatService.getChatByEmail(this.user.email).then(chat => {
       if (chat && chat._id) {
         const messageToSend = {
           chatId: chat._id,
-          sender: this.user.email,
+          sender: this._localService.getLocalUser().email,
           date: this._localService.dateToString(new Date()),
           text: this.messageText
         };
@@ -42,7 +42,7 @@ export class UserProfileComponent implements OnInit {
           if (createdChat && createdChat._id) {
             const messageToSend = {
               chatId: createdChat._id,
-              sender: this.user.email,
+              sender: this._localService.getLocalUser().email,
               date: this._localService.dateToString(new Date()),
               text: this.messageText
             };

@@ -28,6 +28,11 @@ export class WanderPageComponent implements OnInit {
       this.comments.push(response.comment);
     });
   }
+
+  editWander() {
+    const wanderId = this._localService.getRouteEnding(this._router);
+  }
+
   cancelComment() {
     this.commentActive = false;
   }
