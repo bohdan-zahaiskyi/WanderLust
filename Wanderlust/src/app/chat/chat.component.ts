@@ -3,7 +3,6 @@ import {ChatService} from '../_services/chat.service';
 import {LocalService} from '../_services/local.service';
 import {UserService} from '../_services/user.service';
 import {Router} from '@angular/router';
-import {P} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-chat',
@@ -15,6 +14,7 @@ export class ChatComponent implements OnInit {
   constructor(private _chatService: ChatService, private _localService: LocalService, private _userService: UserService, private _router: Router) { }
   messages = [];
   chatId: string;
+  user: any;
   userEmail: string;
   interlocutor = {};
   messageToSend: any;
@@ -42,6 +42,10 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.userEmail = this._localService.getLocalUser().email;
+    this._userService.getUserByEmail(this.userEmail).then(user => {
+      user.avatar = user.avatar || '../../../assets/images/users/bzahay.png';
+      this.user = user;
+    });
     this.chatId = this._localService.getRouteEnding(this._router.url);
     this.messageToSend = {
       chatId: this.chatId,
@@ -52,6 +56,7 @@ export class ChatComponent implements OnInit {
         this.messages = messages;
       });
     this.interlocutor = this._chatService.getInterlocutor(this.chatId).then(user => {
+      user.avatar = user.avatar || '../../../assets/images/users/bzahay.png';
       this.interlocutor = user;
     });
   }

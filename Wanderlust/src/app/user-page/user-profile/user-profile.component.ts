@@ -12,7 +12,7 @@ import {ChatService} from '../../_services/chat.service';
 })
 export class UserProfileComponent implements OnInit {
   messageText: string;
-  user = new User();
+  user: any;
   isFriend: boolean;
   ngPopup = false;
   constructor(private _localService: LocalService,
@@ -26,6 +26,11 @@ export class UserProfileComponent implements OnInit {
   btnCancel() {
     this.ngPopup = false;
   }
+
+  get userAvatar() {
+    return this.user.avatar;
+  }
+
   sendMessage() {
     this.ngPopup = false;
     this._chatService.getChatByEmail(this.user.email).then(chat => {
@@ -53,11 +58,13 @@ export class UserProfileComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.user = {};
     const thisRoute = this._router.url;
     const n = thisRoute.lastIndexOf('/');
     const userId = thisRoute.substring(n + 1, thisRoute.length);
     console.log(userId);
     this.userService.getUserById(userId).then(user => {
+      user.avatar = (user.avatar && user.avatar !== '') ? user.avatar : '../../assets/images/users/bzahay.png';
       this.user = user;
       this.userService.getCurrentUser().then(me => {
         this.isFriend = me.friends.indexOf(this.user.email) > -1;

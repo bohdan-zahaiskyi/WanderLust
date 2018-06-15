@@ -14,7 +14,7 @@
   <div class="friend" *ngFor="let chat of chats">
     <div class="friend-header">
       <div class="avatar">
-        <img src="../../../assets/images/users/bzahay.png">
+        <img src="{{chat.avatar}}">
       </div>
       <h4 class="name" (click)="navigateToChat(chat._id)">{{chat.userName}}</h4>
       <div class="actions">

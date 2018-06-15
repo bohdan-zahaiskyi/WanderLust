@@ -22,6 +22,7 @@ export class UserWandersComponent implements OnInit {
     this._router.navigateByUrl(this._localService.getCurrentRoute(this._router.url) + '/createWander');
   }
   ngOnInit() {
+    this.myWanders = [];
     this.myInvited = [];
     this.myEmail = this._localService.getLocalUser().email;
     this._wanderService.getInvited(this.myEmail)

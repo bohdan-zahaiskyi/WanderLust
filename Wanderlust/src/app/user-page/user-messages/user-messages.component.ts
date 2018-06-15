@@ -33,6 +33,7 @@ export class UserMessagesComponent implements OnInit {
         const interlocutor = chat.comunicators[0] === userEmail ? chat.comunicators[1] : chat.comunicators[0];
         this._userService.getUserByEmail(interlocutor).then(user => {
           chat.userName = user.firstName + ' ' + user.lastName;
+          chat.avatar = (user.avatar && user.avatar !== '') ? user.avatar : '../../assets/images/users/bzahay.png';
         });
       });
     });

@@ -7,6 +7,8 @@ import 'rxjs/add/operator/toPromise';
 export class WandersService {
   wanders: Wander[];
 
+  //private apiKey = 'AIzaSyA7Yv0aWKwaU0GKSZ_bm1CJdhN5ZArMSkw';
+
   private apiUrl = 'http://localhost:3000/wanders';
   constructor(private http: Http) { }
 

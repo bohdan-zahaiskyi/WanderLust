@@ -26,7 +26,7 @@
     <div class="friend" *ngFor="let friend of friends">
       <div class="friend-header">
         <div class="avatar">
-          <img src="../../../assets/images/users/bzahay.png">
+          <img src="{{friend.avatar}}">
         </div>
         <h4 (click)="goToProfile(friend._id)" class="name">{{friend.firstName}} {{friend.lastName}}</h4>
         <div class="actions">

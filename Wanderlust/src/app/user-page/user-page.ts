@@ -9,12 +9,13 @@ import {UserService} from '../_services/user.service';
 })
 export class UserPageComponent implements OnInit {
 
-  user = new User();
+  user: any;
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
+    this.user = {};
     this.userService.getCurrentUser().then(user => {
       this.user = user;
     });

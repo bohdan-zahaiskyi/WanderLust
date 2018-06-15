@@ -128,6 +128,7 @@ export class UserFriendsComponent implements OnInit {
       this.user = user;
       this.user.friends.forEach(frinedEmail => {
         this.userService.getUserByEmail(frinedEmail).then(result => {
+          result.avatar = result.avatar || '../../../assets/images/users/bzahay.png';
           this.friends.push(result);
         });
       });

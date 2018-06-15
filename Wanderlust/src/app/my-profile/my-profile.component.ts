@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../_services/user.service';
+import {LocalService} from '../_services/local.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -7,7 +8,7 @@ import {UserService} from '../_services/user.service';
   styleUrls: ['../user-page/user-profile/user-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService, private _localService: LocalService) { }
   user: any;
   isMe = true;
   avaPopup = false;
@@ -17,13 +18,6 @@ export class MyProfileComponent implements OnInit {
       return this.user.avatar;
     }
     return '../../assets/images/users/bzahay.png';
-  }
-
-  saveImageToDb(URL) {
-    this.user.avatar = URL;
-    this._userService.updateUser(this.user).then(response => {
-      console.log(response);
-    });
   }
 
   uploadAva() {
@@ -54,6 +48,9 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = {
+      email: this._localService.getLocalUser().email;
+    };
     this._userService.getCurrentUser().then(user => {
       this.user = user;
     });

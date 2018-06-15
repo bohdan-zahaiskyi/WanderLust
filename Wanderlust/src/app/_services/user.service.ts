@@ -12,13 +12,7 @@ const httpOptions = {
 @Injectable()
 export class UserService {
   private apiUrl = 'http://localhost:3000/users';
-  private email = '';
-  constructor(_authentification: AuthenticationService, private http: HttpClient, private _localService: LocalService) {
-    const user = _localService.getLocalUser();
-    if (user) {
-      this.email = user.email;
-    }
-  }
+  constructor(_authentification: AuthenticationService, private http: HttpClient, private _localService: LocalService) {}
 
   updateUser(updatedUser) {
     return this.http.put<any>(this.apiUrl + '/update', updatedUser).toPromise();
@@ -32,17 +26,17 @@ export class UserService {
     return this.http.get<any>(this.apiUrl + '/search/' + keyword).toPromise();
   }
   getCurrentUser() {
-    return this.http.get<any>(this.apiUrl + '/email/' + this.email, httpOptions).toPromise();
+    return this.http.get<any>(this.apiUrl + '/email/' + this._localService.getLocalUser().email, httpOptions).toPromise();
   }
   getUserById(id) {
     return this.http.get<any>(this.apiUrl + '/' + id).toPromise();
   }
   getCurrentUserFriends() {
-    return this.http.get<any>(this.apiUrl + '/' + this.email + '/friends', httpOptions).toPromise();
+    return this.http.get<any>(this.apiUrl + '/' + this._localService.getLocalUser().email + '/friends', httpOptions).toPromise();
   }
   deleteFriend(friendEmail: string) {
     const body = {
-      myEmail: this.email,
+      myEmail: this._localService.getLocalUser().email,
       friendEmail: friendEmail
     };
     // return this.http.put<any>(this.apiUrl + '/' + this.email + '/deleteFriend', friendEmail, httpOptions).toPromise();
