@@ -10,7 +10,17 @@
   flex-direction: row;
   background-color: white;
 }
-
+input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.upload label{
+  cursor: pointer;
+}
 .user-names{
   margin-left: 20px;
   width: 100%;
@@ -159,4 +169,12 @@ button{
   line-height: 1.5;
   resize: none;
   width: 100%;
+}
+.ava_preview{
+  max-height: 380px;
+  max-width: 380px;
+}
+
+.previewBtns{
+  margin-top: 20px;
 }

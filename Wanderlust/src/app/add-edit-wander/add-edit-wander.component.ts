@@ -14,6 +14,7 @@ export class AddEditWanderComponent implements OnInit {
   wander: any;
   imgPath: any;
   imageLoaded: boolean;
+  editMode = false;
 
   addDestination() {
     this.wander.destinations.push({dest: ''});
@@ -42,13 +43,21 @@ export class AddEditWanderComponent implements OnInit {
   saveWander() {
     const img = document.querySelector('.wander_image');
     this.wander.imgURL = this.getImageURL(img);
-    this._wanderService.saveWander(this.wander).then(response => {
-      console.log(response);
-      this.cancelSave();
-    });
+    if (this.editMode) {
+      this._wanderService.updateWander(this.wander).then(response => {
+        console.log(response);
+        this.cancelSave();
+      });
+    } else {
+      this._wanderService.saveWander(this.wander).then(response => {
+        console.log(response);
+        this.cancelSave();
+      });
+    }
   }
   cancelSave() {
-    this._router.navigateByUrl(this._localService.getCurrentRoute(this._router.url) + '/wanders');
+    const back = this._localService.getCurrentRoute(this._router.url);
+    this._router.navigateByUrl((this.editMode ? this._localService.getCurrentRoute(back) : back)  + '/wanders');
   }
 
   getImageURL(img) {
@@ -73,5 +82,21 @@ export class AddEditWanderComponent implements OnInit {
       people: 0
     };
     this.imageLoaded = false;
+    if (this._localService.getRouteEnding(this._router.url) !== 'createWander') {
+      this._wanderService.getWanderById(this._localService.getRouteEnding(this._router.url))
+        .then(editingWander => {
+          if (editingWander && editingWander.wander && editingWander.wander[0] && editingWander.wander[0]._id) {
+            this.editMode = true;
+            this.wander = editingWander.wander[0];
+            for (let i = 0; i < this.wander.destinations.length; i++) {
+              this.wander.destinations[i] = {dest: this.wander.destinations[i]};
+            }
+            if (this.wander.imgURL) {
+              this.imageLoaded = true;
+              document.querySelector('.wander_image').setAttribute('src', this.wander.imgURL);
+            }
+          }
+        });
+    }
   }
 }

@@ -1,7 +1,10 @@
  <div class="main-header main-block">
     <div class="img-holder">
-      <img src="../../assets/images/users/bzahay.png">
-      <div *ngIf="isMe" class="upload">Upload image ↑</div>
+      <img class="user_ava" src="{{userAvatar}}">
+      <div *ngIf="isMe" class="upload">
+        <input id="userAva" type="file" (change)="uploadImage($event)">
+        <label for="userAva">Upload image ↑</label>
+      </div>
     </div>
     <div class="user-names">
       <h3>{{user.firstName}} {{user.lastName}}</h3>
@@ -66,5 +69,14 @@
        <input type="button" value="Cancel" class="wl-btn wl-reset" (click)="btnCancel()">
        <input type="submit" value="Send" class="wl-btn" (click)="sendMessage()">
      </div>
+   </div>
+ </div>
+ <div class="popup" *ngIf="avaPopup">
+   <div class="avaHolder">
+     <img class="ava_preview">
+   </div>
+   <div class="previewBtns">
+     <button class="wl-btn" (click)="uploadAva()">Upload</button>
+     <button class="wl-reset" (click)="cancelUpload()">Cancel</button>
    </div>
  </div>

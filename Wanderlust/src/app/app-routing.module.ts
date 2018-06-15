@@ -31,6 +31,7 @@ const routes: Routes = [
       { path: 'settings', component: UserSettingsComponent},
       { path: 'createWander', component: AddEditWanderComponent},
       { path: 'wander/:id', component: WanderPageComponent},
+      { path: 'editWander/:id', component: AddEditWanderComponent},
       { path: 'chat/:id', component: ChatComponent}
     ]}
 ];

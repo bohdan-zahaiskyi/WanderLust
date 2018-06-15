@@ -65,7 +65,8 @@ export class WandersService {
       .catch(this.handleError);
   }
 
-  updateWander(wander) {
+  updateWander(wanderObj) {
+    const wander = this._sanitizeDestination(wanderObj);
     return this.http.put(this.apiUrl + '/update', wander).toPromise()
       .then(this.handleData)
       .catch(this.handleError);

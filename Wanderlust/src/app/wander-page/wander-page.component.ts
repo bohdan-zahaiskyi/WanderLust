@@ -30,7 +30,9 @@ export class WanderPageComponent implements OnInit {
   }
 
   editWander() {
-    const wanderId = this._localService.getRouteEnding(this._router);
+    const wanderId = this._localService.getRouteEnding(this._router.url);
+    const thisRoute = this._localService.getCurrentRoute(this._localService.getCurrentRoute(this._router.url));
+    this._router.navigateByUrl(thisRoute + '/editWander/' + wanderId);
   }
 
   cancelComment() {
