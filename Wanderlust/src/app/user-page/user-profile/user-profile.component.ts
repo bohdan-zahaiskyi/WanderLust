@@ -87,7 +87,6 @@ export class UserProfileComponent implements OnInit {
     this.user = {
       email: ''
     };
-    this.commentUsers = [];
     this.me = {};
     this.comments = [];
     this.myComment = {

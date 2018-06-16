@@ -14,4 +14,6 @@
 <app-wander-results [result]="myInvited"></app-wander-results>
 <h2 class="w3-center" *ngIf="myWanders.searchResults && myWanders.searchResults.length > 0">Your wanders</h2>
 <app-wander-results [result]="myWanders"></app-wander-results>
+<h2 class="w3-center" *ngIf="completedWanders.searchResults && completedWanders.searchResults.length > 0">Completed wanders</h2>
+<app-wander-results [result]="completedWanders"></app-wander-results>
 

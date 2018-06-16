@@ -223,3 +223,7 @@ button{
   flex-direction: row;
   justify-content: space-between;
 }
+.participants{
+  display: flex;
+  flex-direction: column;
+}

@@ -20,6 +20,8 @@ export class WanderPageComponent implements OnInit {
   isMyWander: boolean;
   isParticipant: boolean;
   isMyInvited: boolean;
+  initiator: any;
+  participants: any;
 
   leaveComment() {
     this.commentActive = true;
@@ -53,6 +55,15 @@ export class WanderPageComponent implements OnInit {
 
   cancelComment() {
     this.commentActive = false;
+  }
+
+  handleParticipant(participant) {
+    this._userService.getUserByEmail(participant).then(user => {
+      this.participants.push({
+        name: user.firstName + ' ' + user.lastName,
+        avatar: user.avatar
+      });
+    });
   }
 
   joinWander() {
@@ -95,7 +106,9 @@ export class WanderPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.participants = [];
     this.commentActive = false;
+    this.initiator = {};
     this.wander = {
       destinations: ['', ''],
       participants: ['']
@@ -119,11 +132,27 @@ export class WanderPageComponent implements OnInit {
       this.isMyWander = this.wander.initiator === this.myEmail;
       this.isParticipant = this.wander.participants.indexOf(this.myEmail) >= 0;
       this.isMyInvited = this.wander.invited.indexOf(this.myEmail) >= 0;
-        this._wanderService.getWanderComments(this.wander._id).then(comments => {
-        this.comments = comments.comments || [];
-          this.comments.forEach(c => {
+    }).then(() => {
+        this._wanderService.getWanderComments(this.wander._id)
+          .then(comments => {
+            this.comments = comments.comments || [];
+            this.comments.forEach(c => {
             this.getCommentor(c.commentor);
           });
+        })
+      .then(() => {
+        this._userService.getUserByEmail(this.wander.initiator)
+          .then(initiator => {
+            this.initiator = {
+              name: initiator.firstName + ' ' + initiator.lastName,
+              avatar: initiator.avatar
+            };
+          });
+        })
+      .then(() => {
+        this.wander.participants.forEach(participant => {
+          this.handleParticipant(participant);
+        });
       });
     });
   }

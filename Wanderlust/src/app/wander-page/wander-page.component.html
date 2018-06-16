@@ -18,11 +18,19 @@
         </div>
         <div class="single_data">
           <label>Initiator:</label>
-          <p>{{wander.initiator}}</p>
+          <div class="initiator">
+            <img src="{{initiator.avatar||'../../assets/images/users/bzahay.png'}}">
+            <p>{{initiator.name}}</p>
+          </div>
         </div>
         <div class="single_data">
           <label>Participants:</label>
-          <p>{{wander.participants[0]}}</p>
+          <div class="participants">
+            <div class="initiator" *ngFor="let part of participants">
+              <img src="{{part.avatar||'../../assets/images/users/bzahay.png'}}">
+              <p>{{part.name}}</p>
+            </div>
+          </div>
         </div>
         <div class="single_data">
           <label>Transport:</label>

@@ -68,14 +68,16 @@ export class WandersService {
   }
 
   updateWander(wanderObj) {
-    const wander = this._sanitizeDestination(wanderObj);
+    let wander = wanderObj;
+    if (wanderObj.destinations[0].dest) {wander = this._sanitizeDestination(wanderObj); }
     return this.http.put(this.apiUrl + '/update', wander).toPromise()
       .then(this.handleData)
       .catch(this.handleError);
   }
 
   saveWander(wanderObj) {
-    const wander = this._sanitizeDestination(wanderObj);
+    let wander = wanderObj;
+    if (wanderObj.destinations[0].dest) {wander = this._sanitizeDestination(wanderObj); }
     return this.http.post(this.apiUrl + '/create', wander)
       .toPromise()
       .then(data => {

@@ -14,6 +14,7 @@ export class UserWandersComponent implements OnInit {
   myEmail: string;
   myWanders: any;
   myInvited: any;
+  completedWanders: any;
 
   show() {
     console.log(this.myWanders);
@@ -24,6 +25,7 @@ export class UserWandersComponent implements OnInit {
   ngOnInit() {
     this.myWanders = [];
     this.myInvited = [];
+    this.completedWanders = [];
     this.myEmail = this._localService.getLocalUser().email;
     this._wanderService.getInvited(this.myEmail)
       .then(invited => {
@@ -34,7 +36,20 @@ export class UserWandersComponent implements OnInit {
         this.myInvited = {searchResults: mapped};
       });
     this._wanderService.getMyWanders(this.myEmail).then(data => {
-      this.myWanders = {searchResults: data.filteredWanders || null};
+      const completed = [];
+      const future = [];
+      const today = new Date();
+      data.filteredWanders.forEach(wanderRes => {
+        const wander = wanderRes.wander;
+        const wanderDate = new Date(wander.endDate);
+        if (today.getTime() > wanderDate.getTime()) {
+          completed.push(wanderRes);
+        } else {
+          future.push(wanderRes);
+        }
+      });
+      this.myWanders = {searchResults: future || null};
+      this.completedWanders = {searchResults: completed || null};
     });
   }
 }
