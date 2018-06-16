@@ -9,13 +9,11 @@
         <div class="friend" *ngFor="let result of searchResult">
           <div class="friend-header">
             <div class="avatar">
-              <img src="../../../assets/images/users/bzahay.png">
+              <img src="{{result.avatar || '../../../assets/images/users/bzahay.png'}}">
             </div>
             <h4 (click)="goToProfile(result._id)" class="name">{{result.firstName}} {{result.lastName}}</h4>
             <div class="actions">
               <i *ngIf="user.friends.indexOf(result.email) === -1" class="fa fa-plus"(click)="addResult(result)"></i>
-              <i class="fa fa-share" (click)="inviteFriend(result)"></i>
-              <i class="delete" (click)="hideResult(result)">X</i>
             </div>
           </div>
         </div>

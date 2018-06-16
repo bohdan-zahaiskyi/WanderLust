@@ -42,4 +42,11 @@ export class UserService {
     // return this.http.put<any>(this.apiUrl + '/' + this.email + '/deleteFriend', friendEmail, httpOptions).toPromise();
     return this.http.put<any>(this.apiUrl + '/deleteFriend', body, httpOptions).toPromise();
   }
+  postComment(comment) {
+    return this.http.post<any>(this.apiUrl + '/comment', comment).toPromise();
+  }
+  getUserComments(userId) {
+    return this.http.get<any>(this.apiUrl + '/comments/' + userId).toPromise();
+  }
+
 }

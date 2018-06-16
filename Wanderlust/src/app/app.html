@@ -4,14 +4,14 @@
       <a href="" id="logo" class="w3-bar-item w3-button">
         <img src="../assets/WNES.png">
       </a>
-      <div class="bar-item"><a routerLink="/home">HOME</a></div>
-      <div class="bar-item"><a routerLink="/about" ><i class="fa fa-th"></i> JOIN A WANDER</a></div>
-      <div class="bar-item"><a routerLink="/portfolio"><i class="fa fa-th"></i> LATEST TRIPS</a></div>
-      <div class="bar-item"><a routerLink="/contact"><i class="fa fa-envelope"></i> TOP DESTINATIONS</a></div>
+      <div class="bar-item"><a (click)="homeClicked()" routerLink="/home"><i class="fa fa-home"></i> HOME</a></div>
+      <div class="bar-item"><a routerLink="/about" ><i class="fa fa-share"></i> JOIN A WANDER</a></div>
+      <div class="bar-item"><a routerLink="/portfolio"><i class="fa fa-plane"></i> LATEST TRIPS</a></div>
+      <div class="bar-item"><a routerLink="/contact"><i class="fa fa-map-marker"></i> TOP DESTINATIONS</a></div>
     </div>
 
     <div class="right-bar">
-      <div class="bar-item"><div (click)="showLogin()"><i class="fa fa-user"></i> {{logged?'LOG OUT':'LOGIN/SIGN IN'}}</div></div>
+      <div class="bar-item"><div (click)="showLogin()"><i class="fa fa-user"></i> {{logged? (onHomePage? 'MY PROFILE' : 'LOG OUT') :'LOGIN/SIGN IN'}}</div></div>
       <div class="bar-item"><a><i class="fa fa-envelope"></i> ABOUT US</a></div>
     </div>
   </div>

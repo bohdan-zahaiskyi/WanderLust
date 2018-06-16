@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {WandersService} from '../_services/wanders.service';
 import { Router} from '@angular/router';
 import {LocalService} from '../_services/local.service';
+import {UserService} from '../_services/user.service';
 
 @Component({
   selector: 'app-wander-page',
@@ -9,12 +10,13 @@ import {LocalService} from '../_services/local.service';
   styleUrls: ['./wander-page.component.css']
 })
 export class WanderPageComponent implements OnInit {
-  constructor(private _localService: LocalService, private _router: Router, private _wanderService: WandersService) { }
+  constructor(private _userService: UserService, private _localService: LocalService, private _router: Router, private _wanderService: WandersService) { }
   wander: any;
   comments: any;
   commentActive: boolean;
   myComment: any;
   myEmail: any;
+  user: any;
   isMyWander: boolean;
   isParticipant: boolean;
   isMyInvited: boolean;
@@ -25,7 +27,10 @@ export class WanderPageComponent implements OnInit {
   saveComment() {
     this.commentActive = false;
     this._wanderService.postComment(this.myComment).then(response => {
-      this.comments.push(response.comment);
+      this.comments.push({
+        ...response.comment,
+        name: this.user.firstName + ' ' + this.user.lastName,
+        avatar: this.user.avatar});
     });
   }
 
@@ -33,6 +38,17 @@ export class WanderPageComponent implements OnInit {
     const wanderId = this._localService.getRouteEnding(this._router.url);
     const thisRoute = this._localService.getCurrentRoute(this._localService.getCurrentRoute(this._router.url));
     this._router.navigateByUrl(thisRoute + '/editWander/' + wanderId);
+  }
+
+  getCommentor(email) {
+    this._userService.getUserByEmail(email).then(user => {
+      this.comments.forEach((comment, index) => {
+        if (comment.commentor === email) {
+          this.comments[index].name = user.firstName + ' ' + user.lastName;
+          this.comments[index].avatar = user.avatar;
+        }
+      });
+    });
   }
 
   cancelComment() {
@@ -85,12 +101,16 @@ export class WanderPageComponent implements OnInit {
       participants: ['']
     };
     this.myEmail = this._localService.getLocalUser().email;
+    this.user = {};
+    this._userService.getCurrentUser().then(user => {
+      this.user = user;
+    });
     this.comments = [];
     const thisRoute = this._router.url;
     const n = thisRoute.lastIndexOf('/');
     const thisId = thisRoute.substring(n + 1, thisRoute.length);
     this.myComment = {
-      date: '2018-05-31',
+      date: this._localService.dateToString(new Date()),
       commentor: this.myEmail,
       wander: thisId
     };
@@ -101,6 +121,9 @@ export class WanderPageComponent implements OnInit {
       this.isMyInvited = this.wander.invited.indexOf(this.myEmail) >= 0;
         this._wanderService.getWanderComments(this.wander._id).then(comments => {
         this.comments = comments.comments || [];
+          this.comments.forEach(c => {
+            this.getCommentor(c.commentor);
+          });
       });
     });
   }

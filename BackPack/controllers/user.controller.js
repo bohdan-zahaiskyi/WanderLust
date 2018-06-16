@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import nodemailer from 'nodemailer'
 import Users from '../models/user.model';
 import jwt from 'jsonwebtoken';
+import Usercomments from '../models/userComment'
+import Wandercomments from "../models/comment.model";
 
 const smtpTransport = nodemailer.createTransport({
     service: "Gmail",
@@ -73,6 +75,31 @@ export const searchUser = (req,res) => {
     })
 };
 
+export const postComment = (req, res) => {
+    const newComment = new Usercomments(req.body);
+    newComment.save((err, comment) => {
+        if(err){
+            return res.json({'success':false,'message':'Some Error'});
+        }
+        comment.save(error => {
+            if(error) {
+                return res.json({'success':false,'message':error});
+            }
+            return res.json({'success':true,comment});
+        })
+    })
+};
+
+export const getComments = (req, res) => {
+    Usercomments.find({user: req.params.id})
+        .then(result => {
+            console.log(result);
+            res.json({success: true, comments: result});
+        })
+        .catch(error => {
+            res.json({success: false, message: error});
+        })
+};
 export const getUserFriends = (req, res) => {
     let friendsNames = [];
     let friendsArray = null;

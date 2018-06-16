@@ -286,3 +286,8 @@ body{
 .wl-btn:hover{
   box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }
+
+.logged_header{
+  background-color: white;
+  border-bottom: 1px solid #777;
+}

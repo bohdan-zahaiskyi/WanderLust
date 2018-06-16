@@ -54,10 +54,33 @@
     </div>
   </div>
   <div class="news">
-    <div class="news-block main-block">
-
+    <div class="comment_field" *ngIf="!isMe">
+      <h4 class="w3-center">{{me.firstName}} {{me.lastName}}</h4>
+      <div class="comment_body">
+        <div class="user_avatar_holder">
+          <img src="{{me.avatar || '../../assets/images/users/bzahay.png'}}" class="user_avatar">
+        </div>
+        <div class="comment_text">
+          <textarea [(ngModel)]="myComment.text"></textarea>
+          <div class="btns">
+            <button class="wl-btn" (click)="saveComment()">Comment</button>
+            <button class="wl-reset" (click)="cancelComment()">Cancel</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="news-block main-block"></div>
+    <div class="comment" *ngFor="let comment of comments">
+      <div class="user_avatar_holder">
+        <img src="{{comment.avatar || '../../assets/images/users/bzahay.png'}}" class="user_avatar">
+      </div>
+      <div class="comment_data">
+        <div class="comment_header">
+          <label>{{comment.name}}</label>
+          <label>{{comment.date}}</label>
+        </div>
+        <p>{{comment.text}}</p>
+      </div>
+    </div>
 </div>
 
  <div class="popup" *ngIf="ngPopup">

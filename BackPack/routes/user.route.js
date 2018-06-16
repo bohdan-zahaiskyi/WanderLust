@@ -22,6 +22,14 @@ router.put('/confirm', (req, res) => {
     userController.confirmUser(req, res);
 });
 
+router.get('/comments/:id', (req, res) => {
+    userController.getComments(req, res);
+});
+
+router.post('/comment', (req, res) => {
+    userController.postComment(req, res);
+});
+
 router.get('/search/:keyword', (req,res) => {
     userController.searchUser(req,res)
 });

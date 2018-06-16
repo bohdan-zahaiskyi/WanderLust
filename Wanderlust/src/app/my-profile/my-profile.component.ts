@@ -12,6 +12,7 @@ export class MyProfileComponent implements OnInit {
   user: any;
   isMe = true;
   avaPopup = false;
+  comments: any;
 
   get userAvatar() {
     if (this.user.avatar && this.user.avatar !== '') {
@@ -32,6 +33,17 @@ export class MyProfileComponent implements OnInit {
     this.avaPopup = false;
   }
 
+  getCommentor(email) {
+    this._userService.getUserByEmail(email).then(user => {
+      this.comments.forEach((comment, index) => {
+        if (comment.commentor === email) {
+          this.comments[index].name = user.firstName + ' ' + user.lastName;
+          this.comments[index].avatar = user.avatar;
+        }
+      });
+    });
+  }
+
   uploadImage(event) {
     this.avaPopup = true;
     const file = event.target.files[0];
@@ -48,11 +60,19 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.comments = [];
     this.user = {
-      email: this._localService.getLocalUser().email;
+      email: this._localService.getLocalUser().email
     };
     this._userService.getCurrentUser().then(user => {
       this.user = user;
+    }).then(() => {
+      this._userService.getUserComments(this.user._id).then(response => {
+        this.comments = response.comments || [];
+        this.comments.forEach(c => {
+          this.getCommentor(c.commentor);
+        });
+      });
     });
   }
 }
