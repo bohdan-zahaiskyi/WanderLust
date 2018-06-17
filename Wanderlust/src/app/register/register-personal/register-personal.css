@@ -38,3 +38,6 @@ input{
   width: 45%;
   margin-right: 5px;
 }
+.form_type{
+  justify-content: space-around;
+}

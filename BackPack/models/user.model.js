@@ -15,6 +15,10 @@ let UserSchema = new Schema({
     token: String,
     friends: Array,
     description: String,
-    avatar: String
+    gender: String,
+    birthday: String,
+    friendRequest: Array,
+    avatar: String,
+    images: Array
 });
 export default mongoose.model('Users', UserSchema);

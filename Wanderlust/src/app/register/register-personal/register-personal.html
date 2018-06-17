@@ -1,25 +1,78 @@
 <h4 class="w3-center">Personal Data</h4>
   <form [formGroup]="form">
-    <div class="form-gr">
-      <label>I am:</label>
-      <div>
-        <input type="radio" name="personCompany" value="Person" checked="true" [(ngModel)]="user.personCompany" [formGroup]="form" formControlName="personCompany"> Person
-      </div>
+    <div class="form-block" [ngClass]="{'form_type': user.personCompany === 'Person'}">
+      <div class="form-gr">
+        <label>I am:</label>
+        <div>
+          <input type="radio"
+                 name="personCompany"
+                 value="Person"
+                 checked="true"
+                 [(ngModel)]="user.personCompany"
+                 [formGroup]="form"
+                 formControlName="personCompany">
+          Person
+        </div>
 
-      <div>
-        <input type="radio" name="personCompany" value="Company" [(ngModel)]="user.personCompany" [formGroup]="form" formControlName="personCompany"> Company
+        <div>
+          <input type="radio"
+                 name="personCompany"
+                 value="Company"
+                 [(ngModel)]="user.personCompany"
+                 [formGroup]="form"
+                 formControlName="personCompany">
+          Company
+        </div>
+      </div>
+      <div class="form-gr" *ngIf="user.personCompany === 'Person'">
+        <label>Gender:</label>
+        <div>
+          <input type="radio"
+                 name="gender"
+                 value="Female"
+                 checked="true"
+                 [(ngModel)]="user.gender"
+                 [formGroup]="form"
+                 formControlName="gender">
+          Female
+        </div>
+
+        <div>
+          <input type="radio"
+                 name="gender"
+                 value="Male"
+                 [(ngModel)]="user.gender"
+                 [formGroup]="form"
+                 formControlName="gender">
+          Male
+        </div>
+      </div>
+      <div class="form-gr"  *ngIf="user.personCompany === 'Person'">
+        <label>Bith date:</label>
+        <input type="date" [(ngModel)]="date">
       </div>
     </div>
-
     <div class="form-block">
       <div class="form-gr">
-        <label for="First">First name</label>
-        <input name="firstName" class="form-control" type="text" id="First" [(ngModel)]="user.firstName" [formGroup]="form" formControlName="firstName" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'>
+        <label for="First">{{user.personCompany === 'Company' ? 'First name' : 'Name'}}</label>
+        <input name="firstName"
+               class="form-control"
+               type="text" id="First"
+               [(ngModel)]="user.firstName"
+               [formGroup]="form"
+               formControlName="firstName"
+               onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'>
         <div class="alert" *ngIf="form.controls.firstName.errors?.required">This field is required</div>
       </div>
-      <div class="form-gr">
+      <div class="form-gr" *ngIf="!(user.personCompany === 'Company')">
         <label for="Last">Last name</label>
-        <input name="lastName" class="form-control" type="text" id="Last" [(ngModel)]="user.lastName" [formGroup]="form" formControlName="lastName" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'>
+        <input name="lastName"
+               class="form-control"
+               type="text" id="Last"
+               [(ngModel)]="user.lastName"
+               [formGroup]="form"
+               formControlName="lastName"
+               onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'>
         <div class="alert" *ngIf="form.controls.lastName.errors?.required">This field is required</div>
       </div>
     </div>

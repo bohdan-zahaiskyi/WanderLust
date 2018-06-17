@@ -54,6 +54,7 @@ input[type="file"] {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 .w3-button{
   background-color: #f8a356;
@@ -66,13 +67,15 @@ input[type="file"] {
 .galary-add{
   margin: 10px;
   background-color: #e3e3e3;
-  max-height: 120px;
   font-size: 20px;
-  width: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  height: 50px;
+  width: 50px;
+  padding-right: 7px;
+  cursor: pointer;
 }
 .statistic{
   margin-top:10px;
@@ -180,8 +183,8 @@ button{
 }
 
 .comment_field{
-  margin: 10px;
-  padding: 10px;
+  margin: 15px;
+  padding: 15px;
   background-color: white;
   border-radius: 5px;
 }
@@ -210,8 +213,8 @@ button{
   flex-direction: row;
   background-color: white;
   border-radius: 5px;
-  margin: 10px;
-  padding: 10px;
+  margin: 15px;
+  padding: 15px;
 }
 .comment_data{
   margin-left: 20px;
@@ -226,4 +229,20 @@ button{
 .participants{
   display: flex;
   flex-direction: column;
+}
+.choose{
+  margin: 0 15px -15px 15px;
+  display: flex;
+  flex-direction: row;
+}
+.choose div {
+  background-color: #ed9100;
+  color: white;
+  font-weight: 700;
+  padding: 15px;
+  cursor: pointer;
+}
+.chosen {
+  background-color: white !important;
+  color: #777 !important;
 }

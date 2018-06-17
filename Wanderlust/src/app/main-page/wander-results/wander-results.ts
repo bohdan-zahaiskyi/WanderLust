@@ -12,7 +12,7 @@ import {LocalService} from '../../_services/local.service';
 export class WanderResultsComponent implements OnInit {
 
   constructor(private _localService: LocalService, private _router: Router, private _userService: UserService) { }
-  @Input() result: any;
+  @Input() result: any = {searchResult: {}};
 
   navigateToWander(id) {
     const thisRoute = this._localService.getCurrentRoute(this._router.url);
@@ -28,8 +28,5 @@ export class WanderResultsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.result = {
-      searchResult: {}
-    };
   }
 }

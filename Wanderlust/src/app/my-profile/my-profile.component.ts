@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../_services/user.service';
 import {LocalService} from '../_services/local.service';
+import {Wander} from '../_models/wander';
+import {WandersService} from '../_services/wanders.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -8,11 +10,13 @@ import {LocalService} from '../_services/local.service';
   styleUrls: ['../user-page/user-profile/user-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
-  constructor(private _userService: UserService, private _localService: LocalService) { }
+  constructor(private _wanderService: WandersService, private _userService: UserService, private _localService: LocalService) { }
   user: any;
   isMe = true;
-  avaPopup = false;
+  avaPopup: any = false;
   comments: any;
+  showTab = 'comments';
+  userWanders: any;
 
   get userAvatar() {
     if (this.user.avatar && this.user.avatar !== '') {
@@ -22,11 +26,31 @@ export class MyProfileComponent implements OnInit {
   }
 
   uploadAva() {
-    this.user.avatar = document.querySelector('.ava_preview').getAttribute('src');
-    this._userService.updateUser(this.user).then(response => {
-      console.log(response);
-      this.cancelUpload();
-    });
+    if (this.avaPopup === 'avatar') {
+      this.user.avatar = document.querySelector('.ava_preview').getAttribute('src');
+      this._userService.updateUser(this.user).then(response => {
+        console.log(response);
+        this.cancelUpload();
+      });
+    } else if (this.avaPopup === 'image') {
+      this.user.images = this.user.images || [];
+      this.user.images.push({src: document.querySelector('.ava_preview').getAttribute('src')});
+      this._userService.updateUser(this.user).then(response => {
+        console.log(response);
+        this.cancelUpload();
+      });
+    }
+  }
+
+  chooseTab(tab) {
+    this.showTab = tab;
+    if (tab === 'comments') {
+      document.getElementById('comments').classList.add('chosen');
+      document.getElementById('wanders').classList.remove('chosen');
+    } else if (tab === 'wanders') {
+      document.getElementById('wanders').classList.add('chosen');
+      document.getElementById('comments').classList.remove('chosen');
+    }
   }
 
   cancelUpload() {
@@ -44,8 +68,8 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
-  uploadImage(event) {
-    this.avaPopup = true;
+  uploadImage(event, type) {
+    this.avaPopup = type;
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -64,6 +88,10 @@ export class MyProfileComponent implements OnInit {
     this.user = {
       email: this._localService.getLocalUser().email
     };
+    this.userWanders = [];
+    this._wanderService.getMyWanders(this.user.email).then(data => {
+      this.userWanders = {searchResults: data.filteredWanders || null};
+    });
     this._userService.getCurrentUser().then(user => {
       this.user = user;
     }).then(() => {

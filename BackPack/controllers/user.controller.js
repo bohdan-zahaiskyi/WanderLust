@@ -66,7 +66,7 @@ export const searchUser = (req,res) => {
     const result = [];
     Users.find().then(users => {
         users.forEach(user => {
-            let userName = user.firstName.toLowerCase() + ' ' + user.lastName.toLowerCase();
+            let userName = user.firstName.toLowerCase() + (user.lastName ? ' ' + user.lastName.toLowerCase() : '');
             if(userName.indexOf(keyword.toLowerCase()) > -1 || user.email.split('@')[0].indexOf(keyword.toLowerCase()) > -1) {
                 result.push(user);
             }

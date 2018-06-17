@@ -18,4 +18,6 @@ export class User {
   city: string;
   confirmed: boolean;
   friends: any[];
+  gender: string;
+  birthdate: string;
 }

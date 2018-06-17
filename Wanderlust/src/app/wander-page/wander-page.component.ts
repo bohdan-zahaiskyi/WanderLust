@@ -61,7 +61,8 @@ export class WanderPageComponent implements OnInit {
     this._userService.getUserByEmail(participant).then(user => {
       this.participants.push({
         name: user.firstName + ' ' + user.lastName,
-        avatar: user.avatar
+        avatar: user.avatar,
+        id: user._id
       });
     });
   }
@@ -93,6 +94,12 @@ export class WanderPageComponent implements OnInit {
       this._router.navigateByUrl(thisRoute + '/wanders');
     });
 
+  }
+
+  navigateToUser(person) {
+    let route = this._localService.getCurrentRoute(this._localService.getCurrentRoute(this._router.url));
+    route += person.email === this.user.email ? '/myProfile' : '/profile/' + person.id;
+    this._router.navigateByUrl(route);
   }
 
   deleteInviteWander() {
@@ -144,9 +151,15 @@ export class WanderPageComponent implements OnInit {
         this._userService.getUserByEmail(this.wander.initiator)
           .then(initiator => {
             this.initiator = {
-              name: initiator.firstName + ' ' + initiator.lastName,
-              avatar: initiator.avatar
+              avatar: initiator.avatar,
+              personCompany: initiator.personCompany,
+              email: initiator.email,
+              id: initiator._id
             };
+            this.initiator.name = initiator.firstName;
+            if (initiator.lastName) {
+              this.initiator.name = this.initiator.name + initiator.lastName;
+            }
           });
         })
       .then(() => {

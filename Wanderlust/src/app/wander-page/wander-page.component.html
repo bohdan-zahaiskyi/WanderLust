@@ -18,15 +18,15 @@
         </div>
         <div class="single_data">
           <label>Initiator:</label>
-          <div class="initiator">
+          <div class="initiator" (click)="navigateToUser(initiator)">
             <img src="{{initiator.avatar||'../../assets/images/users/bzahay.png'}}">
-            <p>{{initiator.name}}</p>
+            <p>{{initiator.name}} <i title="This user is travel agency" class="fa fa-suitcase" *ngIf="initiator.personCompany === 'Company'"></i></p>
           </div>
         </div>
         <div class="single_data">
           <label>Participants:</label>
           <div class="participants">
-            <div class="initiator" *ngFor="let part of participants">
+            <div class="initiator" *ngFor="let part of participants" (click)="navigateToUser(part)">
               <img src="{{part.avatar||'../../assets/images/users/bzahay.png'}}">
               <p>{{part.name}}</p>
             </div>
@@ -49,7 +49,7 @@
           <p>{{wander.description}}</p>
         </div>
         <div class="btns">
-          <button class="wl-btn" *ngIf="!isMyWander && !isParticipant" (click)="joinWander()">Join!</button>
+          <button class="wl-btn" *ngIf="!isMyWander && !isParticipant && user.personCompany !== 'Company'" (click)="joinWander()">Join!</button>
           <button class="wl-reset" (click)="leaveComment()">Leave comment</button>
           <button class="wl-delete" *ngIf="isParticipant" (click)="leaveWander()">Leave wander</button>
           <button class="wl-delete" *ngIf="isMyWander" (click)="deleteWander()">Delete wander</button>

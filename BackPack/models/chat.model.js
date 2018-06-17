@@ -4,10 +4,10 @@ let MessageSchema = new Schema({
     text: String,
     date: Date,
     sender: String,
-    chatId: String
+    chatId: String,
 });
 let ChatCatalogSchema = new Schema({
-    comunicators: Array,
+    comunicators: Array
 });
 
 const Chatcatalogs = mongoose.model('Chatcatalogs', ChatCatalogSchema);

@@ -7,15 +7,15 @@
       </li>
       <li routerLink="friends">
         <i class="fa fa-address-book"></i>
-        <span>My Friends</span>
+        <span>My Friends <span *ngIf="newFriends > 0" class="new">{{newFriends}}</span></span>
       </li>
       <li routerLink="messages">
         <i class="fa fa-envelope"></i>
-        <span>Messages</span>
+        <span>Messages <span *ngIf="messages > 0" class="new">{{messages}}</span></span>
       </li>
       <li routerLink="wanders">
         <i class="fa fa-plane"></i>
-        <span>My wanders</span>
+        <span>My wanders <span *ngIf="invited > 0" class="new">{{invited}}</span></span>
       </li>
       <li routerLink="places">
         <i class="fa fa-map-marker"></i>

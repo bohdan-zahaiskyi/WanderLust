@@ -84,6 +84,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.enableScroll();
+    if (this._localService.getRouteEnding(this.router.url) !== 'home'){
+      this.loggedHeader();
+    }
     if (localStorage.currentUser) {
       this.logged = true;
     }

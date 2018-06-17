@@ -2,16 +2,16 @@
     <div class="img-holder">
       <img class="user_ava" src="{{userAvatar}}">
       <div *ngIf="isMe" class="upload">
-        <input id="userAva" type="file" (change)="uploadImage($event)">
+        <input id="userAva" type="file" (change)="uploadImage($event, 'avatar')">
         <label for="userAva">Upload image ↑</label>
       </div>
     </div>
     <div class="user-names">
-      <h3>{{user.firstName}} {{user.lastName}}</h3>
+      <h3>{{user.firstName}} {{user.lastName}} <i title="This user is travel agency" class="fa fa-suitcase" *ngIf="user.personCompany === 'Company'"></i></h3>
       <p> @{{user.email.split('@')[0]}}</p>
       <div class="about">
         <div></div>
-        <span>{{user.description}}</span>
+        <span>{{user.description || 'No description provided'}}</span>
       </div>
       <div class="hz">
         <p>From <i class="fa fa-map-marker"></i> {{user.city}}, {{user.country}}</p>
@@ -24,16 +24,14 @@
     </div>
   </div>
   <div class="galary main-block">
-    <div class="galary-imgholder">
-      <img src="../../assets/images/users/galary/DSC_0582.JPG">
+    <h4 *ngIf="!user.images || user.images.length === 0">No images</h4>
+    <div *ngFor="let image of user.images" class="galary-imgholder">
+      <img src="{{image.src}}">
     </div>
-    <div class="galary-imgholder">
-      <img src="../../assets/images/users/galary/DSC_0621.JPG">
+    <div class="galary-add" *ngIf="isMe">
+      <input id="userImage" type="file" (change)="uploadImage($event, 'image')">
+      <label for="userImage"><i class="fa fa-plus"></i></label>
     </div>
-    <div class="galary-imgholder">
-      <img src="../../assets/images/users/galary/DSC_0808.JPG">
-    </div>
-    <div class="galary-add">+</div>
   </div>
   <div class="statistic">
     <div class="completed statistic-block">
@@ -69,17 +67,30 @@
         </div>
       </div>
     </div>
-    <div class="comment" *ngFor="let comment of comments">
-      <div class="user_avatar_holder">
-        <img src="{{comment.avatar || '../../assets/images/users/bzahay.png'}}" class="user_avatar">
-      </div>
-      <div class="comment_data">
-        <div class="comment_header">
-          <label>{{comment.name}}</label>
-          <label>{{comment.date}}</label>
+
+    <div class="choose">
+      <div id="comments" class="chosen" (click)="chooseTab('comments')">Comments</div>
+      <div id="wanders" (click)="chooseTab('wanders')">Wanders</div>
+    </div>
+
+    <div *ngIf="showTab === 'comments'">
+      <div *ngIf="!comments || comments.length === 0" class="main-block">No comments</div>
+      <div class="comment" *ngFor="let comment of comments">
+        <div class="user_avatar_holder">
+          <img src="{{comment.avatar || '../../assets/images/users/bzahay.png'}}" class="user_avatar">
         </div>
-        <p>{{comment.text}}</p>
+        <div class="comment_data">
+          <div class="comment_header">
+            <label>{{comment.name}} <i title="This user is travel agency" class="fa fa-suitcase" *ngIf="comment.personCompany === 'Company'"></i></label>
+            <label>{{comment.date}}</label>
+          </div>
+          <p>{{comment.text}}</p>
+        </div>
       </div>
+    </div>
+    <div *ngIf="showTab === 'wanders'">
+      <div *ngIf="!userWanders || !userWanders.searchResults" class="main-block">No wanders</div>
+      <app-wander-results [result]="userWanders"></app-wander-results>
     </div>
 </div>
 
@@ -94,7 +105,7 @@
      </div>
    </div>
  </div>
- <div class="popup" *ngIf="avaPopup">
+ <div class="popup" *ngIf="!!avaPopup">
    <div class="avaHolder">
      <img class="ava_preview">
    </div>

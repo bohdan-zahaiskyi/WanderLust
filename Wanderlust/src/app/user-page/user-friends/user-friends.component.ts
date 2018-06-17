@@ -13,6 +13,7 @@ import { ChatService } from '../../_services/chat.service';
 export class UserFriendsComponent implements OnInit {
   user: any;
   friends = [];
+  requestedFriends = [];
   friendAction: any;
   ngPopup = '';
   searchKeyword: '';
@@ -102,11 +103,42 @@ export class UserFriendsComponent implements OnInit {
     this.user.friends.push(result.email);
     this.userService.updateUser(this.user).then(() => {
           this.friends.push(result);
+    }).then(() => {
+      this.userService.getUserByEmail(result.email).then(user => {
+        user.friendRequest = user.friendRequest || [];
+        user.friendRequest.push(this.user.email);
+        this.userService.updateUser(user);
+      });
     });
   }
 
   goToProfile(id) {
     this._router.navigateByUrl(this._localService.getCurrentRoute(this._router.url) + '/profile/' + id);
+  }
+
+  addRequest(request) {
+    const index = this.user.friendRequest.indexOf(request.email);
+    if (index > -1) {
+      this.user.friendRequest.splice(index, 1);
+    }
+    this.user.friends.push(request.email);
+    this.userService.updateUser(this.user).then(() => {
+      this.friends.push(request);
+      this.user.friendRequest.forEach(frinedEmail => {
+        this.userService.getUserByEmail(frinedEmail).then(result => {
+          result.avatar = result.avatar || '../../../assets/images/users/bzahay.png';
+          this.requestedFriends.push(result);
+        });
+      });
+    });
+  }
+
+  deleteRequest(request) {
+    const index = this.user.friendRequest.indexOf(request.email);
+    if (index > -1) {
+      this.user.friendRequest.splice(index, 1);
+      this.userService.updateUser(this.user);
+    }
   }
 
   hideResult(result) {
@@ -132,6 +164,14 @@ export class UserFriendsComponent implements OnInit {
           this.friends.push(result);
         });
       });
+      if (this.user.friendRequest) {
+        this.user.friendRequest.forEach(frinedEmail => {
+          this.userService.getUserByEmail(frinedEmail).then(result => {
+            result.avatar = result.avatar || '../../../assets/images/users/bzahay.png';
+            this.requestedFriends.push(result);
+          });
+        });
+      }
     });
   }
 }

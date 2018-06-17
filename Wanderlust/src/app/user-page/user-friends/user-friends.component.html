@@ -21,6 +21,21 @@
     </div>
   </div>
   <div class="friends-container" (click)="hideResults()">
+    <h3 class="w3-center" *ngIf="requestedFriends && requestedFriends.length > 0">Friendship request</h3>
+    <div class="friend" *ngFor="let request of requestedFriends">
+      <div class="friend-header">
+        <div class="avatar">
+          <img src="{{request.avatar}}">
+        </div>
+        <h4 (click)="goToProfile(request._id)" class="name">{{request.firstName}} {{request.lastName}}</h4>
+        <div class="actions">
+          <i class="fa fa-check"(click)="addRequest(request)"></i>
+          <i class="delete" (click)="deleteRequest(request)">X</i>
+        </div>
+      </div>
+  </div>
+  <div class="friends-container" (click)="hideResults()">
+    <h3 class="w3-center">My friends</h3>
     <div class="friend" *ngFor="let friend of friends">
       <div class="friend-header">
         <div class="avatar">
