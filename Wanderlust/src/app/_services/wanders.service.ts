@@ -7,8 +7,7 @@ import 'rxjs/add/operator/toPromise';
 export class WandersService {
   wanders: Wander[];
 
-  //private apiKey = 'AIzaSyA7Yv0aWKwaU0GKSZ_bm1CJdhN5ZArMSkw';
-
+  private apiKey = 'AIzaSyADudrY8m6yQESqXtAn0EY37abpnZ52Fjs'; // 'AIzaSyA7Yv0aWKwaU0GKSZ_bm1CJdhN5ZArMSkw';
   private apiUrl = 'http://localhost:3000/wanders';
   constructor(private http: Http) { }
 
@@ -16,6 +15,12 @@ export class WandersService {
     const sanitizedDestinations = [];
     wander.destinations.forEach(d => sanitizedDestinations.push(d.dest));
     return {...wander, destinations: sanitizedDestinations};
+  }
+
+  getPlace(name) {
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + name + '&key=' + this.apiKey).toPromise()
+      .then(this.handleData)
+      .catch(this.handleError);
   }
 
   getWanderById(id) {

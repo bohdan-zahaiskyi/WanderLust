@@ -11,7 +11,7 @@
             <div class="avatar">
               <img src="{{result.avatar || '../../../assets/images/users/bzahay.png'}}">
             </div>
-            <h4 (click)="goToProfile(result._id)" class="name">{{result.firstName}} {{result.lastName}}</h4>
+            <h4 (click)="goToProfile(result._id)" class="name">{{result.firstName}} {{result.lastName}} <i title="This user is travel agency" class="fa fa-suitcase" *ngIf="result.personCompany === 'Company'"></i></h4>
             <div class="actions">
               <i *ngIf="user.friends.indexOf(result.email) === -1" class="fa fa-plus"(click)="addResult(result)"></i>
             </div>
@@ -27,7 +27,7 @@
         <div class="avatar">
           <img src="{{request.avatar}}">
         </div>
-        <h4 (click)="goToProfile(request._id)" class="name">{{request.firstName}} {{request.lastName}}</h4>
+        <h4 (click)="goToProfile(request._id)" class="name">{{request.firstName}} {{request.lastName}} <i title="This user is travel agency" class="fa fa-suitcase" *ngIf="request.personCompany === 'Company'"></i></h4>
         <div class="actions">
           <i class="fa fa-check"(click)="addRequest(request)"></i>
           <i class="delete" (click)="deleteRequest(request)">X</i>
@@ -41,10 +41,10 @@
         <div class="avatar">
           <img src="{{friend.avatar}}">
         </div>
-        <h4 (click)="goToProfile(friend._id)" class="name">{{friend.firstName}} {{friend.lastName}}</h4>
+        <h4 (click)="goToProfile(friend._id)" class="name">{{friend.firstName}} {{friend.lastName}} <i title="This user is travel agency" class="fa fa-suitcase" *ngIf="friend.personCompany === 'Company'"></i></h4>
         <div class="actions">
           <i class="fa fa-envelope"(click)="messageFriend(friend)"></i>
-          <i class="fa fa-share" (click)="inviteFriend(friend)"></i>
+          <i class="fa fa-share" (click)="inviteFriend(friend)" *ngIf="friend.personCompany === 'Person'"></i>
           <i class="delete" (click)="deleteFriend(friend)">X</i>
         </div>
       </div>

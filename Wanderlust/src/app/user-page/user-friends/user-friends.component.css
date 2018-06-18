@@ -119,3 +119,6 @@
   height: 80px;
   min-height: 80px;
 }
+h4 i {
+  margin-left: 10px;
+}

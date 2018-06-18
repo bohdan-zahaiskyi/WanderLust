@@ -124,6 +124,7 @@ export class UserFriendsComponent implements OnInit {
     this.user.friends.push(request.email);
     this.userService.updateUser(this.user).then(() => {
       this.friends.push(request);
+      this.requestedFriends = [];
       this.user.friendRequest.forEach(frinedEmail => {
         this.userService.getUserByEmail(frinedEmail).then(result => {
           result.avatar = result.avatar || '../../../assets/images/users/bzahay.png';
@@ -142,6 +143,7 @@ export class UserFriendsComponent implements OnInit {
   }
 
   hideResult(result) {
+
   }
 
   performSearch() {

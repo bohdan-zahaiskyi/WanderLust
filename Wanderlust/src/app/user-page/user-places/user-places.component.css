@@ -1,0 +1,8 @@
+.map_holder{
+  padding: 15px;
+}
+
+#map {
+  min-height: 500px;
+  width: 100%;
+}

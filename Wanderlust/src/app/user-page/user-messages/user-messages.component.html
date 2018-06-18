@@ -16,7 +16,7 @@
       <div class="avatar">
         <img src="{{chat.avatar}}">
       </div>
-      <h4 class="name" (click)="navigateToChat(chat._id)">{{chat.userName}}</h4>
+      <h4 class="name" (click)="navigateToChat(chat._id)">{{chat.userName}}<i title="This user is travel agency" class="fa fa-suitcase" *ngIf="chat.personCompany === 'Company'"></i></h4>
       <div class="actions">
         <i class="delete" (click)="deleteFriend(friend)">X</i>
       </div>

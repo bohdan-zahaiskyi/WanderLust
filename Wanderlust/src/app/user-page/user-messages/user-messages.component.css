@@ -37,3 +37,7 @@
   font-weight: bold;
   font-family: "Comic Sans MS";
 }
+
+h4 i {
+  margin-left: 10px;
+}
