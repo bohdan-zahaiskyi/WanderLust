@@ -10,6 +10,21 @@
                 <input type="text" [(ngModel)]="criteria.destinations[1]"/>
             </div>
         </div>
+
+      <div class="joinwander_block">
+        <div class="search_creteria tag_creteria">
+          <label>Start date</label>
+          <input type="date">
+        </div>
+        <div class="search_creteria">
+          <label>Tags</label>
+          <div class="tags">
+            <div class="tag" *ngFor="let stag of tags" (dblclick)="removeTag(stag)">{{stag}}</div>
+          </div>
+          <input [(ngModel)]="tag" type="text" (keyup)="addTag($event)">
+        </div>
+      </div>
+
         <div class="joinwander_block">
             <div class="search_creteria">
                 <label>Picking up</label>

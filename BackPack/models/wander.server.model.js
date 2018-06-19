@@ -12,6 +12,8 @@ let WanderSchema = new Schema({
     imgURL: String,
     initiator: String,
     participants: Array,
-    invited: Array
+    invited: Array,
+    tags: Array,
+    stayPlace: Array
 });
 export default mongoose.model('Wanders', WanderSchema);

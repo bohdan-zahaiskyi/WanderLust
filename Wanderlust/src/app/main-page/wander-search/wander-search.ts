@@ -11,6 +11,8 @@ export class WanderSearchComponent implements OnInit {
   constructor(private _wanderService: WandersService) { }
   @Output() searchReporter = new EventEmitter<any>();
   criteria: any;
+  tag: string;
+  tags = [];
 
   search() {
     const params = [];
@@ -23,6 +25,21 @@ export class WanderSearchComponent implements OnInit {
       this.searchReporter.emit({searchResults});
     });
   }
+
+  addTag(e) {
+    if (e.key === 'Enter') {
+      this.tags.push(this.tag);
+      this.tag = '';
+    }
+  }
+
+  removeTag(tag) {
+    const index = this.tags.indexOf(tag);
+    if (index > -1) {
+      this.tags.splice(index, 1);
+    }
+  }
+
   reset() {
     this.criteria = {};
   }

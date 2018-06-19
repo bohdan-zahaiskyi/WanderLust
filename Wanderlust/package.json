@@ -26,6 +26,7 @@
     "country-flags": "0.0.2",
     "facebook-sdk": "^0.3.2",
     "ng2-password-strength-bar": "^1.2.0",
+    "ngx-chips": "^1.9.2",
     "rxjs": "^5.5.6",
     "ts-md5": "^1.2.4",
     "zone.js": "^0.8.19"

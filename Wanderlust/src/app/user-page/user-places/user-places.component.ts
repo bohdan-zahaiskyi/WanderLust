@@ -20,10 +20,6 @@ export class UserPlacesComponent implements OnInit {
         zoom: 2,
         center: uluru
       });
-      /*const marker1 = new window.google.maps.Marker({
-        position: uluru,
-        map: map
-      });*/
       this._wanderService.getMyWanders(this._localService.getLocalUser().email).then(data => {
         data.filteredWanders.forEach(wanderRes => {
           const wander = wanderRes.wander;
@@ -45,13 +41,6 @@ export class UserPlacesComponent implements OnInit {
           });
         });
       });
-/*      this._wanderService.getPlace('Lviv').then(place => {
-        console.log(place);
-        const marker2 = new window.google.maps.Marker({
-          position: place.results[0].geometry.location,
-          map: map
-        });
-      });*/
     } catch (e) {
       console.log(e);
     }

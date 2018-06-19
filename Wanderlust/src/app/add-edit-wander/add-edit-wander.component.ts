@@ -15,6 +15,8 @@ export class AddEditWanderComponent implements OnInit {
   imgPath: any;
   imageLoaded: boolean;
   editMode = false;
+  tag: string;
+
 
   addDestination() {
     this.wander.destinations.push({dest: ''});
@@ -40,6 +42,21 @@ export class AddEditWanderComponent implements OnInit {
       preview.setAttribute('src', '');
     }
   }
+
+  addTag(e) {
+    if (e.key === 'Enter') {
+      this.wander.tags.push(this.tag);
+      this.tag = '';
+    }
+  }
+
+  removeTag(tag) {
+    const index = this.wander.tags.indexOf(tag);
+    if (index > -1) {
+      this.wander.tags.splice(index, 1);
+    }
+  }
+
   saveWander() {
     const img = document.querySelector('.wander_image');
     this.wander.imgURL = this.getImageURL(img);
@@ -55,6 +72,11 @@ export class AddEditWanderComponent implements OnInit {
       });
     }
   }
+
+  addStayPlace() {
+    this.wander.stayPlace.push({place: '', date: ''});
+  }
+
   cancelSave() {
     const back = this._localService.getCurrentRoute(this._router.url);
     this._router.navigateByUrl((this.editMode ? this._localService.getCurrentRoute(back) : back)  + '/wanders');
@@ -79,7 +101,8 @@ export class AddEditWanderComponent implements OnInit {
       startDate: '',
       endDate: '',
       budget: 0,
-      people: 0
+      people: 0,
+      stayPlace: [{place: '', date: ''}]
     };
     this.imageLoaded = false;
     if (this._localService.getRouteEnding(this._router.url) !== 'createWander') {
