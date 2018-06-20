@@ -23,6 +23,12 @@ export class WandersService {
       .catch(this.handleError);
   }
 
+  getLatest() {
+    return this.http.get(this.apiUrl + '/latest').toPromise()
+      .then(this.handleData)
+      .catch(this.handleError);
+  }
+
   getWanderById(id) {
     return this.http.get(this.apiUrl + '/' + id).toPromise()
       .then(this.handleData)
@@ -31,6 +37,12 @@ export class WandersService {
 
   getInvited(email) {
     return this.http.get(this.apiUrl + '/invited/' + email).toPromise()
+      .then(this.handleData)
+      .catch(this.handleError);
+  }
+
+  getTopDestinations() {
+    return this.http.get(this.apiUrl + '/topdestinations').toPromise()
       .then(this.handleData)
       .catch(this.handleError);
   }

@@ -19,6 +19,10 @@ router.post('/search', (req, res) => {
     wandersController.searchWanders(req, res)
 });
 
+router.get('/latest', (req, res) => {
+    wandersController.getLatest(req,res);
+});
+
 router.post('/my', (req, res) => {
     wandersController.myWanders(req, res)
 });
@@ -29,6 +33,10 @@ router.post('/comment', (req, res) => {
 
 router.get('/comments/:id', (req, res) => {
     wandersController.getWanderComments(req, res)
+});
+
+router.get('/topdestinations', (req,res) => {
+   wandersController.topDestinations(req, res);
 });
 
 router.delete('/:id', (req, res)=>{

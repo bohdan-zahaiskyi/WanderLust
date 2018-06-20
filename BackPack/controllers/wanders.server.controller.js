@@ -31,6 +31,39 @@ export const myWanders = (req,res) => {
         .catch(error =>{})
 };
 
+export const getLatest = (req, res) => {
+    const latest = [];
+    const today = new Date().getTime();
+    Wanders.find().then(wanders => {
+        wanders.forEach(wander => {
+            if(new Date(wander.endDate).getTime() < today) {
+                latest.push(wander);
+            }
+        });
+        sortDate(wanders);
+        wanders.splice(5,wanders.length);
+        res.json(wanders);
+    })
+};
+
+export const topDestinations = (req, res) => {
+    const topDestination = [];
+    Wanders.find().then(wanders => {
+        wanders.forEach(wander => {
+            wander.destinations.forEach(destination => {
+                const index = topDestination.indexOf(destination);
+                if (index > -1) {
+                    topDestination[index].priority++;
+                } else {
+                    topDestination.push({destination: destination, priority: 1});
+                }
+            });
+        });
+        topDestination.splice(6,topDestination.length);
+        res.json(topDestination);
+    });
+};
+
 export const searchWanders = (req,res) => {
     let params = req.body;
     Wanders.find().then(wanders => {
@@ -83,7 +116,22 @@ function sort(items) {
     for (let i = 0; i < length; i++) { //Number of passes
         for (let j = 0; j < (length - i - 1); j++) { //Notice that j < (length - i)
             //Compare the adjacent positions
-            if(items[j] > items[j+1]) {
+            if(items[j].priority > items[j+1].priority) {
+                //Swap the numbers
+                let tmp = items[j];  //Temporary variable to hold the current number
+                items[j] = items[j+1]; //Replace current number with adjacent number
+                items[j+1] = tmp; //Replace adjacent number with current number
+            }
+        }
+    }
+}
+
+function sortDate(items) {
+    let length = items.length;
+    for (let i = 0; i < length; i++) { //Number of passes
+        for (let j = 0; j < (length - i - 1); j++) { //Notice that j < (length - i)
+            //Compare the adjacent positions
+            if(new Date(items[j].endDate).getTime() < new Date(items[j+1].endDate).getTime()) {
                 //Swap the numbers
                 let tmp = items[j];  //Temporary variable to hold the current number
                 items[j] = items[j+1]; //Replace current number with adjacent number

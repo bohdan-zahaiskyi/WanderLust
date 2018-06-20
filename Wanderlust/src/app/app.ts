@@ -62,6 +62,25 @@ export class AppComponent implements OnInit {
     this.enableScroll();
   }
 
+  wanderClicked() {
+    this.homeClicked();
+    this.router.navigateByUrl('home').then(() => {
+      window.scrollTo(0, window.innerHeight);
+    });
+  }
+  latestClicked() {
+    this.homeClicked();
+    this.router.navigateByUrl('home').then(() => {
+      window.scrollTo(0, 2.2 * window.innerHeight);
+    });
+  }
+  destinationsClicked() {
+    this.homeClicked();
+    this.router.navigateByUrl('home').then(() => {
+      window.scrollTo(0, 3.6 * window.innerHeight);
+    });
+  }
+
   enableScroll() {
     window.onscroll = function () {
       const navbar = document.getElementById('myNavbar');

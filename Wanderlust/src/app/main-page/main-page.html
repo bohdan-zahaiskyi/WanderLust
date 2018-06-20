@@ -10,7 +10,9 @@
     <!--=================== Wander search section ======================-->
     <app-wander-search (searchReporter)="wanderSearchReporter($event)"></app-wander-search>
     <h3 class="w3-center">WANDER SEARCH RESULTS</h3>
+  <div class="wanders_holder">
     <app-wander-results [result]="wanderSearchResults"></app-wander-results>
+  </div>
 </div>
 
 <div class="w3-row w3-center w3-dark-grey w3-padding-16">
@@ -41,8 +43,10 @@
 
 <!-- Container (Portfolio Section) -->
 <div class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h3 class="w3-center">MY WORK</h3>
-  <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
+  <h3 class="w3-center">LATEST TRIPS</h3>
+  <div class="wanders_holder">
+    <app-wander-results [result]="latestWanders"></app-wander-results>
+  </div>
 </div>
 
 <!-- Third Parallax Image with Portfolio Text -->
@@ -54,7 +58,67 @@
 
 <!-- Container (Contact Section) -->
 <div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">WHERE I WORK</h3>
-  <p class="w3-center"><em>I'd love your feedback!</em></p>
-
+  <h3 class="w3-center">TOP DESTINATIONS</h3>
+  <div class="destinations">
+    <div class="destinations_row">
+      <div class="place">
+        <div class="title">
+          <h3>1. Lviv</h3>
+          <label>visited 3 times</label>
+        </div>
+        <div class="map_holder">
+          <div id="map-0"></div>
+        </div>
+      </div>
+      <div class="place">
+        <div class="title">
+          <h3>2. Oslo</h3>
+          <label>visited 2 times</label>
+        </div>
+        <div class="map_holder">
+          <div id="map-1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="destinations_row">
+      <div class="place">
+        <div class="title">
+          <h3>3. Paris</h3>
+          <label>visited 2 times</label>
+        </div>
+        <div class="map_holder">
+          <div id="map-2"></div>
+        </div>
+      </div>
+      <div class="place">
+        <div class="title">
+          <h3>4. Rome</h3>
+          <label>visited 1 time</label>
+        </div>
+        <div class="map_holder">
+          <div id="map-3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="destinations_row">
+      <div class="place">
+        <div class="title">
+          <h3>5. Kyiv</h3>
+          <label>visited 1 time</label>
+        </div>
+        <div class="map_holder">
+          <div id="map-4"></div>
+        </div>
+      </div>
+      <div class="place">
+        <div class="title">
+          <h3>6. New York</h3>
+          <label>visited 1 time</label>
+        </div>
+        <div class="map_holder">
+          <div id="map-5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

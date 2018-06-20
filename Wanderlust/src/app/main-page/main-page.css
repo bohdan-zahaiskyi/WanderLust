@@ -35,3 +35,33 @@
 .paralax{
     opacity: 0.9;
 }
+.destinations_row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px
+}
+.map_holder{
+  padding: 5px;
+}
+.map_holder div{
+  height: 300px;
+  width: 400px;
+}
+.destinations{
+  background-color: #e3e3e3;
+  padding: 10px;
+}
+.place{
+  background-color: white;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

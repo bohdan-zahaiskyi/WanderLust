@@ -5,9 +5,9 @@
         <img src="../assets/WNES.png">
       </a>
       <div class="bar-item"><a (click)="homeClicked()" routerLink="/home"><i class="fa fa-home"></i> HOME</a></div>
-      <div class="bar-item"><a routerLink="/about" ><i class="fa fa-share"></i> JOIN A WANDER</a></div>
-      <div class="bar-item"><a routerLink="/portfolio"><i class="fa fa-plane"></i> LATEST TRIPS</a></div>
-      <div class="bar-item"><a routerLink="/contact"><i class="fa fa-map-marker"></i> TOP DESTINATIONS</a></div>
+      <div class="bar-item"><a (click)="wanderClicked()" ><i class="fa fa-share"></i> JOIN A WANDER</a></div>
+      <div class="bar-item"><a (click)="latestClicked()" ><i class="fa fa-plane"></i> LATEST TRIPS</a></div>
+      <div class="bar-item"><a (click)="destinationsClicked()"><i class="fa fa-map-marker"></i> TOP DESTINATIONS</a></div>
     </div>
 
     <div class="right-bar">
@@ -20,3 +20,11 @@
   <app-login (loggedAction)="loginAction($event)"></app-login>
 </div>
 <router-outlet></router-outlet>
+<div class="footer">
+  <h3>Wanderlust</h3>
+  <img src="../favicon.ico">
+  <div>
+    <p>2018, All rights reserved</p>
+    <p>Made by Bohdan Zahaiskyi</p>
+  </div>
+</div>
