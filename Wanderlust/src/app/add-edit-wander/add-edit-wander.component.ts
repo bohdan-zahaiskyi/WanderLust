@@ -96,13 +96,14 @@ export class AddEditWanderComponent implements OnInit {
   }
   ngOnInit() {
     this.wander = {
-      destinations: [{dest: 'Vasa'}, {dest: ''}],
+      destinations: [{dest: ''}, {dest: ''}],
       initiator: this._localService.getLocalUser().email,
       startDate: '',
       endDate: '',
       budget: 0,
       people: 0,
-      stayPlace: [{place: '', date: ''}]
+      stayPlace: [{place: '', date: ''}],
+      tags: []
     };
     this.imageLoaded = false;
     if (this._localService.getRouteEnding(this._router.url) !== 'createWander') {

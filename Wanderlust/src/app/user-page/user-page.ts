@@ -19,6 +19,13 @@ export class UserPageComponent implements OnInit {
   constructor(private userService: UserService, private _wanderService: WandersService) {
   }
 
+  removeIcon() {
+    this.invited = 0;
+  }
+  removeFr() {
+    this.newFriends = 0;
+  }
+
   ngOnInit() {
     this.user = {};
     this.userService.getCurrentUser().then(user => {
